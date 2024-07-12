@@ -12,18 +12,18 @@ header {
 	display: flex;
 	align-items: center;
 	cursor: pointer;
-	
-	/* margin-right: 20px; */
 }
 
 .logout img {
 	width: 100px;
-	/* margin-right: 10px; */
 }
 
 header img {
 	width: calc(300px - 85px);
 	padding: 35px;
+	&:hover {
+		cursor: pointer;
+	}
 }
 
 aside {

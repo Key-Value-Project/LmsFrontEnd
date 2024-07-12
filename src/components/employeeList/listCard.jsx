@@ -1,6 +1,7 @@
 import del from "../../assets/icons/delete.svg";
 import edt from "../../assets/icons/edit.svg";
 import { Status } from "./status.jsx";
+import { Link } from "react-router-dom";
 
 const ListCard = (emp) => {
 	return (
@@ -15,7 +16,10 @@ const ListCard = (emp) => {
 			<div className="Experience">{emp.experience}</div>
 			<div className="Action">
 				<img src={del} alt="delete button" />
-				<img src={edt} alt="edit button" />
+
+				<Link to={`edit/${emp.employeeID}`}>
+					<img src={edt} alt="edit button" />
+				</Link>
 			</div>
 		</div>
 	);

@@ -1,3 +1,65 @@
+.top-header-employee-list {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+	/* margin-top: 100px; */
+	border-radius: 8px;
+	background-color: #ffffff;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.top-header-employee-list h1 {
+	font-weight: 510;
+	font-size: 24px;
+	width: 66vw;
+	padding: 30px;
+	margin: 0px;
+	color: #000000;
+}
+
+.top-header-components {
+	width: fit-content;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.filter-bar {
+	width:max-content;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	margin-right: 20px;
+	gap: 20px;
+}
+
+.filter-dropdown {
+	width:max-content;
+	select {
+		background-color: #d1eaf5;
+		padding: 8px 30px;
+		border-radius: 15px;
+		border: none;
+		border-width: 0px;
+		-webkit-appearance: none; /* For Safari */
+		-moz-appearance: none; /* For Firefox */
+		appearance: none; /* Standard syntax */
+		cursor: pointer;
+		&:focus {
+			outline: none;
+			border: none;
+		}
+	}
+	img {
+		position: relative;
+		width: 10px;
+		left: -20px;
+	}
+}
+
 .employee-list {
 	height: 80%;
 	overflow-x: auto;
@@ -88,13 +150,13 @@
 	justify-content: space-around;
 }
 
-.Action > img:first-of-type {
+.Action img:first-of-type {
 	width: 30px;
 	padding: 3px;
 	cursor: pointer;
 }
 
-.Action > img:last-child {
+.Action img:last-child {
 	position: relative;
 	width: 30px;
 	top: 1px;

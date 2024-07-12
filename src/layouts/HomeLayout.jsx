@@ -1,4 +1,4 @@
-import "../assets/styles/homeLayout/home.style.css"
+import "../assets/styles/homeLayout/home.style.scss";
 import Logo from "../assets/images/kv-logo.png";
 import Logout from "../assets/icons/logout.svg";
 import icon1 from "../assets/icons/icon.svg";
@@ -25,7 +25,9 @@ const HomeLayout = () => {
 	return (
 		<>
 			<header>
-				<img src={Logo} alt="Key value software systems logo" />
+				<a href="https://www.keyvalue.systems/" target="_blank" rel="noopener noreferrer">
+					<img src={Logo} alt="Key value software systems logo" />
+				</a>
 				<div className="logout" onClick={logout}>
 					<img src={Logout} alt="Logout" />
 				</div>

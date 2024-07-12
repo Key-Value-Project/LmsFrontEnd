@@ -1,10 +1,10 @@
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CreateEmployee from "./pages/CreateEmployee.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import HomeLayout from "./layouts/HomeLayout.jsx";
 import EmployeeList from "./pages/EmployeeList.jsx";
 import Login from "./pages/Login";
+import EditEmployee from "./pages/EditEmployee.jsx";
 
 const App = () => {
 	const router = createBrowserRouter([
@@ -19,6 +19,7 @@ const App = () => {
 			children: [
 				{ index: true, element: <EmployeeList /> },
 				{ path: "create", element: <CreateEmployee /> },
+				{ path: "edit/:id", element: <EditEmployee /> },
 			],
 		},
 	]);
