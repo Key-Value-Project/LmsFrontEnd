@@ -3,9 +3,11 @@ import ListCardHead from "../components/employeeList/listHeader.jsx";
 import "../assets/styles/employeeList/emplist.styles.scss";
 import FilterBar from "../components/employeeList/filterBar.jsx";
 import { useState, useEffect } from "react";
+import plusIcon from "../assets/icons/plus-circle.svg";
+import { Link } from "react-router-dom";
 
 const employees_list = [
-	{	
+	{
 		employeeID: 1,
 		employeeName: "Shaheen",
 		employeeEmail: "shaheen@fun.com",
@@ -138,7 +140,7 @@ const EmployeeList = () => {
 	const [employees, setEmployees] = useState([]);
 
 	// State to hold the current filter
-	const [filter, setFilter] = useState("Name");
+	const [filter, setFilter] = useState("All");
 
 	// State to hold filtered employees
 	const [filteredEmployees, setFilteredEmployees] = useState([]);
@@ -155,18 +157,9 @@ const EmployeeList = () => {
 
 	// Effect to filter employees whenever the employees list or filter changes
 	useEffect(() => {
-		const filtered_list = employees.sort((a, b) => {
-			if (filter === "Name") {
-				return a.employeeName.localeCompare(b.employeeName);
-			} else if (filter === "ID") {
-				return a.employeeEmail.localeCompare(b.employeeEmail);
-			} else if (filter === "Date") {
-				return new Date(a.joiningDate) - new Date(b.joiningDate);
-			} else if (filter === "Role") {
-				return a.role.localeCompare(b.role);
-			} else if (filter === "Status") {
-				return a.status.localeCompare(b.status);
-			}
+		const filtered_list = employees.filter((employee) => {
+			if (filter === "All") return true;
+			return employee.status === filter;
 		});
 		setFilteredEmployees(filtered_list);
 	}, [employees, filter]);
@@ -177,6 +170,12 @@ const EmployeeList = () => {
 				<h1>Employee List</h1>
 				<div className="top-header-components">
 					<FilterBar setFilter={setFilter} />
+					<Link to="create" style={{ textDecoration: "none", color: "black" }}>
+						<div className="create-button-emp">
+							<img src={plusIcon} alt="create button" />
+							<span>Create Employee</span>
+						</div>
+					</Link>
 				</div>
 			</div>
 			<ListCardHead />

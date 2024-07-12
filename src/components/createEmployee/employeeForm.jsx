@@ -4,9 +4,6 @@ const EmployeeForm = ({ fields, handleSubmit, handleInputChange, resetContent, i
 	return (
 		<form id="form-create-employee">
 			<div className="form-inputs">
-				{fields.map((field) => (
-					<field.Component key={field.id} {...field} employeedetails={handleInputChange} />
-				))}
 				{isEdit && (
 					<div className="form-items">
 						<label htmlFor="employeeID">Employee ID</label>
@@ -20,6 +17,9 @@ const EmployeeForm = ({ fields, handleSubmit, handleInputChange, resetContent, i
 						/>
 					</div>
 				)}
+				{fields.map((field) => (
+					<field.Component key={field.id} {...field} employeedetails={handleInputChange} />
+				))}
 			</div>
 			<div className="form-button">
 				<button onClick={handleSubmit} type="submit">
