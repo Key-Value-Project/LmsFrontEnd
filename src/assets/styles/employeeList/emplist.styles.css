@@ -1,0 +1,102 @@
+.employee-list {
+	height: 80%;
+	overflow-x: auto;
+	scrollbar-width: none;
+}
+
+.employee-list-items:hover {
+	background-color: #00000009;
+}
+
+.employee-list-head {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: fit-content;
+	margin-bottom: 20px;
+	min-height: 50px;
+	background-color: #fffafa;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+	padding: 20px;
+	align-items: center;
+	font-weight: 600;
+	background-color: #d1eaf5;
+}
+
+.employee-list-items {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: fit-content;
+	margin-bottom: 20px;
+	min-height: 50px;
+	border-radius: 8px;
+	background-color: #ffffff;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+	padding: 15px;
+	align-items: center;
+}
+
+.EmployeeName {
+	width: 15%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin-right: 5px;
+}
+
+.EmployeeID {
+	width: 15%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin-right: 5px;
+}
+
+.JoiningDate {
+	width: 15%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.Role {
+	width: 20%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.Status {
+	width: 15%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.Experience {
+	width: 13%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.Action {
+	width: 7%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.Action > img:first-of-type {
+	width: 30px;
+	padding: 3px;
+	cursor: pointer;
+}
+
+.Action > img:last-child {
+	position: relative;
+	width: 30px;
+	top: 1px;
+	cursor: pointer;
+}
