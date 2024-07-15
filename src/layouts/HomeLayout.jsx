@@ -16,8 +16,7 @@ const HomeLayout = () => {
 	const navigate = useNavigate();
 
 	const logout = () => {
-		localStorage.removeItem("username");
-		localStorage.removeItem("password");
+		localStorage.removeItem("sessionKey");
 
 		navigate("/");
 	};

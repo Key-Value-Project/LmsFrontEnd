@@ -4,6 +4,7 @@ import "../assets/styles/notFound/notfound.scss";
 const NotFound = () => {
 	return (
 		<section className="not-found">
+			<img src="/favicon.ico" alt="404" />
 			<div className="container">
 				<div className="hero">
 					<h1>404 Not Found</h1>

@@ -13,6 +13,13 @@ const Login = () => {
 	const userNameRef = useRef();
 	const navigate = useNavigate();
 
+	useEffect(() => {
+		const session = localStorage.getItem("sessionKey");
+		if (session) {
+			navigate("/employee");
+		}
+	});
+
 	const handleSubmit = (event) => {
 		event.preventDefault(); // Prevent default form submission
 		// Collect form data
