@@ -1,19 +1,25 @@
+/* eslint-disable react/prop-types */
+import { v4 as uuidv4 } from "uuid";
 import { useEffect, useState } from "react";
 import "../assets/styles/createEmployee/empcreate.styles.css";
 import fields from "../utils/FormFields";
 import EmployeeForm from "../components/createEmployee/employeeForm.jsx";
+import { useNavigate } from "react-router";
 
-const CreateEmployeeForm = () => {
-	// const [data, setData] = useState("");
+const CreateEmployeeForm = ({ dispatch }) => {
 	const [employeeDetails, setEmployeeDetails] = useState({
-		name: "",
-		email: "",
+		employeeID: uuidv4(),
+		employeeName: "",
+		employeeEmail: "",
 		joiningDate: "",
 		role: "",
 		status: "",
 		experience: "",
 		address: "",
+		department: "",
 	});
+
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		console.log(employeeDetails);
@@ -25,21 +31,18 @@ const CreateEmployeeForm = () => {
 			[inputName]: inputValue,
 		}));
 	};
-	const handleSubmit = (event) => {
-		event.preventDefault();
-		const form = document.getElementById("form-create-employee");
-		const formData = new FormData(form);
-		const data = {};
-		for (let [key, value] of formData.entries()) {
-			data[key] = value;
-		}
-		alert(JSON.stringify(data));
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		dispatch({
+			type: "ADD_EMPLOYEE",
+			payload: employeeDetails,
+		});
+		alert("Employee Added Successfully");
 	};
 
-	const resetContent = (event) => {
-		event.preventDefault();
-		const form = document.getElementById("form-create-employee");
-		form.reset();
+	const resetContent = () => {
+		navigate("/employee");
 	};
 
 	return (
@@ -54,6 +57,7 @@ const CreateEmployeeForm = () => {
 						handleSubmit={handleSubmit}
 						handleInputChange={handleInputChange}
 						resetContent={resetContent}
+						formState={employeeDetails}
 					/>
 				</div>
 			</div>

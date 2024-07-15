@@ -75,11 +75,15 @@ main {
 
 .drop-down {
 	width: 100%;
-	padding: 10px;
+	padding: 0px 10px;
 	margin-bottom: 10px;
 	border-radius: 5px;
 	border: 1px solid #010101;
 	background-color: #ffffff;
+}
+
+.drop-down select {
+	padding: 10px;
 }
 
 #form-create-employee input {

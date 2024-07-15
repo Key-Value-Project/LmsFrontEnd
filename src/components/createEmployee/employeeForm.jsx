@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 // eslint-disable-next-line react/prop-types
-const EmployeeForm = ({ fields, handleSubmit, handleInputChange, resetContent, isEdit, empID }) => {
+const EmployeeForm = ({ fields, handleSubmit, handleInputChange, resetContent, isEdit, empID, formState }) => {
 	return (
 		<form id="form-create-employee">
 			<div className="form-inputs">
@@ -18,12 +18,17 @@ const EmployeeForm = ({ fields, handleSubmit, handleInputChange, resetContent, i
 					</div>
 				)}
 				{fields.map((field) => (
-					<field.Component key={field.id} {...field} employeedetails={handleInputChange} />
+					<field.Component
+						key={field.id}
+						{...field}
+						handleInputChange={handleInputChange}
+						value={formState[field.id]}
+					/>
 				))}
 			</div>
 			<div className="form-button">
 				<button onClick={handleSubmit} type="submit">
-					Create
+					Submit
 				</button>
 				<button onClick={resetContent} type="button">
 					Cancel

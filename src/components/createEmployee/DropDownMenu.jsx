@@ -1,14 +1,14 @@
 // eslint-disable-next-line react/prop-types
-const DropDownMenu = ({ name, options, employeedetails }) => {
+const DropDownMenu = ({ name, id, options, handleInputChange, value }) => {
 	const onselect = (event) => {
-		employeedetails(event.target.name, event.target.value);
+		handleInputChange(event.target.id, event.target.value);
 	};
 
 	return (
 		<div className="form-items">
 			<label htmlFor={name}>{name}</label>
 			<div className="drop-down">
-				<select id={name} name={name} required defaultValue={"Select"} onChange={onselect}>
+				<select id={id} name={name} value={value || "Select"} onChange={onselect}>
 					<option value="Select" disabled>
 						Select
 					</option>

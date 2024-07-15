@@ -1,9 +1,11 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import del from "../../assets/icons/delete.svg";
 import edt from "../../assets/icons/edit.svg";
 import DeletePopUp from "./DeletePopUp.jsx";
 import { Status } from "./status.jsx";
 import { Link } from "react-router-dom";
+import { actionTypes } from "../../store/reducer.jsx";
 
 const ListCard = (emp) => {
 	const [deleteDialog, setDeleteDialog] = useState(false);
@@ -14,6 +16,16 @@ const ListCard = (emp) => {
 		e.stopPropagation();
 		setDeleteDialog(true);
 		console.log("Delete clicked");
+	};
+
+	const handleDelete = () => {
+		console.log("Delete");
+		emp.dispatch({ type: actionTypes.DELETE_EMPLOYEE, payload: emp.employeeID });
+		setDeleteDialog(false);
+	};
+
+	const handleClose = () => {
+		setDeleteDialog(false);
 	};
 
 	return (
@@ -29,7 +41,6 @@ const ListCard = (emp) => {
 					</div>
 					<div className="Experience">{emp.experience}</div>
 					<div className="Action">
-						
 						<img src={del} alt="delete button" onClick={handleDeleteClick} />
 
 						<Link to={`edit/${emp.employeeID}`}>
@@ -38,11 +49,7 @@ const ListCard = (emp) => {
 					</div>
 				</div>
 			</Link>
-			<DeletePopUp
-				open={deleteDialog}
-				handleClose={() => setDeleteDialog(false)}
-				handleDelete={() => console.log("Delete")}
-			/>
+			<DeletePopUp open={deleteDialog} handleClose={handleClose} handleDelete={handleDelete} />
 		</>
 	);
 };

@@ -35,7 +35,7 @@ const HomeLayout = () => {
 			<div className="webapp">
 				<aside>
 					<nav>
-						<a href="">
+						{/* <a href=""> */}
 							<Link to="/employee">
 								<div>
 									<img src={icon1} alt="Employee List icon" />
@@ -48,7 +48,7 @@ const HomeLayout = () => {
 									<p>Add Employee</p>
 								</div>
 							</Link>
-						</a>
+						{/* </a> */}
 					</nav>
 				</aside>
 				<main>

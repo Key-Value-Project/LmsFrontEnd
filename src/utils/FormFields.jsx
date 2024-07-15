@@ -4,7 +4,7 @@ import TextField from "../components/createEmployee/TextField";
 const fields = [
 	{
 		type: "text",
-		id: "name",
+		id: "employeeName",
 		name: "name",
 		required: "Name",
 		text: "Employee Name",
@@ -12,7 +12,7 @@ const fields = [
 	},
 	{
 		type: "email",
-		id: "email",
+		id: "employeeEmail",
 		name: "email",
 		required: "Email",
 		text: "Employee Email",
@@ -20,7 +20,7 @@ const fields = [
 	},
 	{
 		type: "date",
-		id: "joining-date",
+		id: "joiningDate",
 		name: "joining-date",
 		text: "Join Date",
 		Component: TextField,
@@ -41,7 +41,7 @@ const fields = [
 		name: "Status",
 		options: [
 			{ value: "Active", label: "Active" },
-			{ value: "Inactive", label: "Inactive" },
+			{ value: "In Active", label: "In Active" },
 			{ value: "On Leave", label: "On Leave" },
 		],
 		Component: DropDownMenu,
@@ -61,7 +61,6 @@ const fields = [
 		required: "Department",
 		text: "Department",
 		Component: TextField,
-	
 	},
 	{
 		type: "text",
