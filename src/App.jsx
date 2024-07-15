@@ -186,7 +186,7 @@ const App = () => {
 				{ index: true, element: <EmployeeList state={state} dispatch={dispatch} /> },
 				{ path: "create", element: <CreateEmployee dispatch={dispatch} /> },
 				{ path: "edit/:id", element: <EditEmployee state={state} dispatch={dispatch} /> },
-				{ path: "details/:id", element: <DetailsEmployee state={state} dispatch={dispatch} /> },
+				{ path: "details/:id", element: <DetailsEmployee state={state} /> },
 			],
 		},
 	]);
