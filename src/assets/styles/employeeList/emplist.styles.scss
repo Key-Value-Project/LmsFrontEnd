@@ -58,6 +58,13 @@
 		&:focus {
 			outline: none;
 			border: none;
+			// border-radius: 15px;
+		}
+		&:hover {
+            // border-radius: 18px; /* Slightly larger border-radius on hover */
+        }
+		option {
+			border-radius: 15px;
 		}
 	}
 	img {
@@ -209,7 +216,7 @@
 	z-index: 100;
 
 	.delete-popup-content {
-		width: 30%;
+		width: 20%;
 		background-color: #ffffff;
 		border-radius: 10px;
 		padding: 20px;
@@ -217,32 +224,47 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+		text-align: center;
 	}
 	.delete-popup-buttons {
 		display: flex;
 		flex-direction: row;
-		justify-content: space-around;
-		width: 50%;
+		justify-content: space-between;
+		align-items: center;
+		width: 70%;
 		margin-top: 20px;
 
 		button {
-			width: 40%;
+			width: 45%;
 			padding: 10px 20px;
 			border-radius: 10px;
-			border: none;
+			// border: none;
 			cursor: pointer;
+			margin-right: 0px;
 		}
 		:first-child {
-			background-color: #7cff78;
-			color: #080808;
+			background-color: #c4ecfd;
+			color: #1b7fd1;
 			font-size: 16px;
 			font-weight: 500;
+
+			&:hover {
+				background-color: #2ec0ff;
+        		color: #fafcfd; 
+			}
 		}	
 		:last-child {
-			background-color: #ff7c7c;
+			background-color: #faf7f7;
 			color: #080808;
 			font-size: 16px;
 			font-weight: 500;
+			border-width: 1px;
+			border-color: #000000;
+
+			&:hover {
+				background-color: #2e2d2df1;
+				color: #fffafa
+			}
 		}
 	}
 
