@@ -7,8 +7,8 @@ import { useEffect } from "react";
 
 const HomeLayout = () => {
 	useEffect(() => {
-		const session = localStorage.getItem("sessionKey");
-		if (!session) {
+		const session_token = localStorage.getItem("token");
+		if (!session_token) {
 			navigate("/");
 		}
 	});
@@ -16,8 +16,7 @@ const HomeLayout = () => {
 	const navigate = useNavigate();
 
 	const logout = () => {
-		localStorage.removeItem("sessionKey");
-
+		localStorage.removeItem("token");
 		navigate("/");
 	};
 
@@ -36,18 +35,18 @@ const HomeLayout = () => {
 				<aside>
 					<nav>
 						{/* <a href=""> */}
-							<Link to="/employee">
-								<div>
-									<img src={icon1} alt="Employee List icon" />
-									<p>Employee List</p>
-								</div>
-							</Link>
-							<Link to="/employee/create">
-								<div>
-									<img src={icon1} alt="Employee create icon" />
-									<p>Add Employee</p>
-								</div>
-							</Link>
+						<Link to="/employee">
+							<div>
+								<img src={icon1} alt="Employee List icon" />
+								<p>Employee List</p>
+							</div>
+						</Link>
+						<Link to="/employee/create">
+							<div>
+								<img src={icon1} alt="Employee create icon" />
+								<p>Add Employee</p>
+							</div>
+						</Link>
 						{/* </a> */}
 					</nav>
 				</aside>

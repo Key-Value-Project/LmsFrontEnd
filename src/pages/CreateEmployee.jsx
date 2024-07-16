@@ -1,32 +1,42 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { v4 as uuidv4 } from "uuid";
 import { useEffect, useState } from "react";
 import "../assets/styles/createEmployee/empcreate.styles.css";
 import fields from "../utils/FormFields";
 import EmployeeForm from "../components/createEmployee/employeeForm.jsx";
 import { useNavigate } from "react-router";
-import { useDispatch } from "react-redux";
-import { addEmployee } from "../store/employeeReducer.js";
+import { useAddEmployeeMutation } from "../api/employee/api.employee.jsx";
 
 const CreateEmployeeForm = () => {
+	const [addEmployee, { isSuccess, isError, data, error }] = useAddEmployeeMutation();
 	const [employeeDetails, setEmployeeDetails] = useState({
-		employeeID: uuidv4(),
-		employeeName: "",
-		employeeEmail: "",
+		name: "",
+		email: "",
 		joiningDate: "",
 		role: "",
 		status: "",
 		experience: "",
 		address: "",
+		pincode: "",
 		department: "",
+		employeePassword: "",
 	});
 
 	const navigate = useNavigate();
-	const dispatch = useDispatch();
 
 	useEffect(() => {
 		console.log(employeeDetails);
 	}, [employeeDetails]);
+
+	useEffect(() => {
+		if (isSuccess) {
+			console.log(data);
+			navigate("/employee");
+		}
+		if (isError) {
+			console.log(error);
+		}
+	}, [isSuccess, isError]);
 
 	const handleInputChange = (inputName, inputValue) => {
 		setEmployeeDetails((prevDetails) => ({
@@ -37,12 +47,24 @@ const CreateEmployeeForm = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		dispatch(addEmployee(employeeDetails));
-		// dispatch({                               
-		// 	type: "ADD_EMPLOYEE",
-		// 	payload: employeeDetails,             // depreciated due to the use of redux toolkit
-		// });
-		alert("Employee Added Successfully");
+		const { name, email, experience, status, address, pincode, department, employeePassword, role } =
+			employeeDetails;
+		const payload = {
+			name,
+			email,
+			experience: Number(experience),
+			status,
+			address: {
+				line1: address,
+				pincode,
+			},
+			department: {
+				name: department,
+			},
+			password: employeePassword,
+			role,
+		};
+		addEmployee(payload);
 	};
 
 	const resetContent = () => {
@@ -62,6 +84,7 @@ const CreateEmployeeForm = () => {
 						handleInputChange={handleInputChange}
 						resetContent={resetContent}
 						formState={employeeDetails}
+						isCreate={true}
 					/>
 				</div>
 			</div>

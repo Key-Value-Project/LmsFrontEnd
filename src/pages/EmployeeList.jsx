@@ -6,11 +6,11 @@ import FilterBar from "../components/employeeList/filterBar.jsx";
 import { useState, useEffect } from "react";
 import plusIcon from "../assets/icons/plus-circle.svg";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useGetEmployeeListQuery } from "../api/employee/api.employee.jsx";
 
 const EmployeeList = () => {
 	// Using selectors to get the employees list and filter from the state
-	const data = useSelector((state) => state.employees.list);
+	const { data = [], isSuccess } = useGetEmployeeListQuery();
 
 	// State to hold all employees
 	const [employees, setEmployees] = useState([]);
@@ -23,8 +23,11 @@ const EmployeeList = () => {
 
 	// Simulate fetching employees data
 	useEffect(() => {
-		setEmployees(data);
-	}, [data]);
+		if (isSuccess) {
+			console.log(data);
+			setEmployees(data);
+		}
+	}, [data, isSuccess]);
 
 	// Effect to filter employees whenever the employees list or filter changes
 	useEffect(() => {

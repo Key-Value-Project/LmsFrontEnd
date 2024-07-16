@@ -122,6 +122,57 @@
 	align-items: center;
 	font-weight: 600;
 	background-color: #d1eaf5;
+
+	.EmployeeName {
+		width: 18%;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		// margin-right: 5px;
+	}
+	
+	.EmployeeID {
+		width: 15%;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		// margin-right: 5px;
+	}
+	
+	.JoiningDate {
+		width: 15%;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	
+	.Role {
+		width: 17%;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	
+	.Status {
+		width: 15%;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	
+	.Experience {
+		width: 13%;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	
+	.Action {
+		width: 7%;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+	}
 }
 
 .employee-list-items {
@@ -136,58 +187,63 @@
 	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 	padding: 15px;
 	align-items: center;
+
+	.EmployeeName {
+		width: 18%;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		padding-left: 5px;
+	}
+	
+	.EmployeeID {
+		width: 15%;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		padding-left: 5px;
+	}
+	
+	.JoiningDate {
+		width: 15%;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		padding-left: 5px;
+	}
+	
+	.Role {
+		width: 17%;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		padding-left: 5px;
+	}
+	
+	.Status {
+		width: 15%;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	
+	.Experience {
+		width: 13%;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		padding-left: 5px;
+	}
+	
+	.Action {
+		width: 7%;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+	}
 }
 
-.EmployeeName {
-	width: 15%;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	margin-right: 5px;
-}
 
-.EmployeeID {
-	width: 15%;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	margin-right: 5px;
-}
-
-.JoiningDate {
-	width: 15%;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-.Role {
-	width: 20%;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-.Status {
-	width: 15%;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-.Experience {
-	width: 13%;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-.Action {
-	width: 7%;
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-}
 
 .Action img:first-of-type {
 	width: 30px;

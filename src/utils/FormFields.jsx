@@ -4,7 +4,7 @@ import TextField from "../components/createEmployee/TextField";
 const fields = [
 	{
 		type: "text",
-		id: "employeeName",
+		id: "name",
 		name: "name",
 		required: "Name",
 		text: "Employee Name",
@@ -12,7 +12,7 @@ const fields = [
 	},
 	{
 		type: "email",
-		id: "employeeEmail",
+		id: "email",
 		name: "email",
 		required: "Email",
 		text: "Employee Email",
@@ -29,10 +29,12 @@ const fields = [
 		id: "role",
 		name: "role",
 		options: [
-			{ value: "Software Developer", label: "Software Developer" },
-			{ value: "Quality Assurance", label: "Quality Assurance" },
-			{ value: "Project Manager", label: "Project Manager" },
-			{ value: "Business Analyst", label: "Business Analyst" },
+			{ value: "UI", label: "UI" },
+			{ value: "UX", label: "UX" },
+			{ value: "DEVELOPER", label: "DEVELOPER" },
+			{ value: "TESTER", label: "TESTER" },
+			{ value: "HR", label: "HR" },
+			{ value: "ADMIN", label: "ADMIN" },
 		],
 		Component: DropDownMenu,
 	},
@@ -68,6 +70,14 @@ const fields = [
 		name: "address",
 		required: "Address",
 		text: "Address",
+		Component: TextField,
+	},
+	{
+		type: "text",
+		id: "pincode",
+		name: "pincode",
+		required: "Pincode",
+		text: "Pincode",
 		Component: TextField,
 	},
 ];

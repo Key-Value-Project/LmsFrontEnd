@@ -1,6 +1,10 @@
 /* eslint-disable react/prop-types */
 // eslint-disable-next-line react/prop-types
-const EmployeeForm = ({ fields, handleSubmit, handleInputChange, resetContent, isEdit, empID, formState }) => {
+const EmployeeForm = ({ fields, handleSubmit, handleInputChange, resetContent, isEdit, isCreate, empID, formState }) => {
+	const onChange = (event) => {
+		handleInputChange(event.target.id, event.target.value);
+	};
+	
 	return (
 		<form id="form-create-employee">
 			<div className="form-inputs">
@@ -25,6 +29,17 @@ const EmployeeForm = ({ fields, handleSubmit, handleInputChange, resetContent, i
 						value={formState[field.id]}
 					/>
 				))}
+				{isCreate && (
+					<div className="form-items">
+					<label htmlFor="employeePassword">Password</label>
+					<input
+						type="text"
+						id="employeePassword"
+						name="employeePassword"
+						onChange={onChange}
+					/>
+				</div>
+				)}
 			</div>
 			<div className="form-button">
 				<button onClick={handleSubmit} type="submit">

@@ -8,6 +8,7 @@ import EditEmployee from "./pages/EditEmployee.jsx";
 import DetailsEmployee from "./pages/DetailsEmployee.jsx";
 import { Provider } from "react-redux";
 import store from "./store/store.js";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
 	const router = createBrowserRouter([
@@ -33,6 +34,7 @@ const App = () => {
 			<div>
 				<RouterProvider router={router} />
 			</div>
+			<ToastContainer />
 		</Provider>
 	);
 };

@@ -1,3 +1,5 @@
+// depreciated due to the use of redux toolkit
+
 import { createAction, createReducer } from "@reduxjs/toolkit";
 
 const addEmployee = createAction("ADD_EMPLOYEE");
