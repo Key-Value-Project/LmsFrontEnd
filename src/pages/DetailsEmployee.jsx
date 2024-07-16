@@ -14,7 +14,7 @@ const DetailsEmployee = () => {
 	const { data, isSuccess } = useGetEmployeeDetailsQuery(id);
 	useEffect(() => {
 		if (isSuccess) {
-			// console.log(data);
+			console.log(data);
 		}
 	}, [data, isSuccess]);
 

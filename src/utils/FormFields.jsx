@@ -18,13 +18,13 @@ const fields = [
 		text: "Employee Email",
 		Component: TextField,
 	},
-	{
-		type: "date",
-		id: "joiningDate",
-		name: "joining-date",
-		text: "Join Date",
-		Component: TextField,
-	},
+	// {
+	// 	type: "date",
+	// 	id: "joiningDate",
+	// 	name: "joining-date",
+	// 	text: "Join Date",
+	// 	Component: TextField,
+	// },
 	{
 		id: "role",
 		name: "role",

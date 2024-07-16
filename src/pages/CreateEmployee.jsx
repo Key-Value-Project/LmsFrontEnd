@@ -6,6 +6,7 @@ import fields from "../utils/FormFields";
 import EmployeeForm from "../components/createEmployee/employeeForm.jsx";
 import { useNavigate } from "react-router";
 import { useAddEmployeeMutation } from "../api/employee/api.employee.jsx";
+import { convertToPayload } from "../utils/ConvertData.js";
 
 const CreateEmployeeForm = () => {
 	const [addEmployee, { isSuccess, isError, data, error }] = useAddEmployeeMutation();
@@ -47,23 +48,7 @@ const CreateEmployeeForm = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		const { name, email, experience, status, address, pincode, department, employeePassword, role } =
-			employeeDetails;
-		const payload = {
-			name,
-			email,
-			experience: Number(experience),
-			status,
-			address: {
-				line1: address,
-				pincode,
-			},
-			department: {
-				name: department,
-			},
-			password: employeePassword,
-			role,
-		};
+		const payload = convertToPayload(employeeDetails);
 		addEmployee(payload);
 	};
 

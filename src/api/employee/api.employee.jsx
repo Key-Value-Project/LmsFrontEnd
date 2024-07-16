@@ -31,6 +31,7 @@ const employeeApi = apiWithTag.injectEndpoints({
                 method: "PATCH",
                 body: payload,
             }),
+            invalidatesTags: ["Employee_List"],
         }),
         deleteEmployee: builder.mutation({
             query: (id) => ({

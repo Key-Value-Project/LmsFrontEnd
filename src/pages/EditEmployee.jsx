@@ -1,24 +1,37 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useNavigate, useParams } from "react-router";
 import EmployeeForm from "../components/createEmployee/employeeForm";
 import fields from "../utils/FormFields";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { updateEmployee } from "../store/employeeReducer";
+import { useEffect, useState } from "react";
+import {
+	useGetEmployeeDetailsQuery,
+	useUpdateEmployeeMutation,
+	useUpdateEmployeeRelationMutation,
+} from "../api/employee/api.employee";
+import { convertToData, convertToPayload } from "../utils/ConvertData";
 
 const EditEmployee = () => {
 	let { id } = useParams();
+	const [formState, setFormState] = useState({});
 	const navigate = useNavigate();
-	const dispatch = useDispatch();
 
-	const employee = useSelector((state) => state.employees.list.find((emp) => emp.employeeID === parseInt(id)));
+	const [updateEmployee, { isSuccess: updateSuccess, isError, data: updateData, error }] =
+		useUpdateEmployeeMutation();
+	const [
+		updateEmployeeRelation,
+		{ isSuccess: updateSuccessRelation, isErrorRelation, data: updateDataRelation, errorRelation },
+	] = useUpdateEmployeeRelationMutation();
 
-	const initialFormState = {...employee};
-
-	const [formState, setFormState] = useState(initialFormState);
+	const { data, isSuccess } = useGetEmployeeDetailsQuery(id);
+	useEffect(() => {
+		if (isSuccess) {
+			const initialFormState = convertToData(data);
+			setFormState(initialFormState);
+		}
+	}, [data, isSuccess]);
 
 	const handleInputChange = (name, value) => {
-		console.log(name, value);
 		setFormState((prevState) => ({
 			...prevState,
 			[name]: value,
@@ -29,15 +42,25 @@ const EditEmployee = () => {
 		navigate("/employee");
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		dispatch(updateEmployee(formState));
-		// dispatch({
-		// 	type: "UPDATE_EMPLOYEE",
-		// 	payload: formState,
-		// });
-		alert("Employee Updated Successfully");
+		const payload = convertToPayload(formState);
+		payload.id = id;
+		await updateEmployee(payload);
+		await updateEmployeeRelation(payload);
 	};
+
+	useEffect(() => {
+		if (updateSuccess || updateSuccessRelation) {
+			console.log(updateData, " entity");
+			console.log(updateDataRelation, " relation");
+			alert("Employee Updated Successfully");
+		} else if (isError || isErrorRelation) {
+			console.log(error, "entity");
+			console.log(errorRelation, "relation");
+			alert("Error Updating Employee");
+		}
+	}, [isError, updateSuccess, updateSuccessRelation, isErrorRelation]);
 
 	return (
 		<>
