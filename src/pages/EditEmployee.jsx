@@ -3,15 +3,17 @@ import { useNavigate, useParams } from "react-router";
 import EmployeeForm from "../components/createEmployee/employeeForm";
 import fields from "../utils/FormFields";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateEmployee } from "../store/employeeReducer";
 
-const EditEmployee = ({ state, dispatch }) => {
+const EditEmployee = () => {
 	let { id } = useParams();
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
-	const initialFormState = {
-		// get copy of employee object from state having employeeID same as id
-		...state.employees.find((employee) => employee.employeeID === parseInt(id)),
-	};
+	const employee = useSelector((state) => state.employees.list.find((emp) => emp.employeeID === parseInt(id)));
+
+	const initialFormState = {...employee};
 
 	const [formState, setFormState] = useState(initialFormState);
 
@@ -29,10 +31,11 @@ const EditEmployee = ({ state, dispatch }) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		dispatch({
-			type: "UPDATE_EMPLOYEE",
-			payload: formState,
-		});
+		dispatch(updateEmployee(formState));
+		// dispatch({
+		// 	type: "UPDATE_EMPLOYEE",
+		// 	payload: formState,
+		// });
 		alert("Employee Updated Successfully");
 	};
 

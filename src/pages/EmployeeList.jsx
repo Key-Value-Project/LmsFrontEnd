@@ -6,8 +6,12 @@ import FilterBar from "../components/employeeList/filterBar.jsx";
 import { useState, useEffect } from "react";
 import plusIcon from "../assets/icons/plus-circle.svg";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const EmployeeList = ({ state, dispatch }) => {
+const EmployeeList = () => {
+	// Using selectors to get the employees list and filter from the state
+	const data = useSelector((state) => state.employees.list);
+
 	// State to hold all employees
 	const [employees, setEmployees] = useState([]);
 
@@ -19,14 +23,8 @@ const EmployeeList = ({ state, dispatch }) => {
 
 	// Simulate fetching employees data
 	useEffect(() => {
-		const fetchEmployees = async () => {
-			// Fetch employees from an API or define them here
-			console.log(state.employees);
-			const employeesData = state.employees;
-			setEmployees(employeesData);
-		};
-		fetchEmployees();
-	}, [state.employees]);
+		setEmployees(data);
+	}, [data]);
 
 	// Effect to filter employees whenever the employees list or filter changes
 	useEffect(() => {
@@ -54,7 +52,7 @@ const EmployeeList = ({ state, dispatch }) => {
 			<ListCardHead />
 			<div className="employee-list">
 				{filteredEmployees.map((employee, index) => (
-					<ListCard key={index} {...employee} dispatch={dispatch} />
+					<ListCard key={index} {...employee} />
 				))}
 			</div>
 		</div>

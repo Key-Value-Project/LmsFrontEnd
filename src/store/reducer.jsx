@@ -5,7 +5,7 @@ const actionTypes = {
 	UPDATE_EMPLOYEE: "UPDATE_EMPLOYEE",
 };
 
-//Reducer Function
+//Reducer Function depreciated due to the use of Redux Toolkit
 const reducer = (state = [], action) => {
     switch (action.type) {
         

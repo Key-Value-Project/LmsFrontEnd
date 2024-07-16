@@ -5,8 +5,10 @@ import "../assets/styles/createEmployee/empcreate.styles.css";
 import fields from "../utils/FormFields";
 import EmployeeForm from "../components/createEmployee/employeeForm.jsx";
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { addEmployee } from "../store/employeeReducer.js";
 
-const CreateEmployeeForm = ({ dispatch }) => {
+const CreateEmployeeForm = () => {
 	const [employeeDetails, setEmployeeDetails] = useState({
 		employeeID: uuidv4(),
 		employeeName: "",
@@ -20,6 +22,7 @@ const CreateEmployeeForm = ({ dispatch }) => {
 	});
 
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		console.log(employeeDetails);
@@ -34,10 +37,11 @@ const CreateEmployeeForm = ({ dispatch }) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		dispatch({
-			type: "ADD_EMPLOYEE",
-			payload: employeeDetails,
-		});
+		dispatch(addEmployee(employeeDetails));
+		// dispatch({                               
+		// 	type: "ADD_EMPLOYEE",
+		// 	payload: employeeDetails,             // depreciated due to the use of redux toolkit
+		// });
 		alert("Employee Added Successfully");
 	};
 

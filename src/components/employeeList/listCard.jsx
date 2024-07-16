@@ -5,10 +5,12 @@ import edt from "../../assets/icons/edit.svg";
 import DeletePopUp from "./DeletePopUp.jsx";
 import { Status } from "./status.jsx";
 import { Link } from "react-router-dom";
-import { actionTypes } from "../../store/reducer.jsx";
+import { useDispatch } from "react-redux";
+import { deleteEmployee } from "../../store/employeeReducer.js";
 
 const ListCard = (emp) => {
 	const [deleteDialog, setDeleteDialog] = useState(false);
+	const dispatch = useDispatch();
 
 	const handleDeleteClick = (e) => {
 		console.log(e);
@@ -20,7 +22,7 @@ const ListCard = (emp) => {
 
 	const handleDelete = () => {
 		console.log("Delete");
-		emp.dispatch({ type: actionTypes.DELETE_EMPLOYEE, payload: emp.employeeID });
+		dispatch(deleteEmployee(emp.employeeID));
 		setDeleteDialog(false);
 	};
 
