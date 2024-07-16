@@ -1,4 +1,5 @@
-import "../assets/styles/login/loginPage.styles.css";
+/* eslint-disable react-hooks/exhaustive-deps */
+import "../assets/styles/login/loginPage.styles.scss";
 import heroImage from "../assets/images/kv-login.png";
 import logo from "../assets/images/kv-logo.png";
 import Button from "../components/login/Button.jsx";
@@ -6,8 +7,7 @@ import LoginTextField from "../components/login/TextField.jsx";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../api/login/api.login.jsx";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { notifyError } from "../utils/Toast.js";
 
 // eslint-disable-next-line react/prop-types
 const Login = () => {
@@ -16,16 +16,15 @@ const Login = () => {
 	const userNameRef = useRef();
 	const navigate = useNavigate();
 	const [login, { isSuccess, isError, data, error: apiError }] = useLoginMutation();
-	const notify = () => toast("Login Failed");
 
 	useEffect(() => {
 		if (isSuccess) {
 			localStorage.setItem("token", data.token);
-			console.log("response->", data);
 			navigate("/employee");
 		} else if (isError) {
-			notify();
-			console.log("response->", apiError);
+			let notification =
+				apiError.data.message + (apiError.data.errors.length > 0 ? ": " + apiError.data.errors.join(", ") : "");
+			notifyError(notification);
 		}
 	}, [isSuccess, isError, data, apiError, navigate]);
 

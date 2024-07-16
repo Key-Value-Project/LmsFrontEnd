@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useNavigate, useParams } from "react-router";
@@ -10,6 +11,7 @@ import {
 	useUpdateEmployeeRelationMutation,
 } from "../api/employee/api.employee";
 import { convertToData, convertToPayload } from "../utils/ConvertData";
+import { notifyError, notifySuccess } from "../utils/Toast";
 
 const EditEmployee = () => {
 	let { id } = useParams();
@@ -52,13 +54,25 @@ const EditEmployee = () => {
 
 	useEffect(() => {
 		if (updateSuccess || updateSuccessRelation) {
-			console.log(updateData, " entity");
-			console.log(updateDataRelation, " relation");
-			alert("Employee Updated Successfully");
-		} else if (isError || isErrorRelation) {
-			console.log(error, "entity");
-			console.log(errorRelation, "relation");
-			alert("Error Updating Employee");
+			if (updateSuccess && updateSuccessRelation) {
+				notifySuccess("Employee and relation updated successfully");
+			} else if (updateSuccess) {
+				notifySuccess("Employee updated successfully");
+			} else if (updateSuccessRelation) {
+				notifySuccess("Employee relation updated successfully");
+			}
+		} else {
+			if (isError) {
+				let notification =
+					error.data.message + (error.data.errors.length > 0 ? ": " + error.data.errors.join(", ") : "");
+				notifyError(notification);
+			}
+			if (isErrorRelation) {
+				let notification =
+					errorRelation.data.message +
+					(errorRelation.data.errors.length > 0 ? ": " + errorRelation.data.errors.join(", ") : "");
+				notifyError(notification);
+			}
 		}
 	}, [isError, updateSuccess, updateSuccessRelation, isErrorRelation]);
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
@@ -7,6 +8,7 @@ import EmployeeForm from "../components/createEmployee/employeeForm.jsx";
 import { useNavigate } from "react-router";
 import { useAddEmployeeMutation } from "../api/employee/api.employee.jsx";
 import { convertToPayload } from "../utils/ConvertData.js";
+import { notifyError, notifySuccess } from "../utils/Toast.js";
 
 const CreateEmployeeForm = () => {
 	const [addEmployee, { isSuccess, isError, data, error }] = useAddEmployeeMutation();
@@ -31,11 +33,13 @@ const CreateEmployeeForm = () => {
 
 	useEffect(() => {
 		if (isSuccess) {
-			console.log(data);
+			notifySuccess("Employee added successfully");
 			navigate("/employee");
 		}
-		if (isError) {
-			console.log(error);
+		if (isError && error.data && error.data.errors) {
+			error.data.errors.forEach((errorMessage) => {
+				notifyError(errorMessage);
+			});
 		}
 	}, [isSuccess, isError]);
 

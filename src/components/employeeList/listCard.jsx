@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import del from "../../assets/icons/delete.svg";
@@ -7,6 +8,7 @@ import { Status } from "./status.jsx";
 import { Link } from "react-router-dom";
 import formatDate from "../../utils/FormatDate.js";
 import { useDeleteEmployeeMutation } from "../../api/employee/api.employee.jsx";
+import { notifyError, notifySuccess } from "../../utils/Toast.js";
 
 const ListCard = (emp) => {
 	const [deleteDialog, setDeleteDialog] = useState(false);
@@ -29,12 +31,12 @@ const ListCard = (emp) => {
 
 	useEffect(() => {
 		if (isSuccess) {
-			console.log("Employee deleted successfully");
-			console.log(data);
+			notifySuccess("Employee deleted successfully");
 		}
 		if (isError) {
-			console.log("Error deleting employee", error);
-			console.log(data);
+			let notification =
+				error.data.message + (error.data.errors.length > 0 ? ": " + error.data.errors.join(", ") : "");
+			notifyError(notification);
 		}
 	}, [isSuccess, isError]);
 
