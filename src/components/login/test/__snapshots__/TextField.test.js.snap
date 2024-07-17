@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Check Login TextField snapshot matching 1`] = `
+<DocumentFragment>
+  <span
+    data-testid="test-textfield-login"
+  >
+    <label
+      for="User Name"
+    >
+      User Name
+    </label>
+    <input
+      data-testid="test-login-input"
+      value=""
+    />
+  </span>
+</DocumentFragment>
+`;

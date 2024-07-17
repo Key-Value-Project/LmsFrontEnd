@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DeletePopUp Component Tests Snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="delete-popup"
+    data-testid="delete-popup"
+  >
+    <div
+      class="delete-popup-content"
+    >
+      <h2>
+        Are you sure you want to delete?
+      </h2>
+      <div
+        class="delete-popup-buttons"
+      >
+        <button>
+          Yes
+        </button>
+        <button>
+          No
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

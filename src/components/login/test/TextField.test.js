@@ -25,6 +25,7 @@ describe("Check Login TextField", () => {
 		expect(textField).toBeTruthy();
 		fireEvent.change(textField, { target: { value: "test1" } });
 		expect(onUserNameChange).toHaveBeenCalled();
+		expect(onUserNameChange).toHaveBeenCalledWith("test1");
 		expect(textField.value).toBe("test1");
     });
     
@@ -32,5 +33,10 @@ describe("Check Login TextField", () => {
         const { getByTestId } = render(<LoginTextField userName="test2" />);
         const textField = getByTestId("test-login-input");
         expect(textField.value).toBe("test2");
-    });
+	});
+	
+	test("snapshot matching", () => {
+		const { asFragment } = render(<LoginTextField label="User Name" />);
+		expect(asFragment()).toMatchSnapshot();
+	});
 });

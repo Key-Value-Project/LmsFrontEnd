@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Check Status Component Snapshot 1`] = `
+<DocumentFragment>
+  <p
+    data-testid="test-status"
+    style="background-color: rgb(198, 245, 176); border-radius: 15px; padding: 5px 15px; cursor: pointer;"
+  >
+    Active
+  </p>
+</DocumentFragment>
+`;
