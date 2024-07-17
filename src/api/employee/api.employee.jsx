@@ -40,6 +40,10 @@ const employeeApi = apiWithTag.injectEndpoints({
             }),
             invalidatesTags: ["Employee_List"],
         }),
+        getUserDetails: builder.query({
+            query: (id) => `/employee/me`,
+            providesTags: ["User_Details"],
+        }),
 	}),
 });
 
@@ -51,4 +55,5 @@ export const {
     useUpdateEmployeeMutation,
     useUpdateEmployeeRelationMutation,
     useDeleteEmployeeMutation,
+    useGetUserDetailsQuery,
 } = employeeApi;

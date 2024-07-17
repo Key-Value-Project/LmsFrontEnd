@@ -1,7 +1,7 @@
+import React from "react";
 import { useRef } from "react";
 import DownArrow from "../../assets/icons/down-arrow.svg";
 
-// eslint-disable-next-line react/prop-types
 const FilterBar = ({ setFilter }) => {
 	const selectRef = useRef(null);
 
@@ -22,8 +22,6 @@ const FilterBar = ({ setFilter }) => {
 					<option value="Active">Active</option>
 					<option value="In Active">In Active</option>
 					<option value="On Leave">On Leave</option>
-					{/* <option value="Role">Role</option> */}
-					{/* <option value="Status">Status</option> */}
 				</select>
 				<img src={DownArrow} alt="down-arrow" onClick={handleImageClick}/>
 			</div>

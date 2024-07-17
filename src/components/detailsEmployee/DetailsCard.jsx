@@ -1,11 +1,10 @@
+import React from "react";
 import formatDate from "../../utils/FormatDate";
 import { Status } from "../employeeList/status";
 
-/* eslint-disable react/prop-types */
 const DetailsCard = ({ emp = {} }) => {
-	console.log(emp);
 	return (
-		<div className="details-component">
+		<div className="details-component" data-testid="test-details-card">
 			<div className="details-card-item">
 				<div className="details-card-item-label">Employee ID</div>
 				<p>{emp.id}</p>
@@ -27,6 +26,10 @@ const DetailsCard = ({ emp = {} }) => {
 				<p>{emp.role}</p>
 			</div>
 			<div className="details-card-item">
+				<div className="details-card-item-label">Department</div>
+				<p>{emp.department?.description}</p>
+			</div>
+			<div className="details-card-item">
 				<div className="details-card-item-label">Status</div>
 				<Status status={emp.status} />
 			</div>
@@ -36,7 +39,9 @@ const DetailsCard = ({ emp = {} }) => {
 			</div>
 			<div className="details-card-item">
 				<div className="details-card-item-label">Address</div>
-				<p>{emp.address?.line1}, {emp.address?.pincode}</p>
+				<p>
+					{emp.address?.line1}, {emp.address?.pincode}
+				</p>
 			</div>
 		</div>
 	);

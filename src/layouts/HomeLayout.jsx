@@ -34,20 +34,28 @@ const HomeLayout = () => {
 			<div className="webapp">
 				<aside>
 					<nav>
-						{/* <a href=""> */}
-						<Link to="/employee">
-							<div>
-								<img src={icon1} alt="Employee List icon" />
-								<p>Employee List</p>
-							</div>
-						</Link>
-						<Link to="/employee/create">
-							<div>
-								<img src={icon1} alt="Employee create icon" />
-								<p>Add Employee</p>
-							</div>
-						</Link>
-						{/* </a> */}
+						<div>
+							<Link to="/employee">
+								<div className="nav-item">
+									<img src={icon1} alt="Employee List icon" />
+									<p>Employee List</p>
+								</div>
+							</Link>
+							<Link to="/employee/create">
+								<div className="nav-item">
+									<img src={icon1} alt="Employee create icon" />
+									<p>Add Employee</p>
+								</div>
+							</Link>
+						</div>
+						<div>
+							<Link to="/employee/profile">
+								<div className="nav-item">
+									<img src={icon1} alt="Profile icon" />
+									<p>Profile</p>
+								</div>
+							</Link>
+						</div>
 					</nav>
 				</aside>
 				<main>

@@ -37,39 +37,42 @@ aside {
 nav {
 	width: 300px;
 	height: calc(100vh - 100px);
-	min-height: 580px;
-}
-
-nav a {
-	text-decoration: none;
-}
-
-nav div {
 	display: flex;
-	width: 100%;
-	margin-left: 20px;
-	padding: 10px 0px;
-	margin-top: 20px;
-	background-color: #03aeee;
-	border-top-left-radius: 35px;
-	border-bottom-left-radius: 35px;
-	align-content: center;
-}
+	flex-direction: column;
+	min-height: 580px;
+	justify-content: space-between;
 
-nav div p {
-	color: #ffffff;
-	text-decoration: none;
-	align-self: center;
-	font-size: 16px;
-	margin: 0px;
-}
+	a {
+		text-decoration: none;
+	}
 
-nav div img {
-	/* width: 20px; */
-	margin: 0px 15px;
-	background-color: #ffffff;
-	padding: 8px;
-	border-radius: 50px;
+	.nav-item {
+		display: flex;
+		// width: 100%;
+		margin-left: 20px;
+		padding: 10px 0px;
+		margin-top: 20px;
+		background-color: #03aeee;
+		border-top-left-radius: 35px;
+		border-bottom-left-radius: 35px;
+		align-content: center;
+
+		p {
+			color: #ffffff;
+			text-decoration: none;
+			align-self: center;
+			font-size: 16px;
+			margin: 0px;
+		}
+
+		img {
+			/* width: 20px; */
+			margin: 0px 15px;
+			background-color: #ffffff;
+			padding: 8px;
+			border-radius: 50px;
+		}
+	}
 }
 
 body {

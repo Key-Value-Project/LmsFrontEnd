@@ -9,6 +9,7 @@ import DetailsEmployee from "./pages/DetailsEmployee.jsx";
 import { Provider } from "react-redux";
 import store from "./store/store.js";
 import { ToastContainer } from "react-toastify";
+import Profile from "./pages/Profile.jsx";
 
 const App = () => {
 	const router = createBrowserRouter([
@@ -25,6 +26,7 @@ const App = () => {
 				{ path: "create", element: <CreateEmployee /> },
 				{ path: "edit/:id", element: <EditEmployee /> },
 				{ path: "details/:id", element: <DetailsEmployee /> },
+				{ path: "profile", element: <Profile /> },
 			],
 		},
 	]);

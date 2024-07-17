@@ -35,7 +35,8 @@ const ListCard = (emp) => {
 			notifySuccess("Employee deleted successfully");
 		} else if (isError) {
 			console.log("Error deleting employee", error);
-			let notification = error.data.message;
+			let notification =
+				error.data.message + (error.data.errors.length > 0 ? ": " + error.data.errors.join(", ") : "");
 			notifyError(notification);
 		}
 	}, [isSuccess, isError, error, data]);
