@@ -48,6 +48,7 @@ const EditEmployee = () => {
 		e.preventDefault();
 		const payload = convertToPayload(formState);
 		payload.id = id;
+		delete payload.password;
 		await updateEmployee(payload);
 		await updateEmployeeRelation(payload);
 	};

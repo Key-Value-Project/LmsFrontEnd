@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+import React from "react";
 import { forwardRef } from "react";
 
 // eslint-disable-next-line react/prop-types, react-refresh/only-export-components
@@ -10,9 +12,9 @@ const TextField = ({ label, name, type, onUserNameChange, userName }, ref) => {
 	
 
 	return (
-		<span>
+		<span data-testid='test-textfield-login'>
 			<label htmlFor={label}>{label}</label>
-			<input ref={ref} type={type} name={name} value={userName} onChange={onChange} />
+			<input ref={ref} type={type} name={name} value={userName} onChange={onChange} data-testid="test-login-input"/>
 		</span>
 	);
 };

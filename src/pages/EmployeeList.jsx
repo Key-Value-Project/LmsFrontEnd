@@ -24,7 +24,7 @@ const EmployeeList = () => {
 	// Simulate fetching employees data
 	useEffect(() => {
 		if (isSuccess) {
-			console.log(data);
+			// console.log(data);
 			setEmployees(data);
 		}
 	}, [data, isSuccess]);

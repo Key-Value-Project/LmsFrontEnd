@@ -31,14 +31,14 @@ const ListCard = (emp) => {
 
 	useEffect(() => {
 		if (isSuccess) {
+			console.log("Employee deleted successfully", data);
 			notifySuccess("Employee deleted successfully");
-		}
-		if (isError) {
-			let notification =
-				error.data.message + (error.data.errors.length > 0 ? ": " + error.data.errors.join(", ") : "");
+		} else if (isError) {
+			console.log("Error deleting employee", error);
+			let notification = error.data.message;
 			notifyError(notification);
 		}
-	}, [isSuccess, isError]);
+	}, [isSuccess, isError, error, data]);
 
 	return (
 		<>
