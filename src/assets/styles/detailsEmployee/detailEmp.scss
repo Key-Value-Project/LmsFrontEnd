@@ -64,9 +64,12 @@
 	border-radius: 8px;
 	background-color: #ffffff;
 	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-	padding: 30px;
+	padding: 50px;
     align-items: center;
-	row-gap: 30px;
+	justify-content: center;
+	row-gap: 45px;
+	column-gap: 80px;
+	padding-right: 0px;
 }
 
 .details-card-item div{

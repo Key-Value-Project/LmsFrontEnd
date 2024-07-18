@@ -48,6 +48,14 @@ const App = () => {
 				pauseOnHover
 				theme="colored"
 				transition:Bounce
+				style={{
+					"--toastify-color-success": "#03aeee",
+					"--toastify-text-color-success": "#ffffff",
+					"--toastify-text-color-info": "white",
+					"--toastify-text-color-error": "white",
+					"--toastify-color-warning": "black",
+					"--toastify-text-color-warning": "white",
+				}}
 			/>
 		</Provider>
 	);
