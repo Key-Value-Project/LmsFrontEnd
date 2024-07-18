@@ -11,7 +11,7 @@ const HomeLayout = () => {
 		if (!session_token) {
 			navigate("/");
 		}
-	});
+	}, []);
 
 	const navigate = useNavigate();
 
