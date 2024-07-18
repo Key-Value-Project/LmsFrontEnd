@@ -27,9 +27,9 @@ const CreateEmployeeForm = () => {
 
 	const navigate = useNavigate();
 
-	useEffect(() => {
-		console.log(employeeDetails);
-	}, [employeeDetails]);
+	// useEffect(() => {
+	// 	console.log(employeeDetails);
+	// }, [employeeDetails]);
 
 	useEffect(() => {
 		if (isSuccess) {

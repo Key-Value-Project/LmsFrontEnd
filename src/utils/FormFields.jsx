@@ -57,12 +57,15 @@ const fields = [
 		Component: TextField,
 	},
 	{
-		type: "text",
 		id: "department",
-		name: "department",
-		required: "Department",
-		text: "Department",
-		Component: TextField,
+		name: "Department",
+		options: [
+			{ value: "DEV", label: "Product Development" },
+			{ value: "IT", label: "Information Technology" },
+			{ value: "HR", label: "Human Resources" },
+			{ value: "QA", label: "Quality Assurance" },
+		],
+		Component: DropDownMenu,
 	},
 	{
 		type: "text",

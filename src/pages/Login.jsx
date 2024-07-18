@@ -41,6 +41,12 @@ const Login = () => {
 	};
 
 	useEffect(() => {
+		if (localStorage.getItem("token")) {
+			navigate("/employee");
+		} // go back to the employee page if the user is already logged in
+	}, []);
+
+	useEffect(() => {
 		setError(userName.length > 100);
 		if (userNameRef.current) {
 			userNameRef.current.focus();

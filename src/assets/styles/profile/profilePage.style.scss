@@ -20,6 +20,8 @@
 	flex-direction: row;
 	gap: 10px;
     justify-content: space-evenly;
+	flex-wrap: wrap;
+
 	div {
 		width: 28%;
 		display: flex;
