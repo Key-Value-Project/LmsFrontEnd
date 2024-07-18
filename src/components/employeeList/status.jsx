@@ -15,11 +15,12 @@ export const Status = ({ status }) => {
 	};
 
 	const statusStyle = {
-		width: "fit-content",
+		width: "50%",
 		backgroundColor: statusColor(),
 		borderRadius: "15px",
 		padding: "5px 15px",
 		cursor: "pointer",
+		textAlign: "center",
 	};
 
 	return (
