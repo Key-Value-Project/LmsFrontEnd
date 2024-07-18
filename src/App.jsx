@@ -49,10 +49,11 @@ const App = () => {
 				theme="colored"
 				transition:Bounce
 				style={{
-					"--toastify-color-success": "#03aeee",
+					"--toastify-color-success": "#00aeef",
 					"--toastify-text-color-success": "#ffffff",
 					"--toastify-text-color-info": "white",
 					"--toastify-text-color-error": "white",
+					"--toastify-color-error": "#ed1846",
 					"--toastify-color-warning": "black",
 					"--toastify-text-color-warning": "white",
 				}}
