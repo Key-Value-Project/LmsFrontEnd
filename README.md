@@ -1,4 +1,4 @@
-# Employee Management System
+# Employee Library Management System
 
 ## Overview
 
@@ -35,6 +35,4 @@ Contributions are welcome! If you have ideas for new features or improvements, p
 
 This project is licensed under the MIT License - see the LICENSE.md file for details.
 
-### Default users
-shaheen -> key -> ADMIN -> shaheen@gmail.com
-jonny -> password123 -> HR -> jonny@gmail.com
+
