@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import {
-	useGetEmployeeDetailsQuery,
 	useGetUserDetailsQuery,
 	useUpdatePasswordMutation,
 } from "../api/employee/api.employee";
@@ -12,7 +11,6 @@ import { notifyError, notifySuccess, notifyWarn } from "../utils/Toast";
 
 const Profile = () => {
 	const { data: userDetails, isSuccess } = useGetUserDetailsQuery();
-	const { data: employeeDetails, isSuccess: employeeSuccess } = useGetEmployeeDetailsQuery(userDetails?.id);
 	const [updatePassword, { isSuccess: passwordSuccess, isError: passwordError, error }] = useUpdatePasswordMutation();
 
 	const handleSubmit = (e) => {
@@ -55,7 +53,7 @@ const Profile = () => {
 					</Link>
 				</div>
 			</div>
-			<DetailsCard emp={employeeDetails} />
+			<DetailsCard emp={userDetails} />
 			<PasswordChange handleSubmit={handleSubmit} />
 		</div>
 	);
