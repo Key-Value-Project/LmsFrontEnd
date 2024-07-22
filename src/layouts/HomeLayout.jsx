@@ -1,30 +1,26 @@
 import "../assets/styles/homeLayout/home.style.scss";
 import Logo from "../assets/images/kv-logo.png";
 import Libicon from "../assets/icons/lib-icon.svg";
-import Addicon from "../assets/icons/add-icon.svg";
 import Logout from "../assets/icons/logout.svg";
 import icon1 from "../assets/icons/icon.svg";
 import { useNavigate, Link, Outlet } from "react-router-dom";
 import { useEffect } from "react";
-import { useState } from "react";
-const HomeLayout = () => {
-  useEffect(() => {
-    const session_token = localStorage.getItem("token");
-    if (!session_token) {
-      navigate("/");
-    }
-  }, []);
-  const [activeLink, setActiveLink] = useState("/employee");
-  const handleLinkClick = (link) => {
-    setActiveLink(link);
-  };
+import { useLocation } from "react-router-dom";
 
+const HomeLayout = () => {
+  const location = useLocation(); // React Hook
   const navigate = useNavigate();
 
   const logout = () => {
     localStorage.removeItem("token");
     navigate("/");
   };
+  useEffect(() => {
+    const session_token = localStorage.getItem("token");
+    if (!session_token) {
+      navigate("/");
+    }
+  }, []);
 
   return (
     <>
@@ -45,10 +41,13 @@ const HomeLayout = () => {
         <aside>
           <nav>
             <div>
-              <Link to="/employee" onClick={() => handleLinkClick("/employee")}>
+              <Link to="/employee">
                 <div
                   className={
-                    activeLink === "/employee" ? "nav-item active" : "nav-item"
+                    location.pathname.includes("employee") &&
+                    !location.pathname.includes("profile")
+                      ? "nav-item active"
+                      : "nav-item"
                   }
                 >
                   <span>
@@ -58,10 +57,12 @@ const HomeLayout = () => {
                 </div>
               </Link>
 
-              <Link to="/library" onClick={() => handleLinkClick("/library")}>
+              <Link to="/library">
                 <div
                   className={
-                    activeLink === "/library" ? "nav-item active" : "nav-item"
+                    location.pathname.includes("library")
+                      ? "nav-item active"
+                      : "nav-item"
                   }
                 >
                   <span>
@@ -72,13 +73,10 @@ const HomeLayout = () => {
               </Link>
             </div>
             <div>
-              <Link
-                to="/employee/profile"
-                onClick={() => handleLinkClick("/employee/profile")}
-              >
+              <Link to="/employee/profile">
                 <div
                   className={
-                    activeLink === "/employee/profile"
+                    location.pathname.includes("profile")
                       ? "nav-item active"
                       : "nav-item"
                   }

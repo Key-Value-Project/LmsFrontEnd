@@ -1,8 +1,8 @@
 import { useParams } from "react-router";
-import EmployeeForm from "../createEmployee/employeeForm";
 import { useState } from "react";
-import BookField from "../../utils/BookField";
-const BookEdit = () => {
+import EmployeeForm from "../components/createEmployee/employeeForm";
+import BookField from "../utils/BookField";
+const CreateBook = () => {
   let { id } = useParams();
   const [formState, setFormState] = useState({});
   const handleInputChange = (name, value) => {
@@ -28,17 +28,20 @@ const BookEdit = () => {
     <>
       <div className="Dashboard">
         <div className="top-header-create-employee">
-          <h1>Update Book Details</h1>
+          <h1>Create Book Details</h1>
         </div>
 
         <div className="component-create-employee">
+          <button className="btn">Upload Excel</button>
+          <div className="excel"></div>
+          <hr></hr>
+          <div className="excel"></div>
           <EmployeeForm
             unique_id={"BOOK ID"}
             fields={BookField}
             handleSubmit={handleSubmit}
             handleInputChange={handleInputChange}
             resetContent={resetContent}
-            isEdit={true}
             empID={id}
             formState={formState}
           />
@@ -48,4 +51,4 @@ const BookEdit = () => {
   );
 };
 
-export default BookEdit;
+export default CreateBook;

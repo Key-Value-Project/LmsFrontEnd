@@ -3,7 +3,7 @@ import { jwtDecode } from "jwt-decode";
 import getRole from "../../utils/TokenDecode";
 
 const ListCardHead = () => {
-  const [roleState, useRoleState] = useState(getRole());
+  const [roleState] = useState(getRole());
   return (
     <div className="employee-list-head">
       <div className="item">Employee Name</div>

@@ -1,6 +1,6 @@
-import EmployeeForm from "../createEmployee/employeeForm";
 import { useState } from "react";
-import ShelfField from "../../utils/ShelfField";
+import EmployeeForm from "../components/createEmployee/employeeForm";
+import ShelfField from "../utils/ShelfField";
 
 const CreateShelf = () => {
   const [formState, setFormState] = useState({});
