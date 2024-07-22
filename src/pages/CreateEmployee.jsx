@@ -11,74 +11,75 @@ import { convertToPayload } from "../utils/ConvertData.js";
 import { notifyError, notifySuccess } from "../utils/Toast.js";
 
 const CreateEmployeeForm = () => {
-	const [addEmployee, { isSuccess, isError, data, error }] = useAddEmployeeMutation();
-	const [employeeDetails, setEmployeeDetails] = useState({
-		name: "",
-		email: "",
-		joiningDate: "",
-		role: "",
-		status: "",
-		experience: "",
-		address: "",
-		pincode: "",
-		department: "",
-		employeePassword: "",
-	});
+  const [addEmployee, { isSuccess, isError, data, error }] =
+    useAddEmployeeMutation();
+  const [employeeDetails, setEmployeeDetails] = useState({
+    name: "",
+    email: "",
+    joiningDate: "",
+    role: "",
+    status: "",
+    experience: "",
+    address: "",
+    pincode: "",
+    department: "",
+    employeePassword: "",
+  });
 
-	const navigate = useNavigate();
+  const navigate = useNavigate();
 
-	// useEffect(() => {
-	// 	console.log(employeeDetails);
-	// }, [employeeDetails]);
+  // useEffect(() => {
+  // 	console.log(employeeDetails);
+  // }, [employeeDetails]);
 
-	useEffect(() => {
-		if (isSuccess) {
-			notifySuccess("Employee added successfully");
-			navigate("/employee");
-		}
-		if (isError && error.data && error.data.errors) {
-			error.data.errors.forEach((errorMessage) => {
-				notifyError(errorMessage);
-			});
-		}
-	}, [isSuccess, isError]);
+  useEffect(() => {
+    if (isSuccess) {
+      notifySuccess("Employee added successfully");
+      navigate("/employee");
+    }
+    if (isError && error.data && error.data.errors) {
+      error.data.errors.forEach((errorMessage) => {
+        notifyError(errorMessage);
+      });
+    }
+  }, [isSuccess, isError]);
 
-	const handleInputChange = (inputName, inputValue) => {
-		setEmployeeDetails((prevDetails) => ({
-			...prevDetails,
-			[inputName]: inputValue,
-		}));
-	};
+  const handleInputChange = (inputName, inputValue) => {
+    setEmployeeDetails((prevDetails) => ({
+      ...prevDetails,
+      [inputName]: inputValue,
+    }));
+  };
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		const payload = convertToPayload(employeeDetails);
-		addEmployee(payload);
-	};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const payload = convertToPayload(employeeDetails);
+    addEmployee(payload);
+  };
 
-	const resetContent = () => {
-		navigate("/employee");
-	};
+  const resetContent = () => {
+    navigate("/employee");
+  };
 
-	return (
-		<>
-			<div className="Dashboard">
-				<div className="top-header-create-employee">
-					<h1>Create Employee</h1>
-				</div>
-				<div className="component-create-employee">
-					<EmployeeForm
-						fields={fields}
-						handleSubmit={handleSubmit}
-						handleInputChange={handleInputChange}
-						resetContent={resetContent}
-						formState={employeeDetails}
-						isCreate={true}
-					/>
-				</div>
-			</div>
-		</>
-	);
+  return (
+    <>
+      <div className="Dashboard">
+        <div className="top-header-create-employee">
+          <h1>Create Employee</h1>
+        </div>
+        <div className="component-create-employee">
+          <EmployeeForm
+            fields={fields}
+            handleSubmit={handleSubmit}
+            handleInputChange={handleInputChange}
+            resetContent={resetContent}
+            formState={employeeDetails}
+            isCreate={true}
+          />
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default CreateEmployeeForm;
