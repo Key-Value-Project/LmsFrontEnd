@@ -3,16 +3,21 @@ import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import apiWithTag from "../services/employee.api";
 import filterSlice from "./filterSlice";
+import libraryApiWithTags, { libraryBaseApi } from "../services/library.api";
 // import { employeeApi } from "../services/employee.api";
 
 const store = configureStore({
-	reducer: {
-		// employees: employeeReducer,
-		[apiWithTag.reducerPath]: apiWithTag.reducer, // cache reducer
-		filter: filterSlice,
-		// Add more reducers here
-	},
-	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiWithTag.middleware),
+    reducer: {
+        // employees: employeeReducer,
+        [apiWithTag.reducerPath]: apiWithTag.reducer,
+        //library reducer
+        [libraryApiWithTags.reducerPath]: libraryApiWithTags.reducer,
+        // cache reducer
+        filter: filterSlice,
+        // Add more reducers here
+    },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(apiWithTag.middleware, libraryApiWithTags.middleware),
 });
 
 setupListeners(store.dispatch);
