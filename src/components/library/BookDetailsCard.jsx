@@ -1,48 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Availability } from "./Availability";
 import SubscribePopUp from "../employeeList/SubscribePopUp";
-// import  from "../../utils/TokenDecode";
 import LibHead from "./LibHead";
 
 import LibCard from "./LibCard";
-import { useGetBookDetailsListQuery } from "../../api/library/api.library";
-
-export const shelfData = [
-  {
-    id: 1,
-    code: "A01",
-    location: "First Floor, Left Wing",
-  },
-  {
-    id: 2,
-    code: "B02",
-    location: "Second Floor, Right Wing",
-  },
-  {
-    id: 3,
-    code: "C03",
-    location: "Ground Floor, Central Section",
-  },
-  {
-    id: 4,
-    code: "D04",
-    location: "Third Floor, Left Wing",
-  },
-  {
-    id: 5,
-    code: "E05",
-    location: "Basement, Storage Area",
-  },
-];
 
 const BookDetailsCard = ({ emp = {}, Role }) => {
-  const [deleteDialog, setDeleteDialog] = useState(false);
   let shelves = [];
+  const [deleteDialog, setDeleteDialog] = useState(false);
 
-  if (emp) {
-    shelves = emp.books.map((book) => book.shelf);
-    console.log(shelves);
-  }
   const handleDeleteClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -57,19 +23,15 @@ const BookDetailsCard = ({ emp = {}, Role }) => {
   const handleClose = () => {
     setDeleteDialog(false);
   };
-  const [click, setClick] = useState(false);
 
-  const handleClick = () => {
-    setClick(true);
-  };
-  console.log(emp);
+  if (emp) {
+    shelves = emp.books.map((book) => book.shelf);
+    console.log(shelves);
+  }
+
   return (
     <>
       <div className="details-component" data-testid="test-details-card">
-        {/* <div className="details-card-item">
-                    <div className="details-card-item-label">Book ID</div>
-                    <p>{emp.isbn}</p>
-                </div> */}
         <div className="details-card-item">
           <div className="details-card-item-label">ISBN</div>
           <p>{emp.isbn}</p>

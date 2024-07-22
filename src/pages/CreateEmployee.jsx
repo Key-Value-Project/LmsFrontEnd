@@ -13,6 +13,7 @@ import { notifyError, notifySuccess } from "../utils/Toast.js";
 const CreateEmployeeForm = () => {
   const [addEmployee, { isSuccess, isError, data, error }] =
     useAddEmployeeMutation();
+  const navigate = useNavigate();
   const [employeeDetails, setEmployeeDetails] = useState({
     name: "",
     email: "",
@@ -25,24 +26,6 @@ const CreateEmployeeForm = () => {
     department: "",
     employeePassword: "",
   });
-
-  const navigate = useNavigate();
-
-  // useEffect(() => {
-  // 	console.log(employeeDetails);
-  // }, [employeeDetails]);
-
-  useEffect(() => {
-    if (isSuccess) {
-      notifySuccess("Employee added successfully");
-      navigate("/employee");
-    }
-    if (isError && error.data && error.data.errors) {
-      error.data.errors.forEach((errorMessage) => {
-        notifyError(errorMessage);
-      });
-    }
-  }, [isSuccess, isError]);
 
   const handleInputChange = (inputName, inputValue) => {
     setEmployeeDetails((prevDetails) => ({
@@ -60,6 +43,18 @@ const CreateEmployeeForm = () => {
   const resetContent = () => {
     navigate("/employee");
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      notifySuccess("Employee added successfully");
+      navigate("/employee");
+    }
+    if (isError && error.data && error.data.errors) {
+      error.data.errors.forEach((errorMessage) => {
+        notifyError(errorMessage);
+      });
+    }
+  }, [isSuccess, isError]);
 
   return (
     <>

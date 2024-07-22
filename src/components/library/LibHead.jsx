@@ -1,5 +1,3 @@
-import getRole from "../../utils/TokenDecode";
-
 const LibHead = ({ heads, Role }) => {
   return (
     <div className="employee-list-head list-book">

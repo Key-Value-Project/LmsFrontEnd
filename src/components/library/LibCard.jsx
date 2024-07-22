@@ -1,6 +1,5 @@
 import { useState } from "react";
 import del from "../../assets/icons/delete.svg";
-import edt from "../../assets/icons/edit.svg";
 import DeletePopUp from "../../components/employeeList/DeletePopUp.jsx";
 import { Link } from "react-router-dom";
 import { Availability } from "./Availability.jsx";

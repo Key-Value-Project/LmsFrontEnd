@@ -2,8 +2,6 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import pencilIcon from "../assets/icons/pencil-circle.svg";
 import BookDetailsCard from "../components/library/BookDetailsCard";
-import { booksData } from "./LibSearch";
-import { useGetUserDetailsQuery } from "../api/employee/api.employee";
 import getRole from "../utils/TokenDecode";
 import { useGetBookDetailsByIdQuery } from "../api/library/api.library";
 const LibDetails = () => {

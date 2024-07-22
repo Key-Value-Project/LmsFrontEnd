@@ -1,9 +1,7 @@
-import "../assets/styles/Library/library.style.scss"
+import "../assets/styles/Library/library.style.scss";
 
 import BorrowCard from "../components/library/BorrowCard";
 import BorrowCardHead from "../components/library/BorrowCardHead";
-import LibCard from "../components/library/LibCard";
-import LibHead from "../components/library/LibHead";
 import { useGetUserDetailsQuery } from "../api/employee/api.employee";
 
 const borrowedData = [
@@ -28,9 +26,6 @@ const borrowedData = [
 ];
 
 const BorrowDetails = () => {
-  const { data: userDetails, isSuccess } = useGetUserDetailsQuery();
-  const Role = userDetails?.role;
-
   return (
     <>
       <div className="Dashboard">

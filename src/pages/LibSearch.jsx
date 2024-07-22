@@ -9,59 +9,6 @@ import { useGetUserDetailsQuery } from "../api/employee/api.employee.jsx";
 import { useGetBookDetailsListQuery } from "../api/library/api.library.jsx";
 import { useRef } from "react";
 import getRole from "../utils/TokenDecode.jsx";
-import Scan from "../components/library/Scan.jsx";
-
-export const booksData = [
-  {
-    id: 1,
-    title: "To Kill a Mockingbird",
-    author: "Harper Lee",
-    status: "Available",
-    isbn: "9780061120084",
-    description:
-      "A classic novel about racial injustice, tolerance, and the loss of innocence in a small Alabama town during the 1930s.",
-    shelfCode: ["A01", "E05", "D04"],
-  },
-  {
-    id: 2,
-    title: "The Great Gatsby",
-    author: "F. Scott Fitzgerald",
-    status: "Available",
-    isbn: "9780743273565",
-    description:
-      "A novel set in the 1920s about the American Dream, love, and the corrupting influence of wealth, as seen through the eyes of Nick Carraway.",
-    shelfCode: ["B02", "A01"],
-  },
-  {
-    id: 3,
-    title: "1984",
-    author: "George Orwell",
-    status: "Not-Available",
-    isbn: "9780451524935",
-    description:
-      "A dystopian novel depicting a totalitarian future society where independent thought is discouraged and citizens are constantly surveilled.",
-  },
-  {
-    id: 4,
-    title: "Pride and Prejudice",
-    author: "Jane Austen",
-    status: "Available",
-    isbn: "9780486280511",
-    description:
-      "A romantic novel about the complex relationships between the Bennett sisters and their various love interests in 19th-century England.",
-    shelfCode: ["C03"],
-  },
-  {
-    id: 5,
-    title: "The Catcher in the Rye",
-    author: "J.D. Salinger",
-    status: "Available",
-    isbn: "9780316769174",
-    description:
-      "A coming-of-age novel about alienation, rebellion, and the struggles of growing up, as seen through the eyes of Holden Caulfield.",
-    shelfCode: ["E05"],
-  },
-];
 
 const LibSearch = () => {
   const { data: userDetails } = useGetUserDetailsQuery();

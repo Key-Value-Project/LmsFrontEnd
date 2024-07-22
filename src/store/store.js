@@ -4,7 +4,7 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 import apiWithTag from "../services/employee.api";
 import filterSlice from "./filterSlice.js";
 import libraryApiWithTags, { libraryBaseApi } from "../services/library.api";
-import navigationSlice from "./navigationSlice.js";
+
 // import { employeeApi } from "../services/employee.api";
 
 const store = configureStore({
@@ -15,8 +15,7 @@ const store = configureStore({
     [libraryApiWithTags.reducerPath]: libraryApiWithTags.reducer,
     // cache reducer
     filter: filterSlice,
-    // Add more reducers here
-    navigation: navigationSlice
+   
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
