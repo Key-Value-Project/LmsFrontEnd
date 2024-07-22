@@ -29,6 +29,7 @@ const BookDetailsCard = ({ emp = {}, Role }) => {
     console.log(shelves);
   }
 
+  console.log(emp.status);
   return (
     <>
       <div className="details-component" data-testid="test-details-card">

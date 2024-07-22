@@ -1,31 +1,15 @@
 import "../assets/styles/Library/library.style.scss";
-
+import { useEffect } from "react";
 import BorrowCard from "../components/library/BorrowCard";
 import BorrowCardHead from "../components/library/BorrowCardHead";
-import { useGetUserDetailsQuery } from "../api/employee/api.employee";
-
-const borrowedData = [
-  {
-    user_id: 1,
-    book_id: 2,
-    borrowed_at: "28-05-2025",
-    expected_return_date: "28-06-2025",
-    returned: false,
-    borrowed_shelf_id: 1,
-    returned_shelf_id: null,
-  },
-  {
-    user_id: 1,
-    book_id: 3,
-    borrowed_at: "28-05-2025",
-    expected_return_date: "28-06-2025",
-    returned: false,
-    borrowed_shelf_id: 1,
-    returned_shelf_id: null,
-  },
-];
+import { useGetBorrowHistoryQuery } from "../api/library/api.library";
 
 const BorrowDetails = () => {
+  const { data: borrowedData } = useGetBorrowHistoryQuery();
+  useEffect(() => {
+    console.log(borrowedData);
+  }, [borrowedData]);
+
   return (
     <>
       <div className="Dashboard">
@@ -36,9 +20,10 @@ const BorrowDetails = () => {
         <div className="book-list">
           <BorrowCardHead />
           <div className="employee-list">
-            {borrowedData.map((book, index) => (
-              <BorrowCard key={index} {...book} />
-            ))}
+            {borrowedData &&
+              borrowedData.map((book, index) => (
+                <BorrowCard key={index} {...book} />
+              ))}
           </div>
         </div>
       </div>
