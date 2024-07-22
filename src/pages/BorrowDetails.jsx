@@ -1,10 +1,10 @@
-import "../../assets/styles/Library/library.style.scss";
+import "../assets/styles/Library/library.style.scss"
 
-import BorrowCard from "./BorrowCard";
-import BorrowCardHead from "./BorrowCardHead";
-import LibCard from "./LibCard";
-import LibHead from "./LibHead";
-import { useGetUserDetailsQuery } from "../../api/employee/api.employee";
+import BorrowCard from "../components/library/BorrowCard";
+import BorrowCardHead from "../components/library/BorrowCardHead";
+import LibCard from "../components/library/LibCard";
+import LibHead from "../components/library/LibHead";
+import { useGetUserDetailsQuery } from "../api/employee/api.employee";
 
 const borrowedData = [
   {

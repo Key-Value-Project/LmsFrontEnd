@@ -1,12 +1,13 @@
 import "../assets/styles/homeLayout/home.style.scss";
 import Logo from "../assets/images/kv-logo.png";
 import Libicon from "../assets/icons/lib-icon.svg";
-import Addicon from "../assets/icons/add-icon.svg";
 import Logout from "../assets/icons/logout.svg";
 import icon1 from "../assets/icons/icon.svg";
 import { useNavigate, Link, Outlet } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 const HomeLayout = () => {
   useEffect(() => {
     const session_token = localStorage.getItem("token");
@@ -14,9 +15,13 @@ const HomeLayout = () => {
       navigate("/");
     }
   }, []);
-  const [activeLink, setActiveLink] = useState("/employee");
+
+  const dispatch = useDispatch();
+
+  const nav = useSelector((state) => state.navigation.value);
+
   const handleLinkClick = (link) => {
-    setActiveLink(link);
+    dispatch(setFilter(link));
   };
 
   const navigate = useNavigate();
@@ -45,10 +50,10 @@ const HomeLayout = () => {
         <aside>
           <nav>
             <div>
-              <Link to="/employee" onClick={() => handleLinkClick("/employee")}>
+              <Link to="/employee" onClick={() => handleLinkClick("employee")}>
                 <div
                   className={
-                    activeLink === "/employee" ? "nav-item active" : "nav-item"
+                    nav === "employee" ? "nav-item active" : "nav-item"
                   }
                 >
                   <span>
@@ -58,10 +63,10 @@ const HomeLayout = () => {
                 </div>
               </Link>
 
-              <Link to="/library" onClick={() => handleLinkClick("/library")}>
+              <Link to="/library" onClick={() => handleLinkClick("library")}>
                 <div
                   className={
-                    activeLink === "/library" ? "nav-item active" : "nav-item"
+                    nav === "library" ? "nav-item active" : "nav-item"
                   }
                 >
                   <span>
@@ -74,13 +79,11 @@ const HomeLayout = () => {
             <div>
               <Link
                 to="/employee/profile"
-                onClick={() => handleLinkClick("/employee/profile")}
+                onClick={() => handleLinkClick("profile")}
               >
                 <div
                   className={
-                    activeLink === "/employee/profile"
-                      ? "nav-item active"
-                      : "nav-item"
+                    nav === "profile" ? "nav-item active" : "nav-item"
                   }
                 >
                   <span>

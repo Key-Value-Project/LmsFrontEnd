@@ -4,6 +4,16 @@
   display: flex;
   justify-content: center;
 
+  .scan__book {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      margin-left: 30px;
+    }
+  }
+
   form {
     display: flex;
 
@@ -15,7 +25,7 @@
     padding: 10px 20px;
 
     input {
-      width: 400px;
+      width: 600px;
       border: 1px solid transparent;
       background-color: transparent;
       font-size: 20px;
@@ -59,6 +69,53 @@ textarea {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.scan__form {
+  padding-left: 20px;
+
+  .icon {
+    width: 20%;
+  }
+}
+
+.scan {
+  padding-left: 30px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sub {
+  padding: 20px;
+
+  label {
+    padding-left: 5px;
+    font-size: 20px;
+  }
+}
+
+.excel {
+  margin-bottom: 40px;
+}
+
+hr {
+  border: 0px;
+  height: 1px;
+  background: rgb(223, 223, 223);
+}
+
+.scan__input {
+  input {
+    margin-bottom: 20px;
+    margin-top: 40px;
+    margin-right: 20px;
+    border: 1px solid transparent;
+    background-color: rgb(238, 238, 238);
+    padding: 10px;
+    border-radius: 10px;
+  }
 }
 
 .btn {

@@ -6,63 +6,67 @@ import { Link } from "react-router-dom";
 import { Availability } from "./Availability.jsx";
 import getRole from "../../utils/TokenDecode.jsx";
 const LibCard = (details) => {
-    const [deleteDialog, setDeleteDialog] = useState(false);
+  const [deleteDialog, setDeleteDialog] = useState(false);
 
-    const handleDeleteClick = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        setDeleteDialog(true);
-    };
+  const handleDeleteClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDeleteDialog(true);
+  };
 
-    const handleDelete = () => {
-        deleteEmployee(details.id);
-        setDeleteDialog(false);
-    };
+  const handleDelete = () => {
+    deleteEmployee(details.id);
+    setDeleteDialog(false);
+  };
 
-    const handleClose = () => {
-        setDeleteDialog(false);
-    };
+  const handleClose = () => {
+    setDeleteDialog(false);
+  };
 
-    const columns = [
-        { label: "ID", value: details.isbn },
-        { label: "Title", value: details.title },
-        { label: "Author", value: details.author },
-        { label: "Status", value: <Availability status={details.status} /> },
-    ];
+  const columns = [
+    { label: "ID", value: details.isbn },
+    { label: "Title", value: details.title },
+    { label: "Author", value: details.author },
+    { label: "Status", value: <Availability status={details.status} /> },
+  ];
 
-    return (
-        <>
-            <Link to={`details/${details.isbn}`} style={{ textDecoration: "none", color: "black" }}>
-                <div className="employee-list-items list-book">
-                    {columns.map((column, index) => (
-                        <div key={index} className="item">
-                            {column.value}
-                        </div>
-                    ))}
-                    {getRole() === "ADMIN" ? (
-                        <div className="item Action">
-                            <img src={del} alt="delete button" onClick={handleDeleteClick} />
+  return (
+    <>
+      <Link
+        to={`details/${details.isbn}`}
+        style={{ textDecoration: "none", color: "black" }}
+      >
+        <div className="employee-list-items list-book">
+          {columns.map((column, index) => (
+            <div key={index} className="item">
+              {column.value}
+            </div>
+          ))}
 
-                            <Link to={`edit/${details.id}`}>
-                                <img src={edt} alt="edit button" />
-                            </Link>
-                        </div>
-                    ) : (
-                        <></>
-                    )}
+          {details.Role === "borrow" ? (
+            <div className="item Action">
+              <button className="btn">Read Now !</button>
+            </div>
+          ) : (
+            <></>
+          )}
 
-                    {details.Role === "borrow" ? (
-                        <div className="item Action">
-                            <button className="btn">Read Now !</button>
-                        </div>
-                    ) : (
-                        <></>
-                    )}
-                </div>
-            </Link>
-            <DeletePopUp open={deleteDialog} handleClose={handleClose} handleDelete={handleDelete} />
-        </>
-    );
+          {getRole() === "ADMIN" && details.Role === "borrow" ? (
+            <div className="item Action">
+              <img src={del} alt="delete button" onClick={handleDeleteClick} />
+            </div>
+          ) : (
+            <></>
+          )}
+        </div>
+      </Link>
+      <DeletePopUp
+        open={deleteDialog}
+        handleClose={handleClose}
+        handleDelete={handleDelete}
+      />
+    </>
+  );
 };
 
 export default LibCard;

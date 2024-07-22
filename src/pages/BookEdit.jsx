@@ -1,7 +1,7 @@
 import { useParams } from "react-router";
-import EmployeeForm from "../createEmployee/employeeForm";
 import { useState } from "react";
-import BookField from "../../utils/BookField";
+import EmployeeForm from "../components/createEmployee/employeeForm";
+import BookField from "../utils/BookField";
 const BookEdit = () => {
   let { id } = useParams();
   const [formState, setFormState] = useState({});
