@@ -1,33 +1,39 @@
 import { useParams } from 'react-router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import EmployeeForm from '../components/createEmployee/employeeForm';
 import BookField from '../utils/BookField';
 import getRole from '../utils/TokenDecode';
 import { Link } from 'react-router-dom';
 import plusIcon from '../assets/icons/plus-circle.svg';
 import BookDetails from '../utils/BookDetails';
+import { useCreateBookDetailsMutation } from '../api/library/api.library';
 
 const AddBook = () => {
   let { id } = useParams();
   const [formState, setFormState] = useState({});
+  const [creatBookDetails] = useCreateBookDetailsMutation();
   const handleInputChange = (name, value) => {
+    if (name === 'isbn') {
+      value = parseInt(value);
+    }
     setFormState((prevState) => ({
       ...prevState,
       [name]: value,
     }));
   };
 
+  useEffect(() => {
+    console.log(formState);
+  }, [formState]);
   const resetContent = () => {
     navigate('/library');
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const payload = convertToPayload(formState);
-    payload.id = id;
-    delete payload.password;
-    await updateEmployee(payload);
-    await updateEmployeeRelation(payload);
+    console.log(formState);
+    const response = await creatBookDetails(formState);
+    console.log(response);
   };
   return (
     <>
