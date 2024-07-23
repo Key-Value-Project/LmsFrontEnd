@@ -6,7 +6,6 @@
 // const deleteEmployee = createAction("DELETE_EMPLOYEE");
 // const updateEmployee = createAction("UPDATE_EMPLOYEE");
 
-
 // // Sample data
 // const employees_list = [
 // 	{
@@ -165,8 +164,6 @@
 // 	},
 // ];
 
-
-
 // const employeeReducer = createReducer({ list: employees_list, emp_filter: "All" }, (builder) => {
 // 	builder.addCase(addEmployee, (state, action) => {
 // 		state.list.push(action.payload);
@@ -187,5 +184,3 @@
 // });
 
 // export { employeeReducer as default, addEmployee, deleteEmployee, updateEmployee };
-    
-    

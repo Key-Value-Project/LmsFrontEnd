@@ -1,74 +1,74 @@
 /* NotFound Page Styles */
 .not-found {
-	padding: 40px 0;
-	background: #fff;
-	font-family: "Arvo", serif;
-	width: 100%;
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	position: relative;
+    padding: 40px 0;
+    background: #fff;
+    font-family: 'Arvo', serif;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 
-	img {
-		position: absolute;
-		top: 10px;
-		left: 10px;
-	}
+    img {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
 }
 
 .container {
-	width: 100%;
-	height: 100%;
-	text-align: center;
-	background-image: url("https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif");
-	// background-size: cover;
-	background-position: bottom;
-	background-repeat: no-repeat;
-	padding: 20px;
-	border-radius: 10px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-image: url('https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif');
+    // background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
-	.hero {
-		display: flex;
-		flex-direction: column;
-		width: 100%;
-		text-align: center;
-		margin-bottom: 40px;
-		background-color: #fff;
+    .hero {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 40px;
+        background-color: #fff;
 
-		h1 {
-			font-size: 4rem;
-			margin-bottom: 20px;
-		}
-	}
-	.content-box {
-		margin-top: 20px;
-	}
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+    }
+    .content-box {
+        margin-top: 20px;
+    }
 
-	.content-box h2 {
-		font-size: 2rem;
-		margin-bottom: 15px;
-	}
+    .content-box h2 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
 
-	.content-box p {
-		font-size: 1rem;
-		margin-bottom: 20px;
-	}
+    .content-box p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
 
-	.home-link {
-		display: inline-block;
-		background-color: #007bff;
-		color: #fff;
-		margin-top: 25px;
-		padding: 10px 20px;
-		border-radius: 5px;
-		text-decoration: none;
-		transition: background-color 0.3s ease;
+    .home-link {
+        display: inline-block;
+        background-color: #007bff;
+        color: #fff;
+        margin-top: 25px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
 
-		&:hover {
-			background-color: #0056b3;
-		}
-	}
+        &:hover {
+            background-color: #0056b3;
+        }
+    }
 }
