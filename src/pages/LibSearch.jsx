@@ -10,6 +10,7 @@ import { useGetBookDetailsListQuery, useGetSearchByTitleMutation } from '../api/
 import { useRef } from 'react';
 import getRole from '../utils/TokenDecode.jsx';
 import { useDebounce } from 'use-debounce';
+import ShowModal from '../components/library/ShowModal.jsx';
 
 const LibSearch = () => {
   const [search, setSearch] = useState('');
@@ -17,6 +18,14 @@ const LibSearch = () => {
   const [books, setBooks] = useState([]);
   const { data: userDetails } = useGetUserDetailsQuery();
   const { data: booksDetail, isSuccess } = useGetBookDetailsListQuery();
+
+  const [showModal, setShowModal] = useState(false);
+
+  const toggalModal = () => {
+    setShowModal(!showModal);
+  };
+
+  console.log(showModal);
 
   const [getSearchByTitle] = useGetSearchByTitleMutation();
   // const [getSearchByTitle] =  useGetSearchByTitleQuery();
@@ -90,11 +99,11 @@ const LibSearch = () => {
           </button>
         </form>
         <div className="scan">
-          <Link to="scan">
-            <button className="btn" title="You can scan your ISBN here and enter shelf number">
-              Scan
-            </button>{' '}
-          </Link>
+          <button className="btn" title="You can scan your ISBN here and enter shelf number" onClick={toggalModal}>
+            Scan
+          </button>
+
+          {showModal && <ShowModal onclose={toggalModal} />}
         </div>
       </div>
       <div className="book-list">
