@@ -3,7 +3,7 @@ import { Availability } from './Availability';
 import SubscribePopUp from '../employeeList/SubscribePopUp';
 import LibHead from './LibHead';
 
-import rd from './LibCard';
+import LibCard from './LibCard';
 import { useBorrowBookMutation } from '../../api/library/api.library';
 import { useEffect } from 'react';
 
