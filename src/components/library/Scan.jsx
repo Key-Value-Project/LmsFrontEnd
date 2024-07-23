@@ -1,16 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useBorrowBookMutation, useGetAllShelvesQuery } from '../../api/library/api.library';
 import scan from '../../assets/icons/scan.svg';
 
-const Scan = ({ isbnv }) => {
+const Scan = ({ isbnv, handleClick = () => {} }) => {
   const { data } = useGetAllShelvesQuery();
   const [isbn, setIsbn] = useState('');
   const [shelf, setShelf] = useState('');
-  const [borrow] = useBorrowBookMutation();
-  const handleClick = async () => {
-    const checkborrow = await borrow({ isbn: parseInt(isbn), shelf_id: shelf });
-    console.log(checkborrow);
-  };
+
+  useEffect(() => {
+    console.log(isbn, shelf);
+  }, [isbn, shelf]);
 
   return (
     <div className="scan__form">
@@ -38,7 +37,7 @@ const Scan = ({ isbnv }) => {
           className="btn "
           onClick={(e) => {
             e.preventDefault();
-            handleClick();
+            handleClick(isbn, shelf);
           }}
         >
           Submit

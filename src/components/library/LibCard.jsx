@@ -48,7 +48,7 @@ const LibCard = (details) => {
                   e.preventDefault();
                   console.log(details.data.isbn, details.shelf_id);
                   details.readnow({
-                    isbn: details.data.isbn,
+                    isbn: parseInt(details.data.isbn),
                     shelf_id: details.shelf_id,
                   });
                 }}
