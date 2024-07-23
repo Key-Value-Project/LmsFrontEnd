@@ -3,7 +3,7 @@ import TextField from '../components/createEmployee/TextField';
 import TextArea from '../components/library/TeaxtArea';
 const BookDetails = [
   {
-    type: 'text',
+    type: 'number',
     id: 'isbn',
     name: 'isbn',
     required: 'isbn',
