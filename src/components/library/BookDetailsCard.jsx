@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { Availability } from './Availability';
 import SubscribePopUp from '../employeeList/SubscribePopUp';
 import LibHead from './LibHead';
-import { notifyError } from '../../utils/Toast';
-
+import { notifyError, notifySuccess } from '../../utils/Toast';
+import { useNavigate } from 'react-router-dom';
 import LibCard from './LibCard';
 import { useBorrowBookMutation } from '../../api/library/api.library';
 import { useEffect } from 'react';
 
 const BookDetailsCard = ({ emp = {}, Role }) => {
+  const navigate = useNavigate();
   const [bookImage, setBookImage] = useState('');
   let shelves = [];
   const [deleteDialog, setDeleteDialog] = useState(false);
