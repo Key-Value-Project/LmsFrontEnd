@@ -18,6 +18,7 @@ import CreateBook from './pages/CreateBook.jsx';
 import CreateShelf from './pages/CreateShelf.jsx';
 import Scan from './components/library/Scan.jsx';
 import ShelfDetails from './pages/ShelfDetails.jsx';
+import AddBook from './pages/Addbook.jsx';
 
 const App = () => {
   const router = createBrowserRouter([
@@ -43,7 +44,7 @@ const App = () => {
       children: [
         { index: true, element: <LibSearch /> },
         { path: 'details/:isbn', element: <LibDetails /> },
-
+        { path: 'addbook', element: <AddBook /> },
         { path: 'borrow', element: <BorrowDetails /> },
         { path: 'edit/:id', element: <BookEdit /> },
         { path: 'create', element: <CreateBook /> },
