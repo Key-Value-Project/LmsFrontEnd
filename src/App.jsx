@@ -43,12 +43,12 @@ const App = () => {
       children: [
         { index: true, element: <LibSearch /> },
         { path: 'details/:isbn', element: <LibDetails /> },
+
         { path: 'borrow', element: <BorrowDetails /> },
         { path: 'edit/:id', element: <BookEdit /> },
         { path: 'create', element: <CreateBook /> },
         { path: 'shelf', element: <ShelfDetails /> },
         { path: 'createshelf', element: <CreateShelf /> },
-
         { path: 'scan', element: <Scan /> },
       ],
     },

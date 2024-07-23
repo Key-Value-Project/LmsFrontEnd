@@ -213,3 +213,44 @@ hr {
     }
   }
 }
+
+.btn[title]:hover:after {
+  content: attr(title);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+.btn[title]:hover:before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -10px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+.aside__opt {
+  padding-left: 50px;
+  div {
+    span {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .nav-item {
+    height: 40px;
+
+    p {
+      font-size: 14px;
+    }
+  }
+}

@@ -6,6 +6,7 @@ import icon1 from '../assets/icons/icon.svg';
 import { useNavigate, Link, Outlet } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import getRole from '../utils/TokenDecode';
 
 const HomeLayout = () => {
   const location = useLocation(); // React Hook
@@ -54,7 +55,30 @@ const HomeLayout = () => {
                   <p>Library</p>
                 </div>
               </Link>
+              {location.pathname.includes('library') ? (
+                <div className="aside__opt">
+                  <Link to="borrow">
+                    <div className={location.pathname.includes('borrow') ? 'nav-item active' : 'nav-item'}>
+                      <span>
+                        <img src={icon1} alt="Return Books icon" />
+                      </span>
+                      <p>Return Books</p>
+                    </div>
+                  </Link>
+                  <Link to="shelf">
+                    <div className={location.pathname.includes('shelf') ? 'nav-item active' : 'nav-item'}>
+                      <span>
+                        <img src={icon1} alt="View Shelf icon" />
+                      </span>
+                      <p>View Shelf</p>
+                    </div>
+                  </Link>
+                </div>
+              ) : (
+                <></>
+              )}
             </div>
+
             <div>
               <Link to="/employee/profile">
                 <div className={location.pathname.includes('profile') ? 'nav-item active' : 'nav-item'}>

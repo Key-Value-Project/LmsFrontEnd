@@ -11,9 +11,11 @@ const BorrowCard = (emp) => {
           <div className="item">{format(new Date(emp.borrowed_at), 'dd-MM-yyyy')}</div>
 
           <div className="item">{format(new Date(emp.expected_return_date), 'dd-MM-yyyy')}</div>
-          <div className="item">
-            <button className="btn">Return Now</button>
-          </div>
+          <Link to="/library/scan">
+            <div className="item">
+              <button className="btn">Return Now</button>
+            </div>
+          </Link>
         </div>
       </Link>
     </>

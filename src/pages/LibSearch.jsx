@@ -55,13 +55,6 @@ const LibSearch = () => {
     <div className="main__body">
       <div className="main__head">
         <div className="button-class">
-          <Link to="borrow">
-            <button className="btn">Borrowed Books</button>
-          </Link>
-          <Link to="shelf">
-            <button className="btn">View Shelf</button>
-          </Link>
-
           {getRole() === 'ADMIN' ? (
             <div>
               <Link to="create">
@@ -98,7 +91,9 @@ const LibSearch = () => {
         </form>
         <div className="scan">
           <Link to="scan">
-            <button className="btn">Scan</button>{' '}
+            <button className="btn" title="You can scan your ISBN here and enter shelf number">
+              Scan
+            </button>{' '}
           </Link>
         </div>
       </div>
