@@ -9,6 +9,7 @@ import plusIcon from '../assets/icons/plus-circle.svg';
 import ListCardHead from '../components/employeeList/listHeader';
 import ListCard from '../components/employeeList/listCard';
 import LibHead from '../components/library/LibHead';
+import { useGetAllShelvesQuery } from '../api/library/api.library';
 const ShelfDetails = () => {
   const { data = [], isSuccess } = useGetEmployeeListQuery();
 
@@ -28,6 +29,12 @@ const ShelfDetails = () => {
       setEmployees(data);
     }
   }, [data, isSuccess]);
+
+  //getting the shelf data
+  const { data: ShelvesData } = useGetAllShelvesQuery();
+  useEffect(() => {
+    console.log(ShelvesData);
+  }, [ShelvesData]);
 
   // Effect to filter employees whenever the employees list or filter changes
   useEffect(() => {
@@ -58,7 +65,7 @@ const ShelfDetails = () => {
         <LibHead heads={['Shelf code', 'Shelf Location', 'Books Count', 'Action']} />
         <div className="employee-list">
           {filteredEmployees.map((employee, index) => (
-            <ListCard {...employee} />
+            <ListCard {...employee} key={index} />
           ))}
         </div>
       </div>

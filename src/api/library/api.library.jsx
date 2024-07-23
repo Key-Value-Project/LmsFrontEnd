@@ -26,6 +26,9 @@ const libraryApi = libraryApiWithTags.injectEndpoints({
       query: (body) => ({ url: `/books/return/`, method: 'POST', body }),
       invalidatesTags: ['Library'],
     }),
+    getAllShelves: builder.query({
+      query: () => ({ url: `/shelf`, method: 'GET' }),
+    }),
   }),
 });
 
@@ -36,4 +39,5 @@ export const {
   useGetSearchByTitleMutation,
   useBorrowBookMutation,
   useReturnBookMutation,
+  useGetAllShelvesQuery,
 } = libraryApi;
