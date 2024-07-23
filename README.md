@@ -6,11 +6,11 @@ This Employee Management System is designed to streamline the process of managin
 
 ## Features
 
--   **Employee Directory**: Easily search and manage employee profiles.
-    <!-- - **Attendance Tracking**: Monitor employee attendance records. -->
-    <!-- - **Performance Evaluation**: Evaluate and record employee performance over time. -->
-    <!-- - **Salary Management**: Keep track of employee salaries and payment schedules. -->
--   **Role-Based Access Control**: Secure access to information based on user roles.
+- **Employee Directory**: Easily search and manage employee profiles.
+  <!-- - **Attendance Tracking**: Monitor employee attendance records. -->
+  <!-- - **Performance Evaluation**: Evaluate and record employee performance over time. -->
+  <!-- - **Salary Management**: Keep track of employee salaries and payment schedules. -->
+- **Role-Based Access Control**: Secure access to information based on user roles.
 
 ## Getting Started
 
