@@ -6,7 +6,12 @@ import getRole from '../utils/TokenDecode';
 import { Link } from 'react-router-dom';
 import plusIcon from '../assets/icons/plus-circle.svg';
 
+import { useGetAllShelvesQuery } from '../api/library/api.library';
+
 const CreateBook = () => {
+  const { data } = useGetAllShelvesQuery();
+  const [shelf, setShelf] = useState('');
+
   let { id } = useParams();
   const [formState, setFormState] = useState({});
   const handleInputChange = (name, value) => {
@@ -52,15 +57,34 @@ const CreateBook = () => {
           <div className="excel"></div>
           <hr></hr>
           <div className="excel"></div>
-          <EmployeeForm
-            unique_id={'BOOK ID'}
-            fields={BookField}
-            handleSubmit={handleSubmit}
-            handleInputChange={handleInputChange}
-            resetContent={resetContent}
-            empID={id}
-            formState={formState}
-          />
+          <div className="books__cr" id="form-create-employee">
+            <div className="book__label form-items">
+              <label>ISBN</label>
+              <input type="text" placeholder="Enter the isbn" />
+            </div>
+            <div className="book__label form-items">
+              <label>Shelf Number</label>
+              <div className="drop-down">
+                <select value={shelf} onChange={(e) => setShelf(e.target.value)}>
+                  <option value="">Select Shelf</option>
+                  {data &&
+                    data.map((shelf, index) => (
+                      <option key={index} value={shelf.id}>
+                        {shelf.code}
+                      </option>
+                    ))}
+                </select>
+              </div>
+            </div>
+          </div>
+          <div className="form-button">
+            <button onClick={handleSubmit} type="submit">
+              Submit
+            </button>
+            <button onClick={resetContent} type="button">
+              Cancel
+            </button>
+          </div>
         </div>
       </div>
     </>
