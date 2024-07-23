@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
 header {
   position: fixed;
+  height: 100px;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 3;
-
   background-color: #ffffff;
   display: flex;
   align-items: center;
@@ -20,7 +20,7 @@ header {
 }
 
 .logout img {
-  width: 100px;
+  width: 120px;
 }
 
 header img {
@@ -72,6 +72,9 @@ nav {
     align-content: center;
 
     p {
+      font-family: 'Outfit', sans-serif;
+      font-optical-sizing: auto;
+      font-style: normal;
       color: black;
       text-decoration: none;
       align-self: center;
@@ -93,8 +96,8 @@ nav {
     }
 
     img {
-      height: 50%;
-      width: 50%;
+      height: 70%;
+      width: 70%;
     }
   }
 }
@@ -108,7 +111,6 @@ nav {
 }
 
 body {
-  font-family: 'Nunito', sans-serif;
   margin: 0;
   padding: 0;
 }

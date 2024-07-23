@@ -1,17 +1,15 @@
 import { useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 import EmployeeForm from '../components/createEmployee/employeeForm';
-import BookField from '../utils/BookField';
-import getRole from '../utils/TokenDecode';
-import { Link } from 'react-router-dom';
-import plusIcon from '../assets/icons/plus-circle.svg';
 import BookDetails from '../utils/BookDetails';
 import { useCreateBookDetailsMutation } from '../api/library/api.library';
+import { notifyError } from '../utils/Toast';
 
 const AddBook = () => {
   let { id } = useParams();
   const [formState, setFormState] = useState({});
-  const [creatBookDetails] = useCreateBookDetailsMutation();
+  const [creatBookDetails, { isSuccess, isError, data, error }] = useCreateBookDetailsMutation();
+
   const handleInputChange = (name, value) => {
     if (name === 'isbn') {
       value = parseInt(value);
@@ -22,6 +20,13 @@ const AddBook = () => {
     }));
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(formState);
+    const response = await creatBookDetails(formState);
+    console.log(response);
+  };
+
   useEffect(() => {
     console.log(formState);
   }, [formState]);
@@ -29,12 +34,18 @@ const AddBook = () => {
     navigate('/library');
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(formState);
-    const response = await creatBookDetails(formState);
-    console.log(response);
-  };
+  useEffect(() => {
+    if (isSuccess) {
+      notifySuccess('Book details added successfully');
+      navigate('/library');
+    }
+    if (isError && error.data && error.data.errors) {
+      error.data.errors.forEach((errorMessage) => {
+        notifyError(errorMessage);
+      });
+    }
+  }, [isSuccess, isError]);
+
   return (
     <>
       <div className="Dashboard">

@@ -1,35 +1,49 @@
 import '../assets/styles/Library/library.style.scss';
-import { useState, useEffect } from 'react';
 import LibCard from '../components/library/LibCard.jsx';
 import Searchicon from '../assets/icons/search-icon.svg';
 import LibHead from '../components/library/LibHead.jsx';
 import notify from '../assets/icons/notify.svg';
-import { Link } from 'react-router-dom';
-import { useGetUserDetailsQuery } from '../api/employee/api.employee.jsx';
-import { useGetBookDetailsListQuery, useGetSearchByTitleMutation } from '../api/library/api.library.jsx';
-import { useRef } from 'react';
+import message from '../assets/icons/message.svg';
 import getRole from '../utils/TokenDecode.jsx';
 import ShowModal from '../components/library/ShowModal.jsx';
-
+import plusIcon from '../assets/icons/plus-circle.svg';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useRef } from 'react';
 import { useDebounce } from 'use-debounce';
+import { useGetUserDetailsQuery } from '../api/employee/api.employee.jsx';
+import { useGetBookDetailsListQuery, useGetSearchByTitleMutation } from '../api/library/api.library.jsx';
 
 const LibSearch = () => {
   const [search, setSearch] = useState('');
-  const [debouncedSearch] = useDebounce(search, 500);
   const [books, setBooks] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [down, setDown] = useState(false);
+
+  const boxRef = useRef(null);
+
+  const [debouncedSearch] = useDebounce(search, 500);
+
+  const [getSearchByTitle] = useGetSearchByTitleMutation();
   const { data: userDetails } = useGetUserDetailsQuery();
   const { data: booksDetail, isSuccess } = useGetBookDetailsListQuery();
-
-  const [showModal, setShowModal] = useState(false);
 
   const toggalModal = () => {
     setShowModal(!showModal);
   };
 
-  console.log(showModal);
-
-  const [getSearchByTitle] = useGetSearchByTitleMutation();
-  // const [getSearchByTitle] =  useGetSearchByTitleQuery();
+  const toggleNotifi = () => {
+    setDown(!down);
+    if (boxRef.current) {
+      if (down) {
+        boxRef.current.style.height = '0px';
+        boxRef.current.style.opacity = 0;
+      } else {
+        boxRef.current.style.height = '510px';
+        boxRef.current.style.opacity = 1;
+      }
+    }
+  };
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -42,33 +56,18 @@ const LibSearch = () => {
     };
     fetchBooks();
   }, [debouncedSearch, isSuccess]);
-  const [down, setDown] = useState(false);
-  const boxRef = useRef(null);
-  const Role = userDetails?.role;
-  const [available, setavailable] = useState('');
 
-  var box = document.getElementById('box');
-
-  function toggleNotifi() {
-    setDown(!down);
-    if (boxRef.current) {
-      if (down) {
-        boxRef.current.style.height = '0px';
-        boxRef.current.style.opacity = 0;
-      } else {
-        boxRef.current.style.height = '510px';
-        boxRef.current.style.opacity = 1;
-      }
-    }
-  }
   return (
     <div className="main__body">
       <div className="main__head">
         <div className="button-class">
-          {getRole() === 'ADMIN' ? (
+          {getRole() === 'ADMIN' ? ( //Add Books button only available for ADMIN
             <div>
-              <Link to="create">
-                <button className="btn">Add Books</button>
+              <Link to="create" className="text__dec">
+                <div className="create-button-emp">
+                  <img src={plusIcon} alt="create button" />
+                  <span>Add Books</span>
+                </div>
               </Link>
             </div>
           ) : (
@@ -87,6 +86,27 @@ const LibSearch = () => {
             }}
           >
             <h1>Notifications</h1>
+            <div className="notify-content">
+              <img src={message} />
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam debitis molestias vitae cumque nesciunt. Quos consequuntur aliquam
+                inventore quae mollitia quo autem ullam soluta totam, voluptate voluptatem, similique placeat voluptatibus.
+              </p>
+            </div>
+            <div className="notify-content">
+              <img src={message} />
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam debitis molestias vitae cumque nesciunt. Quos consequuntur aliquam
+                inventore quae mollitia quo autem ullam soluta totam, voluptate voluptatem, similique placeat voluptatibus.
+              </p>
+            </div>
+            <div className="notify-content">
+              <img src={message} />
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam debitis molestias vitae cumque nesciunt. Quos consequuntur aliquam
+                inventore quae mollitia quo autem ullam soluta totam, voluptate voluptatem, similique placeat voluptatibus.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -108,8 +128,8 @@ const LibSearch = () => {
         </div>
       </div>
       <div className="book-list">
-        <LibHead heads={['ISBN', 'Title', 'Author', 'Availability']} Role={Role} />
-        <div className="employee-list">{books && books.map((book, index) => <LibCard key={index} {...book} Role={Role} />)}</div>
+        <LibHead heads={['ISBN', 'Title', 'Author', 'Availability']} />
+        <div className="employee-list">{books && books.map((book, index) => <LibCard key={index} {...book} />)}</div>
       </div>
     </div>
   );

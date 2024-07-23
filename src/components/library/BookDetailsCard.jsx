@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Availability } from './Availability';
 import SubscribePopUp from '../employeeList/SubscribePopUp';
 import LibHead from './LibHead';
+import { notifyError } from '../../utils/Toast';
 
 import LibCard from './LibCard';
 import { useBorrowBookMutation } from '../../api/library/api.library';
@@ -11,8 +12,7 @@ const BookDetailsCard = ({ emp = {}, Role }) => {
   const [bookImage, setBookImage] = useState('');
   let shelves = [];
   const [deleteDialog, setDeleteDialog] = useState(false);
-  const [borrowBook] = useBorrowBookMutation();
-
+  const [borrowBook, { data, error, isLoading, isError, isSuccess }] = useBorrowBookMutation();
   const handleDeleteClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -27,32 +27,25 @@ const BookDetailsCard = ({ emp = {}, Role }) => {
   const handleClose = () => {
     setDeleteDialog(false);
   };
-
+  useEffect(() => {
+    if (isSuccess !== undefined && isSuccess) {
+      notifySuccess('Book taken successfully');
+      navigate('/library');
+    }
+    if (isError !== undefined && isError && error.data && error.data.errors) {
+      error.data.errors.forEach((errorMessage) => {
+        console.log(errorMessage);
+        notifyError(errorMessage);
+      });
+    }
+  }, [isSuccess, isError]);
   if (emp) {
     shelves = emp.books.map((book) => book.shelf);
     console.log(shelves);
   }
 
-  console.log(emp.status);
-  const defaultImage = 'https://via.placeholder.com/150';
-
-  useEffect(() => {
-    const fetchBookImage = async () => {
-      try {
-        const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=intitle:${emp.title}`);
-        const data = await response.json();
-        const bookInfo = data.items[0].volumeInfo;
-        setBookImage(bookInfo.imageLinks.thumbnail);
-      } catch (error) {
-        setBookImage(defaultImage);
-      }
-    };
-    fetchBookImage();
-  }, [emp.title]);
-
   return (
     <>
-      <img src={bookImage} alt={emp.title} />
       <div className="details-component" data-testid="test-details-card">
         <div className="details-card-item">
           <div className="details-card-item-label">ISBN</div>
