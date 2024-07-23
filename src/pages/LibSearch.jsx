@@ -59,7 +59,8 @@ const LibSearch = () => {
                         <button className="btn">Borrowed Books</button>
                     </Link>
                     <Link to="shelf">
-                        <button className="btn">Shelf</button>
+                        <button className="btn">View Shelf</button>
+
                     </Link>
 
                     {getRole() === 'ADMIN' ? (

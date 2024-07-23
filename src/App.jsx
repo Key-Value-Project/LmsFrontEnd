@@ -17,6 +17,8 @@ import BookEdit from './pages/BookEdit.jsx';
 import CreateBook from './pages/CreateBook.jsx';
 import CreateShelf from './pages/CreateShelf.jsx';
 import Scan from './components/library/Scan.jsx';
+import ShelfDetails from './pages/ShelfDetails.jsx';
+
 
 const App = () => {
     const router = createBrowserRouter([
@@ -45,7 +47,9 @@ const App = () => {
                 { path: 'borrow', element: <BorrowDetails /> },
                 { path: 'edit/:id', element: <BookEdit /> },
                 { path: 'create', element: <CreateBook /> },
-                { path: 'shelf', element: <CreateShelf /> },
+                { path: 'shelf', element: <ShelfDetails /> },
+                { path: 'createshelf', element: <CreateShelf /> },
+
                 { path: 'scan', element: <Scan /> },
             ],
         },
