@@ -60,7 +60,7 @@ const LibCard = (details) => {
             <></>
           )}
 
-          {getRole() === 'ADMIN' ? (
+          {getRole() === 'ADMIN' && details.Role === 'shelf' ? (
             <div className="item Action">
               <img src={del} alt="delete button" onClick={handleDeleteClick} />
 

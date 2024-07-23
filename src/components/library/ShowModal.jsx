@@ -1,19 +1,16 @@
 import Scan from './Scan';
-const ShowModal = ({ onclose }) => {
+import '../../assets/styles/Library/library.style.scss';
+const ShowModal = ({ onclose, isbn }) => {
   return (
     <>
       <div className="modal">
         <div className="modal-content">
-          <Scan />
-          <button
-            className="btn"
-            onClick={(e) => {
-              e.preventDefault();
-              onclose();
-            }}
-          >
-            Close
-          </button>
+          <div className="modal-header">
+            <span className="close" onClick={onclose}>
+              x
+            </span>
+          </div>
+          <Scan isbnv={isbn} />
         </div>
       </div>
     </>
