@@ -1,55 +1,55 @@
-import apiWithTag from "../../services/employee.api";
+import apiWithTag from '../../services/employee.api';
 
 const employeeApi = apiWithTag.injectEndpoints({
     endpoints: (builder) => ({
         getEmployeeList: builder.query({
-            query: () => "/employee",
-            providesTags: ["Employee_List"],
+            query: () => '/employee',
+            providesTags: ['Employee_List'],
         }),
         getEmployeeDetails: builder.query({
             query: (id) => `/employee/${id}`,
-            providesTags: ["Employee_Details"],
+            providesTags: ['Employee_Details'],
         }),
         addEmployee: builder.mutation({
             query: (payload) => ({
-                url: "/employee",
-                method: "POST",
+                url: '/employee',
+                method: 'POST',
                 body: payload,
             }),
-            invalidatesTags: ["Employee_List"],
+            invalidatesTags: ['Employee_List'],
         }),
         updateEmployee: builder.mutation({
             query: (payload) => ({
                 url: `/employee/${payload.id}`,
-                method: "PUT",
+                method: 'PUT',
                 body: payload,
             }),
         }),
         updateEmployeeRelation: builder.mutation({
             query: (payload) => ({
                 url: `/employee/${payload.id}`,
-                method: "PATCH",
+                method: 'PATCH',
                 body: payload,
             }),
-            invalidatesTags: ["Employee_List"],
+            invalidatesTags: ['Employee_List'],
         }),
         updatePassword: builder.mutation({
             query: (payload) => ({
-                url: "/employee/password/",
-                method: "PATCH",
+                url: '/employee/password/',
+                method: 'PATCH',
                 body: payload,
             }),
         }),
         deleteEmployee: builder.mutation({
             query: (id) => ({
                 url: `/employee/${id}`,
-                method: "DELETE",
+                method: 'DELETE',
             }),
-            invalidatesTags: ["Employee_List"],
+            invalidatesTags: ['Employee_List'],
         }),
         getUserDetails: builder.query({
             query: (id) => `/employee/me`,
-            providesTags: ["User_Details"],
+            providesTags: ['User_Details'],
         }),
     }),
 });

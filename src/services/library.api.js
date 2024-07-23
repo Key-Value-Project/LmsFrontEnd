@@ -1,13 +1,13 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const libraryBaseApi = createApi({
-    reducerPath: "libraryApi",
+    reducerPath: 'libraryApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: "http://localhost:3000",
+        baseUrl: 'http://localhost:3000',
         prepareHeaders: (headers) => {
-            const token = localStorage.getItem("token");
+            const token = localStorage.getItem('token');
             if (token) {
-                headers.set("Authorization", `Bearer ${token}`);
+                headers.set('Authorization', `Bearer ${token}`);
             }
             return headers;
         },
@@ -15,6 +15,6 @@ export const libraryBaseApi = createApi({
     endpoints: () => ({}),
 });
 const libraryApiWithTags = libraryBaseApi.enhanceEndpoints({
-    addTagTypes: ["Library"],
+    addTagTypes: ['Library'],
 });
 export default libraryApiWithTags;

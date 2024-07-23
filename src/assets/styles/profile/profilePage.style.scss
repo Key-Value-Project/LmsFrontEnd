@@ -1,70 +1,70 @@
 .password-box {
-	width: 100%;
-	min-height: 150px;
-	height: max-content;
-	border-radius: 8px;
-	background-color: #ffffff;
-	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-	padding: 30px;
-	margin-top: 50px;
+    width: 100%;
+    min-height: 150px;
+    height: max-content;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    padding: 30px;
+    margin-top: 50px;
 }
 
 .password-form {
-	display: flex;
-	flex-direction: column;
-	gap: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
 .password-form-elements {
-	display: flex;
-	flex-direction: row;
-	gap: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
     justify-content: space-evenly;
-	flex-wrap: wrap;
+    flex-wrap: wrap;
 
-	div {
-		width: 28%;
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
+    div {
+        width: 28%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
 
-		label {
-			font-size: 16px;
-			font-weight: 500;
-			color: #000000;
-			display: block;
-			// margin-bottom: 5px;
-		}
+        label {
+            font-size: 16px;
+            font-weight: 500;
+            color: #000000;
+            display: block;
+            // margin-bottom: 5px;
+        }
 
-		input {
-			width: calc(100% - 20px);
-			padding: 10px;
-			margin-bottom: 10px;
-			border-radius: 5px;
-			border: 1px solid #010101;
-			outline: none;
-			background-color: #ffffff;
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #010101;
+            outline: none;
+            background-color: #ffffff;
 
             &:focus {
                 border: 1px solid #03aeee;
             }
-		}
-	}
+        }
+    }
 
-	button {
+    button {
         align-self: end;
         height: 40px;
         margin-bottom: 10px;
-		font-size: large;
-		background-color: #03aeee;
-		color: #ffffff;
-		border: none;
-		border-radius: 5px;
-		cursor: pointer;
-		padding: 0px 30px;
+        font-size: large;
+        background-color: #03aeee;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 0px 30px;
 
         &:hover {
             background-color: #0077cc;
         }
-	}
+    }
 }
