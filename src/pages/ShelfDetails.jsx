@@ -8,6 +8,7 @@ import FilterBar from '../components/employeeList/filterBar';
 import plusIcon from '../assets/icons/plus-circle.svg';
 import ListCardHead from '../components/employeeList/listHeader';
 import ListCard from '../components/employeeList/listCard';
+import LibHead from '../components/library/LibHead';
 const ShelfDetails = () => {
   const { data = [], isSuccess } = useGetEmployeeListQuery();
 
@@ -42,7 +43,6 @@ const ShelfDetails = () => {
         <div className="top-header-employee-list">
           <h1>Shelf List</h1>
           <div className="top-header-components">
-            <FilterBar />
             {getRole() === 'ADMIN' ? (
               <Link to="/library/createshelf" style={{ textDecoration: 'none', color: 'black' }}>
                 <div className="create-button-emp">
@@ -55,7 +55,7 @@ const ShelfDetails = () => {
             )}
           </div>
         </div>
-        <ListCardHead />
+        <LibHead  heads={['']}/>
         <div className="employee-list">
           {filteredEmployees.map((employee, index) => (
             <ListCard key={index} {...employee} />
