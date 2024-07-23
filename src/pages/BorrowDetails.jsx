@@ -4,12 +4,20 @@ import BorrowCard from '../components/library/BorrowCard';
 import BorrowCardHead from '../components/library/BorrowCardHead';
 import { useGetBorrowHistoryQuery } from '../api/library/api.library';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import ShowModal from '../components/library/ShowModal';
 
 const BorrowDetails = () => {
   const { data: borrowedData } = useGetBorrowHistoryQuery();
   useEffect(() => {
     console.log(borrowedData);
   }, [borrowedData]);
+
+  const [showModal, setShowModal] = useState(false);
+
+  const toggalModal = () => {
+    setShowModal(!showModal);
+  };
 
   return (
     <>
@@ -18,14 +26,13 @@ const BorrowDetails = () => {
           <h1>Borrowed Books</h1>
           <div className="top-header-components">
             <div className="scan">
-              <Link to="/library/scan">
-                <button className="btn" title="return now by scanning isbn and enter shelf no.">
-                  Scan to return
-                </button>
-              </Link>
+              <button className="btn" title="return now by scanning isbn and enter shelf no." onClick={toggalModal}>
+                Scan to return
+              </button>
             </div>
           </div>
         </div>
+        {showModal && <ShowModal onclose={toggalModal} />}
 
         <div className="book-list">
           <BorrowCardHead />

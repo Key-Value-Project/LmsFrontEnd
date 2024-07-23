@@ -65,6 +65,8 @@ nav {
     margin-left: 20px;
     padding: 8px 0px;
     margin-top: 20px;
+    margin-right: 20px;
+    border-radius: 10px;
 
     border-right-color: transparent;
     align-content: center;
@@ -132,4 +134,27 @@ aside ul {
   min-height: 580px;
   flex: 1;
   padding: 20px;
+}
+
+.scan__input {
+  select {
+    border: 1px solid transparent;
+    height: 40px;
+    border-radius: 10px;
+    color: rgb(99, 98, 98);
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  select:focus {
+    outline: none;
+  }
+}
+
+.modal__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

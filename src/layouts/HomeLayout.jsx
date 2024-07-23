@@ -29,6 +29,7 @@ const HomeLayout = () => {
         <a href="https://www.keyvalue.systems/" target="_blank" rel="noopener noreferrer">
           <img src={Logo} alt="Key value software systems logo" />
         </a>
+
         <div className="logout" onClick={logout}>
           <img src={Logout} alt="Logout" />
         </div>
