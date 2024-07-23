@@ -5,8 +5,10 @@ import LibHead from './LibHead';
 
 import LibCard from './LibCard';
 import { useBorrowBookMutation } from '../../api/library/api.library';
+import { useEffect } from 'react';
 
 const BookDetailsCard = ({ emp = {}, Role }) => {
+  const [bookImage, setBookImage] = useState('');
   let shelves = [];
   const [deleteDialog, setDeleteDialog] = useState(false);
   const [borrowBook] = useBorrowBookMutation();
@@ -32,8 +34,19 @@ const BookDetailsCard = ({ emp = {}, Role }) => {
   }
 
   console.log(emp.status);
+
+  useEffect(() => {
+    const fetchBookImage = async () => {
+      const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=intitle:${emp.title}`);
+      const data = await response.json();
+      const bookInfo = data.items[0].volumeInfo;
+      setBookImage(bookInfo.imageLinks.thumbnail);
+    };
+    fetchBookImage();
+  }, [emp.title]);
   return (
     <>
+      <img src={bookImage} alt={emp.title} />
       <div className="details-component" data-testid="test-details-card">
         <div className="details-card-item">
           <div className="details-card-item-label">ISBN</div>
