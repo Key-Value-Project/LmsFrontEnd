@@ -8,15 +8,15 @@ import libraryApiWithTags, { libraryBaseApi } from '../services/library.api';
 // import { employeeApi } from "../services/employee.api";
 
 const store = configureStore({
-  reducer: {
-    // employees: employeeReducer,
-    [apiWithTag.reducerPath]: apiWithTag.reducer,
-    //library reducer
-    [libraryApiWithTags.reducerPath]: libraryApiWithTags.reducer,
-    // cache reducer
-    filter: filterSlice,
-  },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiWithTag.middleware, libraryApiWithTags.middleware),
+    reducer: {
+        // employees: employeeReducer,
+        [apiWithTag.reducerPath]: apiWithTag.reducer,
+        //library reducer
+        [libraryApiWithTags.reducerPath]: libraryApiWithTags.reducer,
+        // cache reducer
+        filter: filterSlice,
+    },
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiWithTag.middleware, libraryApiWithTags.middleware),
 });
 
 setupListeners(store.dispatch);
