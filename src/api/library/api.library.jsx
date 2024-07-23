@@ -22,6 +22,10 @@ const libraryApi = libraryApiWithTags.injectEndpoints({
       query: (body) => ({ url: `/books/borrow/`, method: 'POST', body }),
       invalidatesTags: ['Library'],
     }),
+    returnBook: builder.mutation({
+      query: (body) => ({ url: `/books/return/`, method: 'POST', body }),
+      invalidatesTags: ['Library'],
+    }),
   }),
 });
 
@@ -31,4 +35,5 @@ export const {
   useGetBorrowHistoryQuery,
   useGetSearchByTitleMutation,
   useBorrowBookMutation,
+  useReturnBookMutation,
 } = libraryApi;
