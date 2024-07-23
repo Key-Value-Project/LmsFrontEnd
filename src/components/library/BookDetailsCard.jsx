@@ -34,16 +34,22 @@ const BookDetailsCard = ({ emp = {}, Role }) => {
   }
 
   console.log(emp.status);
+  const defaultImage = 'https://via.placeholder.com/150';
 
   useEffect(() => {
     const fetchBookImage = async () => {
-      const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=intitle:${emp.title}`);
-      const data = await response.json();
-      const bookInfo = data.items[0].volumeInfo;
-      setBookImage(bookInfo.imageLinks.thumbnail);
+      try {
+        const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=intitle:${emp.title}`);
+        const data = await response.json();
+        const bookInfo = data.items[0].volumeInfo;
+        setBookImage(bookInfo.imageLinks.thumbnail);
+      } catch (error) {
+        setBookImage(defaultImage);
+      }
     };
     fetchBookImage();
   }, [emp.title]);
+
   return (
     <>
       <img src={bookImage} alt={emp.title} />

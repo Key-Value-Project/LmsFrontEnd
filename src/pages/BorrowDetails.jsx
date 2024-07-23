@@ -16,7 +16,15 @@ const BorrowDetails = () => {
       <div className="Dashboard">
         <div className="top-header-employee-details">
           <h1>Borrowed Books</h1>
-          <div className="top-header-components"></div>
+          <div className="top-header-components">
+            <div className="scan">
+              <Link to="/library/scan">
+                <button className="btn" title="return now by scanning isbn and enter shelf no.">
+                  Scan to return
+                </button>
+              </Link>
+            </div>
+          </div>
         </div>
 
         <div className="book-list">

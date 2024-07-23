@@ -55,10 +55,10 @@ const ShelfDetails = () => {
             )}
           </div>
         </div>
-        <LibHead  heads={['']}/>
+        <LibHead heads={['Shelf code', 'Shelf Location', 'Books Count', 'Action']} />
         <div className="employee-list">
           {filteredEmployees.map((employee, index) => (
-            <ListCard key={index} {...employee} />
+            <ListCard {...employee} />
           ))}
         </div>
       </div>
