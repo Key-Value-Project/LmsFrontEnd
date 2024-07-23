@@ -4,6 +4,7 @@ import DeletePopUp from '../../components/employeeList/DeletePopUp.jsx';
 import { Link } from 'react-router-dom';
 import { Availability } from './Availability.jsx';
 import getRole from '../../utils/TokenDecode.jsx';
+import edt from '../../assets/icons/edit.svg';
 const LibCard = (details) => {
   const [deleteDialog, setDeleteDialog] = useState(false);
 
@@ -54,6 +55,18 @@ const LibCard = (details) => {
               >
                 Take Book
               </button>
+            </div>
+          ) : (
+            <></>
+          )}
+
+          {getRole() === 'ADMIN' ? (
+            <div className="item Action">
+              <img src={del} alt="delete button" onClick={handleDeleteClick} />
+
+              <Link to={`edit/${details.isbn}`}>
+                <img src={edt} alt="edit button" />
+              </Link>
             </div>
           ) : (
             <></>

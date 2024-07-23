@@ -5,8 +5,9 @@ import BookField from '../utils/BookField';
 import getRole from '../utils/TokenDecode';
 import { Link } from 'react-router-dom';
 import plusIcon from '../assets/icons/plus-circle.svg';
+import BookDetails from '../utils/BookDetails';
 
-const CreateBook = () => {
+const AddBook = () => {
   let { id } = useParams();
   const [formState, setFormState] = useState({});
   const handleInputChange = (name, value) => {
@@ -32,19 +33,8 @@ const CreateBook = () => {
     <>
       <div className="Dashboard">
         <div className="top-header-create-employee">
-          <h1>Create Book</h1>
-          <div className="top-header-components addbook">
-            {getRole() === 'ADMIN' ? (
-              <Link to="/library/addbook" style={{ textDecoration: 'none', color: 'black' }}>
-                <div className="create-button-emp">
-                  <img src={plusIcon} alt="create button" />
-                  <span>Add new Book</span>
-                </div>
-              </Link>
-            ) : (
-              <></>
-            )}
-          </div>
+          <h1>Add Book Details</h1>
+          <div className="top-header-components addbook"></div>
         </div>
 
         <div className="component-create-employee">
@@ -54,7 +44,7 @@ const CreateBook = () => {
           <div className="excel"></div>
           <EmployeeForm
             unique_id={'BOOK ID'}
-            fields={BookField}
+            fields={BookDetails}
             handleSubmit={handleSubmit}
             handleInputChange={handleInputChange}
             resetContent={resetContent}
@@ -67,4 +57,4 @@ const CreateBook = () => {
   );
 };
 
-export default CreateBook;
+export default AddBook;

@@ -12,27 +12,11 @@ const BookField = [
   },
   {
     type: 'text',
-    id: 'title',
-    name: 'title',
-    required: 'Title',
-    text: 'Book Title',
+    id: 'shelfCode',
+    name: 'shelfCode',
+    required: 'shelfCode',
+    text: 'Shelf Code',
     Component: TextField,
-  },
-  {
-    type: 'text',
-    id: 'author',
-    name: 'author',
-    required: 'Author',
-    text: 'Author',
-    Component: TextField,
-  },
-  {
-    type: 'text',
-    id: 'description',
-    name: 'description',
-    required: 'Description',
-    text: 'Description',
-    Component: TextArea,
   },
 ];
 

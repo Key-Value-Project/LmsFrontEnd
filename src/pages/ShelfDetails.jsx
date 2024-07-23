@@ -10,6 +10,7 @@ import ListCardHead from '../components/employeeList/listHeader';
 import ListCard from '../components/employeeList/listCard';
 import LibHead from '../components/library/LibHead';
 import { useGetAllShelvesQuery } from '../api/library/api.library';
+import LibCard from '../components/library/LibCard';
 const ShelfDetails = () => {
   const { data = [], isSuccess } = useGetEmployeeListQuery();
 
@@ -62,11 +63,9 @@ const ShelfDetails = () => {
             )}
           </div>
         </div>
-        <LibHead heads={['Shelf code', 'Shelf Location', 'Books Count', 'Action']} />
+        <LibHead heads={['Shelf code', 'Shelf Location', 'Books Count', '', 'Action']} />
         <div className="employee-list">
-          {filteredEmployees.map((employee, index) => (
-            <ListCard {...employee} key={index} />
-          ))}
+          {ShelvesData && ShelvesData.map((shelf, index) => <LibCard key={index} shelf_id={shelf.id} isbn={shelf.code} title={shelf.location} />)}
         </div>
       </div>
     </>
