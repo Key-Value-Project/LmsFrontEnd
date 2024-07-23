@@ -296,3 +296,17 @@ hr {
 .modal-content button {
   margin-top: 20px;
 }
+
+.books__cr {
+  display: flex;
+  flex-direction: row;
+}
+
+.book__label {
+  margin: 10px;
+}
+
+.book__label label {
+  display: block;
+  margin-bottom: 5px;
+}
