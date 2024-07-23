@@ -3,10 +3,12 @@ import Logo from '../assets/images/kv-logo.png';
 import Libicon from '../assets/icons/lib-icon.svg';
 import Logout from '../assets/icons/logout.svg';
 import icon1 from '../assets/icons/icon.svg';
+import Profile from '../assets/icons/profile.svg';
+import Return from '../assets/icons/return.svg';
+import Shelf from '../assets/icons/shelf.svg';
 import { useNavigate, Link, Outlet } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import getRole from '../utils/TokenDecode';
 
 const HomeLayout = () => {
   const location = useLocation(); // React Hook
@@ -16,6 +18,7 @@ const HomeLayout = () => {
     localStorage.removeItem('token');
     navigate('/');
   };
+
   useEffect(() => {
     const session_token = localStorage.getItem('token');
     if (!session_token) {
@@ -44,7 +47,7 @@ const HomeLayout = () => {
                   <span>
                     <img src={icon1} alt="Employee List icon" />
                   </span>
-                  <p>Employee List</p>
+                  <p>Employee</p>
                 </div>
               </Link>
 
@@ -56,22 +59,23 @@ const HomeLayout = () => {
                   <p>Library</p>
                 </div>
               </Link>
+
               {location.pathname.includes('library') ? (
                 <div className="aside__opt">
                   <Link to="borrow">
                     <div className={location.pathname.includes('borrow') ? 'nav-item active' : 'nav-item'}>
                       <span>
-                        <img src={icon1} alt="Return Books icon" />
+                        <img src={Return} alt="Return Books icon" />
                       </span>
-                      <p>Return Books</p>
+                      <p>Return</p>
                     </div>
                   </Link>
                   <Link to="shelf">
                     <div className={location.pathname.includes('shelf') ? 'nav-item active' : 'nav-item'}>
                       <span>
-                        <img src={icon1} alt="View Shelf icon" />
+                        <img src={Shelf} alt="View Shelf icon" />
                       </span>
-                      <p>View Shelf</p>
+                      <p>Shelfmap</p>
                     </div>
                   </Link>
                 </div>
@@ -84,7 +88,7 @@ const HomeLayout = () => {
               <Link to="/employee/profile">
                 <div className={location.pathname.includes('profile') ? 'nav-item active' : 'nav-item'}>
                   <span>
-                    <img src={icon1} alt="Profile icon" />
+                    <img src={Profile} alt="Profile icon" />
                   </span>
                   <p>Profile</p>
                 </div>

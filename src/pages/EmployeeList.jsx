@@ -46,7 +46,7 @@ const EmployeeList = () => {
         <div className="top-header-components">
           <FilterBar />
           {getRole() === 'ADMIN' ? (
-            <Link to="create" style={{ textDecoration: 'none', color: 'black' }}>
+            <Link to="create" className="text__dec">
               <div className="create-button-emp">
                 <img src={plusIcon} alt="create button" />
                 <span>Create Employee</span>

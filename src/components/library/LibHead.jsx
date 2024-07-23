@@ -1,4 +1,4 @@
-const LibHead = ({ heads, Role }) => {
+const LibHead = ({ heads }) => {
   return (
     <div className="employee-list-head list-book">
       {heads.map((head, index) => (

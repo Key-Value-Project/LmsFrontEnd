@@ -195,6 +195,8 @@ hr {
   }
 
   .notify-body {
+    overflow-y: auto;
+    max-height: 510px;
     padding: 10px;
     width: 300px;
     background-color: white;
@@ -238,22 +240,26 @@ hr {
   border-color: #333 transparent transparent transparent;
 }
 
-.aside__opt {
-  padding-left: 50px;
-  div {
-    span {
-      width: 20px;
-      height: 20px;
-    }
-  }
+.text__dec {
+  text-decoration: none;
+  color: black;
+}
 
-  .nav-item {
-    height: 40px;
+.notify-content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ccc;
 
-    p {
-      font-size: 14px;
-    }
+  img {
+    width: 20%;
   }
+}
+
+.notify-content:last-child {
+  border-bottom: none;
 }
 
 .modal-header {
@@ -309,4 +315,8 @@ hr {
 .book__label label {
   display: block;
   margin-bottom: 5px;
+}
+
+.addbook {
+  margin-right: 100px;
 }
