@@ -1,11 +1,13 @@
 const LibHead = ({ heads, Role }) => {
-  return (
-    <div className="employee-list-head list-book">
-      {heads.map((head) => (
-        <div className={"item"}>{head}</div>
-      ))}
-    </div>
-  );
+    return (
+        <div className="employee-list-head list-book">
+            {heads.map((head, index) => (
+                <div className={"item"} key={index}>
+                    {head}
+                </div>
+            ))}
+        </div>
+    );
 };
 
 export default LibHead;
