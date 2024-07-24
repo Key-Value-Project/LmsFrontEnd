@@ -31,11 +31,11 @@ const ShelfDetails = () => {
             )}
           </div>
         </div>
-        <LibHead heads={['Shelf code', 'Shelf Location', 'Books Count', '', '', 'Action']} />
+        <LibHead heads={['Shelf code', 'Shelf Location', 'Books Count','']} />
         <div className="employee-list">
           {ShelvesData &&
             ShelvesData.map((shelf, index) => (
-              <LibCard key={index} shelf_id={shelf.id} isbn={shelf.id} author={shelf.code} title={shelf.location} Role="shelf" />
+              <LibCard key={index} shelf_id={shelf.id} isbn={shelf.code} author={shelf.location} title={null} Role="shelf" />
             ))}
         </div>
       </div>

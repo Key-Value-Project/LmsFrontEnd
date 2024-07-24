@@ -119,7 +119,7 @@ const BookDetailsCard = ({ emp = {} }) => {
       <div className="rev_cont" id="rev">
         <div className="book__det">
           <h2 className="review__head">Reviews</h2>
-          <div className="notify-content">
+          <div className="review-content">
             <div className="each_rev">
               <div>John</div>
 
@@ -131,7 +131,7 @@ const BookDetailsCard = ({ emp = {} }) => {
               inventore quae mollitia quo autem ullam soluta totam, voluptate voluptatem, similique placeat voluptatibus.
             </div>
           </div>
-          <div className="notify-content">
+          <div className="review-content">
             <div className="each_rev">
               <div>John</div>
 
@@ -143,7 +143,7 @@ const BookDetailsCard = ({ emp = {} }) => {
               inventore quae mollitia quo autem ullam soluta totam, voluptate voluptatem, similique placeat voluptatibus.
             </div>
           </div>
-          <div className="notify-content">
+          <div className="review-content">
             <div className="each_rev">
               <div>John</div>
 
@@ -155,7 +155,7 @@ const BookDetailsCard = ({ emp = {} }) => {
               inventore quae mollitia quo autem ullam soluta totam, voluptate voluptatem, similique placeat voluptatibus.
             </div>
           </div>
-          <div className="notify-content">
+          <div className="review-content">
             <div className="each_rev">
               <div>John</div>
 

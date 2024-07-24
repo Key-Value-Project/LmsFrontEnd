@@ -82,7 +82,7 @@ const LibCard = (details) => {
             <div className="item Action">
               <img src={del} alt="delete button" onClick={handleDeleteClick} />
 
-              <Link to={`edit/${details.isbn}`}>
+              <Link to={`edit/${details.shelf_id}`}>
                 <img src={edt} alt="edit button" />
               </Link>
             </div>
