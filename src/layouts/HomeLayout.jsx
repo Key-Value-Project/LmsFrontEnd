@@ -11,11 +11,28 @@ import { useNavigate, Link, Outlet } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
+import { useGetAvailableBookNotificationsQuery, useGetAvailableBookReturnNotificationsQuery } from '../api/library/api.library';
+import { useDispatch, useSelector } from 'react-redux';
+import { addNotification } from '../store/notificationReducer';
 
 const HomeLayout = () => {
   const location = useLocation(); // React Hook
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const notifications = useSelector((state) => state.notification);
+  const { data: AvailableBookNotifications, isSuccess } = useGetAvailableBookNotificationsQuery(undefined, { pollingInterval: 5000 });
+  const { data: AvailableBookReturnNotifications } = useGetAvailableBookReturnNotificationsQuery(undefined, { pollingInterval: 2000 });
 
+  useEffect(() => {
+    if (AvailableBookNotifications && AvailableBookNotifications.message) {
+      dispatch(addNotification(AvailableBookNotifications.message));
+    }
+  }, [AvailableBookNotifications, dispatch]);
+  useEffect(() => {
+    if (AvailableBookReturnNotifications && AvailableBookReturnNotifications.message) {
+      dispatch(addNotification(AvailableBookReturnNotifications.message));
+    }
+  }, [AvailableBookReturnNotifications, dispatch]);
   const logout = () => {
     localStorage.removeItem('token');
     navigate('/');

@@ -57,6 +57,12 @@ const libraryApi = libraryApiWithTags.injectEndpoints({
     checkSubscription: builder.query({
       query: (body) => ({ url: `/notify/issubscribed`, method: 'POST', body }),
     }),
+    getAvailableBookNotifications: builder.query({
+      query: () => ({ url: `/notify/`, method: 'GET' }),
+    }),
+    getAvailableBookReturnNotifications: builder.query({
+      query: () => ({ url: `/notify/messages`, method: 'GET' }),
+    }),
   }),
 });
 
@@ -76,4 +82,6 @@ export const {
   useGetAllShelfBooksQuery,
   useSetSubscribeMutation,
   useCheckSubscriptionQuery,
+  useGetAvailableBookNotificationsQuery,
+  useGetAvailableBookReturnNotificationsQuery,
 } = libraryApi;

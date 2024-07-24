@@ -19,12 +19,12 @@ const BookDetailsCard = ({ emp = {} }) => {
   const [subDialog, setSubDialog] = useState(false);
   const [borrowBook, { data, error, isLoading, isError, isSuccess }] = useBorrowBookMutation();
   const [setSubscribe] = useSetSubscribeMutation();
-  const { data: checkSubscription, isError: isSub } = useCheckSubscriptionQuery({ isbn: emp.isbn });
+  const { data: checkSubscription, isSuccess: isSub } = useCheckSubscriptionQuery({ isbn: emp.isbn });
 
   useEffect(() => {
-    console.log(checkSubscription);
+    console.log('check', checkSubscription);
     console.log(isSub);
-  }, [checkSubscription]);
+  }, [isSub]);
 
   const handleSubClick = (e) => {
     e.preventDefault();
@@ -87,12 +87,12 @@ const BookDetailsCard = ({ emp = {} }) => {
             </div>
             {emp.status === 'Available' ? (
               <> </>
-            ) : isSub ? (
+            ) : isSub && checkSubscription === 'subscribed' ? (
+              <p>Subscribed</p>
+            ) : (
               <div className="book__notify">
                 <img src={notify} alt="notify" onClick={handleSubClick} />
               </div>
-            ) : (
-              <p>Subscribed</p>
             )}
           </div>
         </div>
