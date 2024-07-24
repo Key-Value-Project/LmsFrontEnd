@@ -62,6 +62,7 @@ const Insights = () => {
           <div className="card-content">
             <BarChart data={PopularGenres} x="genre_name" y="genre_count" />
           </div>
+
         </div>
       </div>
     </div>
