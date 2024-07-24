@@ -111,7 +111,12 @@ const LibCard = (details) => {
           )}
         </div>
       </Link>
-      <DeletePopUp open={deleteDialog} handleClose={handleClose} handleDelete={handleDelete} />
+      <DeletePopUp
+        open={deleteDialog}
+        handleClose={handleClose}
+        handleDelete={handleDelete}
+        msg="This action will delete the book from the corresponding shelf and is irreversible."
+      />
     </>
   );
 };

@@ -1,12 +1,11 @@
-import CreateEmployee from './pages/CreateEmployee.jsx';
+import CreateEmployee from './pages/employee pages/CreateEmployee.jsx';
 import NotFound from './pages/NotFound.jsx';
 import HomeLayout from './layouts/HomeLayout.jsx';
-import EmployeeList from './pages/EmployeeList.jsx';
 import Login from './pages/Login.jsx';
-import EditEmployee from './pages/EditEmployee.jsx';
-import DetailsEmployee from './pages/DetailsEmployee.jsx';
+import EditEmployee from './pages/employee pages/EditEmployee.jsx';
+import DetailsEmployee from './pages/employee pages/DetailsEmployee.jsx';
 import store from './store/store.js';
-import Profile from './pages/Profile.jsx';
+import Profile from './pages/employee pages/Profile.jsx';
 import LibSearch from './pages/LibSearch.jsx';
 import LibDetails from './pages/LibDetails.jsx';
 import BorrowDetails from './pages/BorrowDetails.jsx';
@@ -21,6 +20,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import EditShelf from './pages/EditShelf.jsx';
+import EmployeeList from './pages/employee pages/EmployeeList.jsx';
 
 const App = () => {
   const router = createBrowserRouter([
@@ -51,6 +51,7 @@ const App = () => {
         { path: 'edit/:id', element: <BookEdit /> },
         { path: 'create', element: <CreateBook /> },
         { path: 'shelf', element: <ShelfDetails /> },
+        // { path: 'shelf/details/:id', element: <ShelfInfo /> },
         { path: 'createshelf', element: <CreateShelf /> },
         { path: 'scan', element: <Scan /> },
         { path: 'insights', element: <Insights /> },

@@ -2,13 +2,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
-import '../assets/styles/createEmployee/empcreate.styles.css';
-import fields from '../utils/FormFields';
-import EmployeeForm from '../components/createEmployee/employeeForm.jsx';
+import '../../assets/styles/createEmployee/empcreate.styles.css';
+import fields from '../../utils/FormFields';
+import EmployeeForm from '../../components/createEmployee/employeeForm.jsx';
 import { useNavigate } from 'react-router';
-import { useAddEmployeeMutation } from '../api/employee/api.employee.jsx';
-import { convertToPayload } from '../utils/ConvertData.js';
-import { notifyError, notifySuccess } from '../utils/Toast.js';
+import { useAddEmployeeMutation } from '../../api/employee/api.employee.jsx';
+import { convertToPayload } from '../../utils/ConvertData.js';
+import { notifyError, notifySuccess } from '../../utils/Toast.js';
 
 const CreateEmployeeForm = () => {
   const [addEmployee, { isSuccess, isError, data, error }] = useAddEmployeeMutation();
