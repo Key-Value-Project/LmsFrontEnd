@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import LibCard from './LibCard';
 import React, { useState } from 'react';
 import { Availability } from './Availability';
-import { useBorrowBookMutation } from '../../api/library/api.library';
+import { useBorrowBookMutation, useCheckSubscriptionQuery, useSetSubscribeMutation } from '../../api/library/api.library';
 import { useEffect } from 'react';
 
 const BookDetailsCard = ({ emp = {} }) => {
@@ -18,6 +18,13 @@ const BookDetailsCard = ({ emp = {} }) => {
   let shelves = [];
   const [subDialog, setSubDialog] = useState(false);
   const [borrowBook, { data, error, isLoading, isError, isSuccess }] = useBorrowBookMutation();
+  const [setSubscribe] = useSetSubscribeMutation();
+  const { data: checkSubscription, isError: isSub } = useCheckSubscriptionQuery({ isbn: emp.isbn });
+
+  useEffect(() => {
+    console.log(checkSubscription);
+    console.log(isSub);
+  }, [checkSubscription]);
 
   const handleSubClick = (e) => {
     e.preventDefault();
@@ -25,9 +32,16 @@ const BookDetailsCard = ({ emp = {} }) => {
     setSubDialog(true);
   };
 
-  const handleSub = () => {
-    deleteEmployee(details.id);
-    setSubDialog(false);
+  const handleSub = async (notify) => {
+    const response = await setSubscribe({
+      isbn: emp.isbn,
+      sent_request: notify,
+    });
+    if (response.error) {
+      notifyError('Error in subscribing');
+    } else {
+      notifySuccess('Subscribed successfully');
+    }
   };
 
   const handleClose = () => {
@@ -71,12 +85,14 @@ const BookDetailsCard = ({ emp = {} }) => {
             <div className="avai">
               <Availability status={emp.status} />
             </div>
-            {emp.status == 'Available' ? (
+            {emp.status === 'Available' ? (
               <> </>
-            ) : (
+            ) : isSub ? (
               <div className="book__notify">
                 <img src={notify} alt="notify" onClick={handleSubClick} />
               </div>
+            ) : (
+              <p>Subscribed</p>
             )}
           </div>
         </div>
@@ -92,7 +108,7 @@ const BookDetailsCard = ({ emp = {} }) => {
       {/* showing available shelves */}
       {emp.status == 'Available' && (
         <div className="book-list">
-          <LibHead heads={['Shelf Code', 'Shelf Location', , '']} Role="det" />
+          <LibHead heads={['Shelf Code', 'Shelf Location', '', '']} Role="det" />
           <div className="employee-list">
             {console.log('shelves', shelves.length)}
             {shelves &&
