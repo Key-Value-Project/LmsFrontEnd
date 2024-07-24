@@ -47,6 +47,12 @@ const libraryApi = libraryApiWithTags.injectEndpoints({
       query: (id) => ({ url: `/shelf/delete/${id}`, method: 'DELETE' }),
       invalidatesTags: ['Library'],
     }),
+    setSubscribe: builder.mutation({
+      query: (body) => ({ url: `/notify`, method: 'PUT', body }),
+    }),
+    checkSubscription: builder.query({
+      query: (body) => ({ url: `/notify/issubscribed`, method: 'POST', body }),
+    }),
   }),
 });
 
@@ -63,4 +69,6 @@ export const {
   useCreateShelfMutation,
   useEditShelfMutation,
   useDeleteShelfMutation,
+  useSetSubscribeMutation,
+  useCheckSubscriptionQuery,
 } = libraryApi;
