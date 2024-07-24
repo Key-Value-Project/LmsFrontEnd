@@ -34,7 +34,9 @@ const ShelfDetails = () => {
         <LibHead heads={['Shelf code', 'Shelf Location', 'Books Count', '', '', 'Action']} />
         <div className="employee-list">
           {ShelvesData &&
-            ShelvesData.map((shelf, index) => <LibCard key={index} shelf_id={shelf.id} isbn={shelf.code} title={shelf.location} Role="shelf" />)}
+            ShelvesData.map((shelf, index) => (
+              <LibCard key={index} shelf_id={shelf.id} isbn={shelf.id} author={shelf.code} title={shelf.location} Role="shelf" />
+            ))}
         </div>
       </div>
     </>

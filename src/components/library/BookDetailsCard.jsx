@@ -2,6 +2,8 @@ import SubscribePopUp from '../employeeList/SubscribePopUp';
 import LibHead from './LibHead';
 import starIcon from '../../assets/icons/starIcon.svg';
 import notify from '../../assets/icons/notify.svg';
+import message from '../../assets/icons/message.svg';
+import ReviewComm from '../../assets/icons/review-comm.svg';
 import { notifyError, notifySuccess } from '../../utils/Toast';
 import { useNavigate } from 'react-router-dom';
 import LibCard from './LibCard';
@@ -55,9 +57,15 @@ const BookDetailsCard = ({ emp = {} }) => {
         <div className="book__det">
           <div className="book__title">{emp.title}</div>
           <div className="book__author">By {emp.author}</div>
+
           <div className="ratings">
             <img src={starIcon} alt="star" />
           </div>
+          <a href="#rev" className="rev">
+            <div className="ratings">
+              <img src={ReviewComm} /> <label>14 Reviews</label>
+            </div>
+          </a>
           {/* checking availability of books and notifying */}
           <div className="book__available">
             <div className="avai">
@@ -107,6 +115,73 @@ const BookDetailsCard = ({ emp = {} }) => {
           </div>
         </div>
       )}
+
+      <div className="rev_cont" id="rev">
+        <div className="book__det">
+          <h2 className="review__head">Reviews</h2>
+          <div className="notify-content">
+            <div>John</div>
+            <div>
+              <div>
+                <img src={starIcon} alt="star" />
+              </div>
+            </div>
+            <div>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam debitis molestias vitae cumque nesciunt. Quos consequuntur aliquam
+              inventore quae mollitia quo autem ullam soluta totam, voluptate voluptatem, similique placeat voluptatibus.
+            </div>
+          </div>
+          <div className="notify-content">
+            <div>John</div>
+            <div>
+              <div>
+                <img src={starIcon} alt="star" />
+              </div>
+            </div>
+            <div>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam debitis molestias vitae cumque nesciunt. Quos consequuntur aliquam
+              inventore quae mollitia quo autem ullam soluta totam, voluptate voluptatem, similique placeat voluptatibus.
+            </div>
+          </div>
+          <div className="notify-content">
+            <div>John</div>
+            <div>
+              <div>
+                <img src={starIcon} alt="star" />
+              </div>
+            </div>
+            <div>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam debitis molestias vitae cumque nesciunt. Quos consequuntur aliquam
+              inventore quae mollitia quo autem ullam soluta totam, voluptate voluptatem, similique placeat voluptatibus.
+            </div>
+          </div>
+          <div className="notify-content">
+            <div>John</div>
+            <div>
+              <div>
+                <img src={starIcon} alt="star" />
+              </div>
+            </div>
+            <div>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam debitis molestias vitae cumque nesciunt. Quos consequuntur aliquam
+              inventore quae mollitia quo autem ullam soluta totam, voluptate voluptatem, similique placeat voluptatibus.
+            </div>
+          </div>
+          <div className="notify-content">
+            <div>John</div>
+            <div>
+              <div>
+                <img src={starIcon} alt="star" />
+              </div>
+            </div>
+            <div>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam debitis molestias vitae cumque nesciunt. Quos consequuntur aliquam
+              inventore quae mollitia quo autem ullam soluta totam, voluptate voluptatem, similique placeat voluptatibus.
+            </div>
+          </div>
+        </div>
+      </div>
+      <br></br>
 
       <SubscribePopUp open={subDialog} handleClose={handleClose} handleDelete={handleSub} />
     </>

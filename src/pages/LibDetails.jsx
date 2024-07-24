@@ -36,43 +36,6 @@ const LibDetails = () => {
       <div className="top-header-employee-details">
         <h1>Book Overview</h1>
         <div className="top-header-components">
-          <div className="notify-bar">
-            <img src={Reviews} alt="reviews" className="reviews" onClick={toggleRev} />
-
-            <div
-              className="notify-body scrollable"
-              ref={boxRef}
-              id="box"
-              style={{
-                height: down ? '510px' : '0px',
-                opacity: down ? 1 : 0,
-              }}
-            >
-              <h1 className="review__head">Reviews</h1>
-              <div className="notify-content">
-                <img src={message} />
-                <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam debitis molestias vitae cumque nesciunt. Quos consequuntur
-                  aliquam inventore quae mollitia quo autem ullam soluta totam, voluptate voluptatem, similique placeat voluptatibus.
-                </p>
-              </div>
-              <div className="notify-content">
-                <img src={message} />
-                <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam debitis molestias vitae cumque nesciunt. Quos consequuntur
-                  aliquam inventore quae mollitia quo autem ullam soluta totam, voluptate voluptatem, similique placeat voluptatibus.
-                </p>
-              </div>
-              <div className="notify-content">
-                <img src={message} />
-                <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam debitis molestias vitae cumque nesciunt. Quos consequuntur
-                  aliquam inventore quae mollitia quo autem ullam soluta totam, voluptate voluptatem, similique placeat voluptatibus.
-                </p>
-              </div>
-            </div>
-          </div>
-
           <Link to={`/library/edit/${isbn}`} style={{ textDecoration: 'none', color: 'black' }}>
             {Role === 'ADMIN' ? (
               <div className="edit-button-emp">

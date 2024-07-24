@@ -20,6 +20,7 @@ import Insights from './pages/Insights.jsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
+import EditShelf from './pages/EditShelf.jsx';
 
 const App = () => {
   const router = createBrowserRouter([
@@ -53,6 +54,7 @@ const App = () => {
         { path: 'createshelf', element: <CreateShelf /> },
         { path: 'scan', element: <Scan /> },
         { path: 'insights', element: <Insights /> },
+        { path: 'shelf/edit/:id', element: <EditShelf /> },
       ],
     },
   ]);

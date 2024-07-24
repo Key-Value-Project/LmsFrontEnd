@@ -67,6 +67,7 @@ const AddBook = () => {
             resetContent={resetContent}
             empID={id}
             formState={formState}
+            page="bookEntry"
           />
         </div>
       </div>
