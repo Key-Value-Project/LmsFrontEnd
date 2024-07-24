@@ -31,7 +31,7 @@ const ShelfDetails = () => {
             )}
           </div>
         </div>
-        <LibHead heads={['Shelf code', 'Shelf Location', 'Books Count','']} />
+        <LibHead heads={['Shelf code', 'Shelf Location', 'Books Count', '']} />
         <div className="employee-list">
           {ShelvesData &&
             ShelvesData.map((shelf, index) => (
