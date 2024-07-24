@@ -305,10 +305,24 @@ hr {
   border-bottom: 1px solid #ccc;
 
   img {
-    width: 5%;
+    width: 15%;
+
   }
 }
 
+.each_rev {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 20px;
+
+  div {
+    padding-right: 20px;
+  }
+
+  img {
+    width: 20px;
+  }
+}
 .notify-content:last-child {
   border-bottom: none;
 }
@@ -525,7 +539,34 @@ span {
   .book__author {
     color: #048ec0;
     margin-top: 20px;
+
     text-align: center;
+  }
+
+  .book__available {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .book__author {
+    color: #048ec0;
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .book__notify {
+    margin-left: 40px;
+    img {
+      width: 40px;
+    }
+  }
+
+  .ratings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 20px;
   }
 
@@ -554,5 +595,9 @@ span {
 .rev {
   text-decoration: none;
   color: black;
+}
+
+a {
+
   scroll-behavior: smooth;
 }
