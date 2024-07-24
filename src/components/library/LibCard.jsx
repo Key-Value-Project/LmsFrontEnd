@@ -1,12 +1,15 @@
-import { useState } from 'react';
 import del from '../../assets/icons/delete.svg';
 import DeletePopUp from '../../components/employeeList/DeletePopUp.jsx';
-import { Link } from 'react-router-dom';
-import { Availability } from './Availability.jsx';
 import getRole from '../../utils/TokenDecode.jsx';
 import edt from '../../assets/icons/edit.svg';
+import starIcon from '../../assets/icons/starIcon.svg';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Availability } from './Availability.jsx';
+
 const LibCard = (details) => {
   const [deleteDialog, setDeleteDialog] = useState(false);
+  const rating = 3; // dummy rating value
 
   const handleDeleteClick = (e) => {
     e.preventDefault();
@@ -23,22 +26,28 @@ const LibCard = (details) => {
     setDeleteDialog(false);
   };
 
+  const avail = details.status === null ? null : <Availability status={details.status} />;
+  const linkValue = details.status === null ? null : `details/${details.isbn}`;
   const columns = [
     { label: 'ID', value: details.isbn },
     { label: 'Title', value: details.title },
     { label: 'Author', value: details.author },
-    { label: 'Status', value: <Availability status={details.status} /> },
+    { label: 'Status', value: avail },
   ];
 
   return (
     <>
-      <Link to={`details/${details.isbn}`} style={{ textDecoration: 'none', color: 'black' }}>
+      <Link to={linkValue} style={{ textDecoration: 'none', color: 'black' }}>
         <div className="employee-list-items list-book">
-          {columns.map((column, index) => (
-            <div key={index} className="item">
-              {column.value}
-            </div>
-          ))}
+          {columns.map(
+            (column, index) =>
+              column.value !== null && (
+                <div key={index} className="item">
+                  {console.log(column.value, column.label)}
+                  {column.value}
+                </div>
+              )
+          )}
 
           {details.Role === 'borrow' ? (
             <div className="item Action">
@@ -53,7 +62,7 @@ const LibCard = (details) => {
                   });
                 }}
               >
-                Take Book
+                Checkout
               </button>
             </div>
           ) : (
@@ -75,6 +84,18 @@ const LibCard = (details) => {
           {getRole() === 'ADMIN' && details.Role === 'borrow' ? (
             <div className="item Action">
               <img src={del} alt="delete button" onClick={handleDeleteClick} />
+            </div>
+          ) : (
+            <></>
+          )}
+
+          {details.page === 'libS' ? (
+            <div className="item rating">
+              {[...Array(rating)].map((_, i) => (
+                <>
+                  <img key={i} src={starIcon} alt="star" />
+                </>
+              ))}
             </div>
           ) : (
             <></>

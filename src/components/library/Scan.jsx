@@ -1,15 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useBorrowBookMutation, useGetAllShelvesQuery } from '../../api/library/api.library';
 import scan from '../../assets/icons/scan.svg';
+import { notifyError } from '../../utils/Toast';
 
 const Scan = ({ isbnv, handleClick = () => {} }) => {
   const { data } = useGetAllShelvesQuery();
   const [isbn, setIsbn] = useState('');
   const [shelf, setShelf] = useState('');
-
-  useEffect(() => {
-    console.log(isbn, shelf);
-  }, [isbn, shelf]);
 
   return (
     <div className="scan__form">

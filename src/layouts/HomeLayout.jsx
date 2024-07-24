@@ -6,6 +6,7 @@ import icon1 from '../assets/icons/icon.svg';
 import Profile from '../assets/icons/profile.svg';
 import Return from '../assets/icons/return.svg';
 import Shelf from '../assets/icons/shelf.svg';
+import Insights from '../assets/icons/insights.svg';
 import { useNavigate, Link, Outlet } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -76,6 +77,14 @@ const HomeLayout = () => {
                         <img src={Shelf} alt="View Shelf icon" />
                       </span>
                       <p>Shelfmap</p>
+                    </div>
+                  </Link>
+                  <Link to="insights">
+                    <div className={location.pathname.includes('insights') ? 'nav-item active' : 'nav-item'}>
+                      <span>
+                        <img src={Insights} alt="View Shelf icon" />
+                      </span>
+                      <p>Insights</p>
                     </div>
                   </Link>
                 </div>

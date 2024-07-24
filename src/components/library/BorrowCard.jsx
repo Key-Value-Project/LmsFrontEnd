@@ -1,12 +1,15 @@
+import ShowModalReview from './ShowModalReview';
 import { Link, useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import { useState } from 'react';
 import ShowModal from './ShowModal';
-import { useBorrowBookMutation, useReturnBookMutation } from '../../api/library/api.library';
+import { useReturnBookMutation } from '../../api/library/api.library';
 import { notifyError, notifySuccess } from '../../utils/Toast';
+
 const BorrowCard = (emp) => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
+  const [showReview, setShowReview] = useState(false);
   const [returnBook] = useReturnBookMutation();
 
   const toggalModal = (e) => {
@@ -14,6 +17,10 @@ const BorrowCard = (emp) => {
     setShowModal(!showModal);
   };
 
+  const toggalModalReview = (e) => {
+    e.preventDefault();
+    setShowReview(!showReview);
+  };
   const resetContent = () => {
     navigate('/library/borrow');
   };
@@ -57,9 +64,15 @@ const BorrowCard = (emp) => {
               </button>
             )}
           </div>
+          <div className="item">
+            <button className="btn" onClick={toggalModalReview}>
+              FeedBack
+            </button>
+          </div>
         </div>
       </Link>
       {showModal && <ShowModal type={'returnisbn'} onclose={toggalModal} isbn={emp.book.bookDetail.isbn} handleClick={handleBorrow} />}
+      {showReview && <ShowModalReview onclose={toggalModalReview} isbn={emp.book.bookDetail.isbn} />}
     </>
   );
 };
