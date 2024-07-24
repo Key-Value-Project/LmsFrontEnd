@@ -305,10 +305,23 @@ hr {
   border-bottom: 1px solid #ccc;
 
   img {
-    width: 5%;
+    width: 15%;
   }
 }
 
+.each_rev {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 20px;
+
+  div {
+    padding-right: 20px;
+  }
+
+  img {
+    width: 20px;
+  }
+}
 .notify-content:last-child {
   border-bottom: none;
 }
@@ -554,5 +567,8 @@ span {
 .rev {
   text-decoration: none;
   color: black;
+}
+
+a {
   scroll-behavior: smooth;
 }
