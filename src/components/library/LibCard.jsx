@@ -53,7 +53,6 @@ const LibCard = (details) => {
             (column, index) =>
               column.value !== null && (
                 <div key={index} className="item">
-                  {console.log(column.value, column.label)}
                   {column.value}
                 </div>
               )
@@ -82,7 +81,7 @@ const LibCard = (details) => {
             <div className="item Action">
               <img src={del} alt="delete button" onClick={handleDeleteClick} />
 
-              <Link to={`edit/${details.shelf_id}`}>
+              <Link to={`edit/${details.shelf_id}/${details.isbn}/${details.author}`}>
                 <img src={edt} alt="edit button" />
               </Link>
             </div>

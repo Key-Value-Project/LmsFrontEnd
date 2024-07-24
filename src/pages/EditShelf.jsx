@@ -2,15 +2,21 @@ import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import EmployeeForm from '../components/createEmployee/employeeForm';
 import ShelfField from '../utils/ShelfField';
-import { useCreateShelfMutation } from '../api/library/api.library';
+import { useCreateShelfMutation, useEditShelfMutation } from '../api/library/api.library';
 import { notifyError, notifySuccess } from '../utils/Toast';
 
 const EditShelf = () => {
   const navigate = useNavigate();
 
-  let { id } = useParams();
+  let { id, code, location } = useParams();
+  console.log(id, code, location);
 
-  const [formState, setFormState] = useState({});
+  const [editShelf] = useEditShelfMutation();
+
+  const [formState, setFormState] = useState({
+    code: code,
+    location: location,
+  });
   const [createShelf] = useCreateShelfMutation();
 
   const handleInputChange = (name, value) => {
@@ -27,21 +33,21 @@ const EditShelf = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const createShelfresponse = await createShelf(formState);
-      if (createShelfresponse.error) {
-        console.log(createShelfresponse.error);
+      const editShelfresponse = await editShelf({ id, formState });
+      if (editShelfresponse.error) {
+        console.log(editShelfresponse.error);
         let notification =
-          createShelfresponse.error.data.message +
-          (createShelfresponse.error.data.errors.length > 0 ? ': ' + createShelfresponse.error.data.errors.join(', ') : '');
+          editShelfresponse.error.data.message +
+          (editShelfresponse.error.data.errors.length > 0 ? ': ' + editShelfresponse.error.data.errors.join(', ') : '');
         notifyError(notification);
-      } else if (createShelfresponse.data) {
-        notifySuccess('Shelf created successfully');
+      } else if (editShelfresponse.data) {
+        notifySuccess('Shelf edit successfully');
         navigate('/library');
         resetContent();
       }
     } catch (error) {
       console.error(error);
-      notifyError('Failed to create shelf');
+      notifyError('Failed to edit shelf');
     }
   };
   return (
