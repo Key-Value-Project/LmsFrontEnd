@@ -1,37 +1,33 @@
 import { useParams } from 'react-router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import EmployeeForm from '../components/createEmployee/employeeForm';
 import BookField from '../utils/BookField';
 import getRole from '../utils/TokenDecode';
 import { Link } from 'react-router-dom';
 import plusIcon from '../assets/icons/plus-circle.svg';
 
-import { useGetAllShelvesQuery } from '../api/library/api.library';
+import { useCreateBookDetailsMutation, useCreateBookMutation, useGetAllShelvesQuery } from '../api/library/api.library';
 
 const CreateBook = () => {
   const { data } = useGetAllShelvesQuery();
   const [shelf, setShelf] = useState('');
+  const [isbn, setIsbn] = useState('');
+  const [createBook] = useCreateBookMutation();
 
   let { id } = useParams();
   const [formState, setFormState] = useState({});
-  const handleInputChange = (name, value) => {
-    setFormState((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
 
+  useEffect(() => {
+    console.log(formState);
+  }, [formState]);
   const resetContent = () => {
     navigate('/library');
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const payload = convertToPayload(formState);
-    payload.id = id;
-    delete payload.password;
-    await updateEmployee(payload);
-    await updateEmployeeRelation(payload);
+    const response = await createBook({ isbn: parseInt(isbn), shelf_id: shelf });
+    console.log(response);
   };
   return (
     <>
@@ -60,7 +56,14 @@ const CreateBook = () => {
           <div className="books__cr" id="form-create-employee">
             <div className="book__label form-items">
               <label>ISBN</label>
-              <input type="text" placeholder="Enter the isbn" />
+              <input
+                type="text"
+                placeholder="Enter the isbn"
+                value={isbn}
+                onChange={(e) => {
+                  setIsbn(e.target.value);
+                }}
+              />
             </div>
             <div className="book__label form-items">
               <label>Shelf Number</label>

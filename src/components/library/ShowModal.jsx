@@ -1,6 +1,7 @@
 import Scan from './Scan';
 import '../../assets/styles/Library/library.style.scss';
-const ShowModal = ({ onclose, isbn }) => {
+const ShowModal = ({ type, onclose, isbn, handleClick }) => {
+  console.log(type, isbn);
   return (
     <>
       <div className="modal">
@@ -10,7 +11,9 @@ const ShowModal = ({ onclose, isbn }) => {
               x
             </span>
           </div>
-          <Scan isbnv={isbn} />
+          {type === 'returnisbn' && <Scan isbnv={isbn} handleClick={handleClick} />}
+          {type === 'return' && <Scan handleClick={handleClick} />}
+          {type === 'borrow' && <Scan handleClick={handleClick} />}
         </div>
       </div>
     </>

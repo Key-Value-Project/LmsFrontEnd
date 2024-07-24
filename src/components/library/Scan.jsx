@@ -1,30 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useBorrowBookMutation, useGetAllShelvesQuery } from '../../api/library/api.library';
 import scan from '../../assets/icons/scan.svg';
-import { useEffect } from 'react';
 import { notifyError } from '../../utils/Toast';
 
-const Scan = ({ isbnv }) => {
+const Scan = ({ isbnv, handleClick = () => {} }) => {
   const { data } = useGetAllShelvesQuery();
   const [isbn, setIsbn] = useState('');
   const [shelf, setShelf] = useState('');
-  const [borrow, { isSuccess, isError, datas, error }] = useBorrowBookMutation();
-  const handleClick = async () => {
-    const checkborrow = await borrow({ isbn: parseInt(isbn), shelf_id: shelf });
-    console.log(checkborrow);
-  };
-  useEffect(() => {
-    if (isSuccess) {
-      notifySuccess('Employee added successfully');
-      navigate('/employee');
-    }
-    if (isError && error.data && error.data.errors) {
-      error.data.errors.forEach((errorMessage) => {
-        console.log(errorMessage);
-        notifyError(errorMessage);
-      });
-    }
-  }, [isSuccess, isError]);
 
   return (
     <div className="scan__form">
@@ -52,7 +34,7 @@ const Scan = ({ isbnv }) => {
           className="btn "
           onClick={(e) => {
             e.preventDefault();
-            handleClick();
+            handleClick(isbn, shelf);
           }}
         >
           Submit

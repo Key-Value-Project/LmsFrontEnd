@@ -45,7 +45,7 @@ const App = () => {
       children: [
         { index: true, element: <LibSearch /> }, //component to show all books
         { path: 'details/:isbn', element: <LibDetails /> }, //component to show each book details
-        { path: 'addbook', element: <AddBook /> },  //component to add new books
+        { path: 'addbook', element: <AddBook /> }, //component to add new books
         { path: 'borrow', element: <BorrowDetails /> },
         { path: 'edit/:id', element: <BookEdit /> },
         { path: 'create', element: <CreateBook /> },

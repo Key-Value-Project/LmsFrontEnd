@@ -2,14 +2,17 @@ import SubscribePopUp from '../employeeList/SubscribePopUp';
 import LibHead from './LibHead';
 import starIcon from '../../assets/icons/starIcon.svg';
 import notify from '../../assets/icons/notify.svg';
+import { notifyError, notifySuccess } from '../../utils/Toast';
+import { useNavigate } from 'react-router-dom';
 import LibCard from './LibCard';
 import React, { useState } from 'react';
 import { Availability } from './Availability';
-import { notifyError } from '../../utils/Toast';
 import { useBorrowBookMutation } from '../../api/library/api.library';
 import { useEffect } from 'react';
 
 const BookDetailsCard = ({ emp = {} }) => {
+  const navigate = useNavigate();
+  const [bookImage, setBookImage] = useState('');
   let shelves = [];
   const [subDialog, setSubDialog] = useState(false);
   const [borrowBook, { data, error, isLoading, isError, isSuccess }] = useBorrowBookMutation();

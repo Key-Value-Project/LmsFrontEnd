@@ -1,12 +1,16 @@
-import ShowModal from './ShowModal';
 import ShowModalReview from './ShowModalReview';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import { useState } from 'react';
+import ShowModal from './ShowModal';
+import { useReturnBookMutation } from '../../api/library/api.library';
+import { notifyError, notifySuccess } from '../../utils/Toast';
 
 const BorrowCard = (emp) => {
+  const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [showReview, setShowReview] = useState(false);
+  const [returnBook] = useReturnBookMutation();
 
   const toggalModal = (e) => {
     e.preventDefault();
@@ -16,6 +20,30 @@ const BorrowCard = (emp) => {
   const toggalModalReview = (e) => {
     e.preventDefault();
     setShowReview(!showReview);
+  };
+  const resetContent = () => {
+    navigate('/library/borrow');
+  };
+
+  const handleBorrow = async (temp, shelf_id) => {
+    console.log(temp, shelf_id);
+    try {
+      console.log(emp.book.bookDetail.isbn);
+      const ReturnResponse = await returnBook({ isbn: parseInt(emp.book.bookDetail.isbn), shelf_id });
+      console.log(ReturnResponse);
+      if (ReturnResponse.error) {
+        console.log(ReturnResponse.error);
+        let notification = ReturnResponse.error.data.message;
+        //temp notification
+        notifyError(notification);
+      } else if (ReturnResponse.data) {
+        notifySuccess('Book borrowed successfully');
+        resetContent();
+      }
+    } catch (error) {
+      console.error(error);
+      notifyError('Failed to borrow book');
+    }
   };
   return (
     <>
@@ -28,9 +56,13 @@ const BorrowCard = (emp) => {
           <div className="item">{format(new Date(emp.expected_return_date), 'dd-MM-yyyy')}</div>
 
           <div className="item">
-            <button className="btn" onClick={toggalModal}>
-              Return Now
-            </button>
+            {emp.return_date != null ? (
+              <p>Returned</p>
+            ) : (
+              <button className="btn" onClick={toggalModal}>
+                Return Now
+              </button>
+            )}
           </div>
           <div className="item">
             <button className="btn" onClick={toggalModalReview}>
@@ -39,7 +71,7 @@ const BorrowCard = (emp) => {
           </div>
         </div>
       </Link>
-      {showModal && <ShowModal onclose={toggalModal} isbn={emp.book.bookDetail.isbn} />}
+      {showModal && <ShowModal type={'returnisbn'} onclose={toggalModal} isbn={emp.book.bookDetail.isbn} handleClick={handleBorrow} />}
       {showReview && <ShowModalReview onclose={toggalModalReview} isbn={emp.book.bookDetail.isbn} />}
     </>
   );
