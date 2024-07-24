@@ -16,12 +16,16 @@ import { useDebounce } from 'use-debounce';
 import { useGetUserDetailsQuery } from '../api/employee/api.employee.jsx';
 import { useGetBookDetailsListQuery, useGetSearchByTitleMutation, useBorrowBookMutation } from '../api/library/api.library.jsx';
 import { notifyError, notifySuccess } from '../utils/Toast';
+import { useSelector } from 'react-redux';
 
 const LibSearch = () => {
   const [search, setSearch] = useState('');
   const [books, setBooks] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [down, setDown] = useState(false);
+
+  const notifications = useSelector((state) => state.notification);
+  console.log(notifications);
 
   const boxRef = useRef(null);
 
@@ -123,27 +127,13 @@ const LibSearch = () => {
                 }}
               >
                 <h1>Notifications</h1>
-                <div className="notify-content">
-                  <img src={message} />
-                  <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam debitis molestias vitae cumque nesciunt. Quos consequuntur
-                    aliquam inventore quae mollitia quo autem ullam soluta totam, voluptate voluptatem, similique placeat voluptatibus.
-                  </p>
-                </div>
-                <div className="notify-content">
-                  <img src={message} />
-                  <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam debitis molestias vitae cumque nesciunt. Quos consequuntur
-                    aliquam inventore quae mollitia quo autem ullam soluta totam, voluptate voluptatem, similique placeat voluptatibus.
-                  </p>
-                </div>
-                <div className="notify-content">
-                  <img src={message} />
-                  <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam debitis molestias vitae cumque nesciunt. Quos consequuntur
-                    aliquam inventore quae mollitia quo autem ullam soluta totam, voluptate voluptatem, similique placeat voluptatibus.
-                  </p>
-                </div>
+                {notifications &&
+                  notifications.map((notification, index) => (
+                    <div className="notify-content" key={index}>
+                      <img src={message} />
+                      <p>{notification}</p>
+                    </div>
+                  ))}
               </div>
             </div>
           </div>
