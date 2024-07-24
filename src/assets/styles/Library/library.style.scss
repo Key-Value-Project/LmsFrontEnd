@@ -633,7 +633,33 @@ span {
       text-align: center;
     }
   }
+}
 
+.activity {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  margin-bottom: 20px;
+
+  .bullet {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    background-color: red;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
 }
 
 .card {
@@ -645,8 +671,13 @@ span {
   overflow: hidden;
 }
 
+.card__wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
 .card-content {
-  height: 400px;
+  height: 460px;
 
   overflow-y: auto;
   padding: 20px;
@@ -663,4 +694,56 @@ span {
 
 .card-content::-webkit-scrollbar-track {
   background-color: #f7f7f7;
+}
+
+.podium {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.podium {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  align-items: end;
+
+  .user {
+    text-align: center;
+  }
+
+  .podium1 {
+    height: 300px;
+    width: 100px;
+    background-color: #071952;
+    justify-self: center;
+  }
+
+  .podium2 {
+    height: 270px;
+    width: 100px;
+    justify-self: center;
+    background-color: #088395;
+  }
+
+  .podium3 {
+    height: 240px;
+    width: 100px;
+    justify-self: center;
+    background-color: #37b7c3;
+  }
+
+  .podium4 {
+    height: 210px;
+    width: 100px;
+    justify-self: center;
+    background-color: #84d6dd;
+  }
+
+  .podium5 {
+    height: 180px;
+    width: 100px;
+    justify-self: center;
+    background-color: #c5e7eb;
+  }
 }
