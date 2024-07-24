@@ -40,6 +40,9 @@ const libraryApi = libraryApiWithTags.injectEndpoints({
       query: (body) => ({ url: '/shelf/create', method: 'POST', body }),
       invalidatesTags: ['Library'],
     }),
+    editShelf: builder.mutation({
+      query: ({ id, formState }) => ({ url: `/shelf/update/${id}`, method: 'PUT', body: formState }),
+    }),
     deleteShelf: builder.mutation({
       query: (id) => ({ url: `/shelf/delete/${id}`, method: 'DELETE' }),
       invalidatesTags: ['Library'],
@@ -58,5 +61,6 @@ export const {
   useCreateBookDetailsMutation,
   useCreateBookMutation,
   useCreateShelfMutation,
+  useEditShelfMutation,
   useDeleteShelfMutation,
 } = libraryApi;
