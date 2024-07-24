@@ -56,7 +56,7 @@ const App = () => {
         { path: 'createshelf', element: <CreateShelf /> },
         { path: 'scan', element: <Scan /> },
         { path: 'insights', element: <Insights /> },
-        { path: 'shelf/edit/:id', element: <EditShelf /> },
+        { path: 'shelf/edit/:id/:code/:location', element: <EditShelf /> },
       ],
     },
   ]);

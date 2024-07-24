@@ -28,6 +28,14 @@ const BookDetails = [
   },
   {
     type: 'text',
+    id: 'genre',
+    name: 'genre',
+    required: 'Genre',
+    text: 'Genre',
+    Component: TextField,
+  },
+  {
+    type: 'text',
     id: 'description',
     name: 'description',
     required: 'Description',

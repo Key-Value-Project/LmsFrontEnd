@@ -40,6 +40,7 @@ const LibCard = (details) => {
   let linkValue = details.status === null ? null : `details/${details.isbn}`;
   linkValue = details.Role === 'shelf' ? `details/${details.shelf_id}` : null;
   linkValue = details.Role === 'book' ? `details/${details.isbn}` : null;
+  // const linkValue = details.status === null && details.Role !== 'shelf' ? null : `details/${details.isbn}`;
   const columns = [
     { label: 'ID', value: details.isbn },
     { label: 'Title', value: details.title },
@@ -55,7 +56,6 @@ const LibCard = (details) => {
             (column, index) =>
               column.value !== null && (
                 <div key={index} className="item">
-                  {console.log(column.value, column.label)}
                   {column.value}
                 </div>
               )
@@ -84,7 +84,7 @@ const LibCard = (details) => {
             <div className="item Action">
               <img src={del} alt="delete button" onClick={handleDeleteClick} />
 
-              <Link to={`edit/${details.shelf_id}`}>
+              <Link to={`edit/${details.shelf_id}/${details.isbn}/${details.author}`}>
                 <img src={edt} alt="edit button" />
               </Link>
             </div>
@@ -101,6 +101,7 @@ const LibCard = (details) => {
           )}
 
           {/* {details.page === 'libS' ? (
+          {details.page === 'libS' ? (
             <div className="item rating">
               {[...Array(rating)].map((_, i) => (
                 <>
