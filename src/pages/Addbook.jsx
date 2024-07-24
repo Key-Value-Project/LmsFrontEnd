@@ -50,7 +50,7 @@ const AddBook = () => {
     <>
       <div className="Dashboard">
         <div className="top-header-create-employee">
-          <h1>Add Book Details</h1>
+          <h1>Book Information Entry</h1>
           <div className="top-header-components addbook"></div>
         </div>
 

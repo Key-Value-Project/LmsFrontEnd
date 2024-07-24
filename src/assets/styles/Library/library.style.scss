@@ -1,8 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
 .lib__container {
-  width: 100%;
   height: 65px;
   display: flex;
   justify-content: center;
+
+  img {
+    width: 125%;
+  }
 
   .scan__book {
     display: flex;
@@ -16,12 +21,11 @@
 
   form {
     display: flex;
-
     justify-content: space-between;
     width: 100%;
     width: 700px;
     background-color: rgb(236, 236, 236);
-    border-radius: 60px;
+    border-radius: 10px;
     padding: 10px 20px;
 
     input {
@@ -29,6 +33,7 @@
       border: 1px solid transparent;
       background-color: transparent;
       font-size: 20px;
+      margin-left: 20px;
     }
 
     input:focus {
@@ -45,6 +50,7 @@
 textarea {
   padding: 10px;
 }
+
 .main__body {
   display: block;
   width: 100%;
@@ -54,6 +60,7 @@ textarea {
     padding: 0px 20px 20px 0px;
     margin-bottom: 50px;
     justify-content: space-between;
+    align-items: center;
 
     .notify {
       width: 50px;
@@ -61,6 +68,40 @@ textarea {
   }
 }
 
+.rating {
+  margin-bottom: 20px;
+}
+.rate {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+
+  label {
+    color: grey;
+  }
+
+  input {
+    border: 1px solid transparent;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(216, 216, 216);
+  }
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+
+  label {
+    color: grey;
+  }
+
+  textarea {
+    border: 1px solid #03aeee;
+    border-radius: 10px;
+  }
+}
 .book-list {
   margin-top: 70px;
   display: block;
@@ -72,6 +113,10 @@ textarea {
   align-items: center;
 }
 
+.headi {
+  font-weight: 600;
+}
+
 .scan__form {
   padding-left: 20px;
 
@@ -80,6 +125,13 @@ textarea {
   }
 }
 
+.review__head {
+  width: 14vw !important;
+}
+
+.reviews {
+  width: 50px;
+}
 .scan {
   padding-left: 30px;
   text-decoration: none;
@@ -93,7 +145,7 @@ textarea {
 
   label {
     padding-left: 5px;
-    font-size: 20px;
+    font-size: 17px;
   }
 }
 
@@ -161,7 +213,7 @@ hr {
   }
   .subscribe {
     width: 200px;
-    height: 50px;
+    height: 40px;
     border: 1px solid transparent;
     background-image: radial-gradient(100% 100% at 100% 0, #ffaaaa 0, #ff7777 100%);
     color: white;
@@ -202,8 +254,8 @@ hr {
     background-color: white;
     z-index: 1;
     position: absolute;
-    top: 55px;
-    right: 28px;
+    top: 65px;
+    right: 20px;
     border-radius: 20px 0px 20px 20px;
     box-shadow:
       0 4px 8px 0 rgba(0, 0, 0, 0.2),
@@ -279,6 +331,22 @@ hr {
   color: #666;
 }
 
+.rating {
+  display: flex;
+  flex-direction: row;
+  img {
+    width: 20%;
+    padding-right: 20px;
+  }
+}
+
+.sub__popup {
+  margin-top: 20px;
+}
+.delete__icon {
+  width: 20%;
+  margin-bottom: 20px;
+}
 .modal {
   position: fixed;
   top: 0;
@@ -319,4 +387,112 @@ hr {
 
 .addbook {
   margin-right: 100px;
+}
+
+.header__lib {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+
+  .button-class {
+    padding-bottom: 15px;
+  }
+}
+
+.header__lib > * {
+  margin-left: 10px; /* add some space between elements */
+}
+
+.header__lib.lib__container {
+  margin-right: auto; /* push the search input to the left */
+}
+
+.scrollable {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #666 #f9f9f9;
+}
+
+.scrollable::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  background-color: #666;
+  border-radius: 10px;
+}
+
+.scrollable::-webkit-scrollbar-track {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+}
+@media (max-width: 1320px) {
+  .main__head {
+    flex-direction: column;
+  }
+}
+
+div,
+span {
+  font-weight: 400;
+  font-family: 'Outfit', sans-serif;
+}
+
+.book_det_cont {
+  display: grid;
+
+  grid-template-columns: 1fr 2fr;
+  grid-auto-rows: auto;
+  width: 100%;
+  min-height: 250px;
+  height: max-content;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 50px;
+  align-items: center;
+  justify-content: center;
+  row-gap: 45px;
+  column-gap: 80px;
+  padding-right: 0px;
+
+  .book__title {
+    font-size: 40px;
+    text-align: center;
+  }
+
+  .book__available {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .book__author {
+    color: #048ec0;
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .book__notify {
+    margin-left: 40px;
+    img {
+      width: 40px;
+    }
+  }
+
+  .ratings {
+    text-align: center;
+    margin-bottom: 20px;
+    img {
+      width: 5%;
+    }
+  }
+}
+
+.desc {
+  padding-right: 50px;
+  text-align: justify;
 }

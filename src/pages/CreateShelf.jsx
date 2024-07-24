@@ -1,9 +1,10 @@
-import { useState } from 'react';
 import EmployeeForm from '../components/createEmployee/employeeForm';
 import ShelfField from '../utils/ShelfField';
+import { useState } from 'react';
 
 const CreateShelf = () => {
   const [formState, setFormState] = useState({});
+
   const handleInputChange = (name, value) => {
     setFormState((prevState) => ({
       ...prevState,

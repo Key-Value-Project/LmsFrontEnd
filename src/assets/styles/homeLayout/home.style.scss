@@ -37,7 +37,7 @@ aside {
   top: 100px;
   left: 0;
   width: 300px;
-  min-height: 580px;
+
   overflow-y: auto;
   background-color: #ffffff;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -46,12 +46,10 @@ aside {
 nav {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
-  width: 300px;
   height: calc(100vh - 100px);
   padding-bottom: 20px;
   display: flex;
   flex-direction: column;
-  min-height: 580px;
   justify-content: space-between;
 
   a {
@@ -159,4 +157,16 @@ aside ul {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 1320px) {
+  aside {
+    width: 200px;
+  }
+
+  .webapp {
+    main {
+      margin-left: 200px;
+    }
+  }
 }

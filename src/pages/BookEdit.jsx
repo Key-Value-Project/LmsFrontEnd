@@ -29,7 +29,7 @@ const BookEdit = () => {
     <>
       <div className="Dashboard">
         <div className="top-header-create-employee">
-          <h1>Update Book Details</h1>
+          <h1>Modify Book Details</h1>
         </div>
 
         <div className="component-create-employee">

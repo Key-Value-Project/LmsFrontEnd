@@ -37,13 +37,13 @@ const CreateBook = () => {
     <>
       <div className="Dashboard">
         <div className="top-header-create-employee">
-          <h1>Create Book</h1>
+          <h1>Book Registration</h1>
           <div className="top-header-components addbook">
             {getRole() === 'ADMIN' ? (
               <Link to="/library/addbook" style={{ textDecoration: 'none', color: 'black' }}>
                 <div className="create-button-emp">
                   <img src={plusIcon} alt="create button" />
-                  <span>Add new Book</span>
+                  <span>Book Information</span>
                 </div>
               </Link>
             ) : (

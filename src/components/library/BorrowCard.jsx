@@ -1,13 +1,21 @@
+import ShowModal from './ShowModal';
+import ShowModalReview from './ShowModalReview';
 import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
 import { useState } from 'react';
-import ShowModal from './ShowModal';
+
 const BorrowCard = (emp) => {
   const [showModal, setShowModal] = useState(false);
+  const [showReview, setShowReview] = useState(false);
 
   const toggalModal = (e) => {
     e.preventDefault();
     setShowModal(!showModal);
+  };
+
+  const toggalModalReview = (e) => {
+    e.preventDefault();
+    setShowReview(!showReview);
   };
   return (
     <>
@@ -24,9 +32,15 @@ const BorrowCard = (emp) => {
               Return Now
             </button>
           </div>
+          <div className="item">
+            <button className="btn" onClick={toggalModalReview}>
+              FeedBack
+            </button>
+          </div>
         </div>
       </Link>
       {showModal && <ShowModal onclose={toggalModal} isbn={emp.book.bookDetail.isbn} />}
+      {showReview && <ShowModalReview onclose={toggalModalReview} isbn={emp.book.bookDetail.isbn} />}
     </>
   );
 };

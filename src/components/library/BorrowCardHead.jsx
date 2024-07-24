@@ -6,6 +6,7 @@ const BorrowCardHead = () => {
       <div className="item">Borrowed at</div>
       <div className="item">Return date (Expected)</div>
       <div className="item"></div>
+      <div className="item"></div>
     </div>
   );
 };

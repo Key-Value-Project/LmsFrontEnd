@@ -19,20 +19,6 @@ const BookField = [
     text: 'Shelf Code',
     Component: TextField,
   },
-
-  {
-    id: 'role',
-    name: 'role',
-    options: [
-      { value: 'UI', label: 'UI' },
-      { value: 'UX', label: 'UX' },
-      { value: 'DEVELOPER', label: 'DEVELOPER' },
-      { value: 'TESTER', label: 'TESTER' },
-      { value: 'HR', label: 'HR' },
-      { value: 'ADMIN', label: 'ADMIN' },
-    ],
-    Component: DropDownMenu,
-  },
 ];
 
 export default BookField;

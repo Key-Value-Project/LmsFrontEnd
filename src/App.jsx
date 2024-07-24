@@ -16,6 +16,7 @@ import CreateShelf from './pages/CreateShelf.jsx';
 import Scan from './components/library/Scan.jsx';
 import ShelfDetails from './pages/ShelfDetails.jsx';
 import AddBook from './pages/Addbook.jsx';
+import Insights from './pages/Insights.jsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
@@ -42,15 +43,16 @@ const App = () => {
       path: '/library',
       element: <HomeLayout />,
       children: [
-        { index: true, element: <LibSearch /> },
-        { path: 'details/:isbn', element: <LibDetails /> },
-        { path: 'addbook', element: <AddBook /> },
+        { index: true, element: <LibSearch /> }, //component to show all books
+        { path: 'details/:isbn', element: <LibDetails /> }, //component to show each book details
+        { path: 'addbook', element: <AddBook /> },  //component to add new books
         { path: 'borrow', element: <BorrowDetails /> },
         { path: 'edit/:id', element: <BookEdit /> },
         { path: 'create', element: <CreateBook /> },
         { path: 'shelf', element: <ShelfDetails /> },
         { path: 'createshelf', element: <CreateShelf /> },
         { path: 'scan', element: <Scan /> },
+        { path: 'insights', element: <Insights /> },
       ],
     },
   ]);
