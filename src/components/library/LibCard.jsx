@@ -6,19 +6,29 @@ import starIcon from '../../assets/icons/starIcon.svg';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Availability } from './Availability.jsx';
+import { useDeleteShelfMutation } from '../../api/library/api.library.jsx';
+import { notifyError, notifySuccess } from '../../utils/Toast.js';
 
 const LibCard = (details) => {
   const [deleteDialog, setDeleteDialog] = useState(false);
   const rating = 3; // dummy rating value
 
+  const [deleteshelf] = useDeleteShelfMutation();
   const handleDeleteClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
     setDeleteDialog(true);
   };
 
-  const handleDelete = () => {
-    deleteEmployee(details.id);
+  const handleDelete = async () => {
+    console.log('id of the shelf', details.shelf_id);
+    const response = await deleteshelf(details.shelf_id);
+    if (response.error) {
+      notifyError(response.error.data.errors[0]);
+    } else {
+      notifySuccess(`Shelf ${details.isbn} deleted successfully`);
+    }
+
     setDeleteDialog(false);
   };
 
@@ -55,7 +65,6 @@ const LibCard = (details) => {
                 className="btn"
                 onClick={(e) => {
                   e.preventDefault();
-                  console.log(details.data.isbn, details.shelf_id);
                   details.readnow({
                     isbn: parseInt(details.data.isbn),
                     shelf_id: details.shelf_id,

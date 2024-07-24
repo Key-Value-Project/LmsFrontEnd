@@ -28,6 +28,7 @@ const libraryApi = libraryApiWithTags.injectEndpoints({
     }),
     getAllShelves: builder.query({
       query: () => ({ url: `/shelf`, method: 'GET' }),
+      providesTags: ['Library'],
     }),
     createBookDetails: builder.mutation({
       query: (body) => ({ url: '/book-details/create', method: 'POST', body }),
@@ -37,6 +38,11 @@ const libraryApi = libraryApiWithTags.injectEndpoints({
     }),
     createShelf: builder.mutation({
       query: (body) => ({ url: '/shelf/create', method: 'POST', body }),
+      invalidatesTags: ['Library'],
+    }),
+    deleteShelf: builder.mutation({
+      query: (id) => ({ url: `/shelf/delete/${id}`, method: 'DELETE' }),
+      invalidatesTags: ['Library'],
     }),
   }),
 });
@@ -52,4 +58,5 @@ export const {
   useCreateBookDetailsMutation,
   useCreateBookMutation,
   useCreateShelfMutation,
+  useDeleteShelfMutation,
 } = libraryApi;
