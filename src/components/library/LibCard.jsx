@@ -37,7 +37,7 @@ const LibCard = (details) => {
   };
 
   const avail = details.status === null ? null : <Availability status={details.status} />;
-  const linkValue = details.status === null ? null : `details/${details.isbn}`;
+  const linkValue = details.status === null && details.Role !== 'shelf' ? null : `details/${details.isbn}`;
   const columns = [
     { label: 'ID', value: details.isbn },
     { label: 'Title', value: details.title },
