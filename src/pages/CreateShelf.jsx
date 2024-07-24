@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import EmployeeForm from '../components/createEmployee/employeeForm';
 import ShelfField from '../utils/ShelfField';
 import { useCreateShelfMutation } from '../api/library/api.library';
-import { notifyError } from '../utils/Toast';
+import { notifyError, notifySuccess } from '../utils/Toast';
 
 const CreateShelf = () => {
   const navigate = useNavigate();
@@ -26,15 +26,15 @@ const CreateShelf = () => {
     e.preventDefault();
     try {
       const createShelfresponse = await createShelf(formState);
-      if (createShelfresponse.data) {
-        notifySuccess('Shelf created successfully');
-        resetContent();
-      } else if (createShelfresponse.error) {
+      if (createShelfresponse.error) {
         console.log(createShelfresponse.error);
         let notification =
           createShelfresponse.error.data.message +
           (createShelfresponse.error.data.errors.length > 0 ? ': ' + createShelfresponse.error.data.errors.join(', ') : '');
         notifyError(notification);
+      } else if (createShelfresponse.data) {
+        notifySuccess('Shelf created successfully');
+        resetContent();
       }
     } catch (error) {
       console.error(error);

@@ -43,7 +43,8 @@ const LibSearch = () => {
       toggalModal();
     }
   };
-  const toggalModal = () => {
+  const toggalModal = (e) => {
+    e.preventDefault();
     setShowModal(!showModal);
   };
 
