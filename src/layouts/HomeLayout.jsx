@@ -93,7 +93,7 @@ const HomeLayout = () => {
                       <span>
                         <img src={Shelf} alt="View Shelf icon" />
                       </span>
-                      <p>Shelfmap</p>
+                      <p>Shelves</p>
                     </div>
                   </Link>
                   <Link to="insights">

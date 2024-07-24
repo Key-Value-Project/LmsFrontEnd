@@ -67,7 +67,12 @@ const ListCard = (emp) => {
           )}
         </div>
       </Link>
-      <DeletePopUp open={deleteDialog} handleClose={handleClose} handleDelete={handleDelete} msg='This Action will delete the employee and is irreversible.'/>
+      <DeletePopUp
+        open={deleteDialog}
+        handleClose={handleClose}
+        handleDelete={handleDelete}
+        msg="This Action will delete the employee and is irreversible."
+      />
     </>
   );
 };

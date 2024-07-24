@@ -21,6 +21,7 @@ import { Provider } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import EditShelf from './pages/EditShelf.jsx';
 import EmployeeList from './pages/employee pages/EmployeeList.jsx';
+import ShelfBook from './pages/library Pages/ShelfBooks.jsx';
 
 const App = () => {
   const router = createBrowserRouter([
@@ -51,7 +52,7 @@ const App = () => {
         { path: 'edit/:id', element: <BookEdit /> },
         { path: 'create', element: <CreateBook /> },
         { path: 'shelf', element: <ShelfDetails /> },
-        // { path: 'shelf/details/:id', element: <ShelfInfo /> },
+        { path: 'shelf/details/:id', element: <ShelfBook /> },
         { path: 'createshelf', element: <CreateShelf /> },
         { path: 'scan', element: <Scan /> },
         { path: 'insights', element: <Insights /> },
