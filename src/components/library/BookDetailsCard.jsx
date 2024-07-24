@@ -92,7 +92,7 @@ const BookDetailsCard = ({ emp = {} }) => {
       {/* showing available shelves */}
       {emp.status == 'Available' && (
         <div className="book-list">
-          <LibHead heads={['Shelf Code', 'Shelf Location', '', '']} Role="det" />
+          <LibHead heads={['Shelf Code', 'Shelf Location', , '']} Role="det" />
           <div className="employee-list">
             {console.log('shelves', shelves.length)}
             {shelves &&

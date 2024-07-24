@@ -90,14 +90,6 @@ const LibCard = (details) => {
             <></>
           )}
 
-          {getRole() === 'ADMIN' && details.Role === 'borrow' ? (
-            <div className="item Action">
-              <img src={del} alt="delete button" onClick={handleDeleteClick} />
-            </div>
-          ) : (
-            <></>
-          )}
-
           {details.page === 'libS' ? (
             <div className="item rating">
               {[...Array(rating)].map((_, i) => (

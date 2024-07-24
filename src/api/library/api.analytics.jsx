@@ -3,31 +3,32 @@ import libraryApiWithTags from '../../services/library.api';
 const analyticsApi = libraryApiWithTags.injectEndpoints({
   endpoints: (builder) => ({
     getMostBorrowedBooks: builder.query({
-      query: () => '/most-borrowed-books',
+      query: () => '/analytics/most-borrowed-books',
     }),
     getPopularGenres: builder.query({
-      query: () => '/popular-genres',
+      query: () => '/analytics/popular-genres',
     }),
     getUserActivity: builder.query({
-      query: () => '/user-activity',
+      query: () => '/analytics/user-activity',
     }),
     getBorrowingReport: builder.query({
-      query: () => '/borrowing-report',
+      query: () => '/analytics/borrowing-report',
     }),
     getReturnReport: builder.query({
-      query: () => '/return-report',
+      query: () => '/analytics/return-report',
     }),
     getOverdueBooksReport: builder.query({
-      query: () => '/overdue-books-report',
+      query: () => '/analytics/overdue-books-report',
     }),
     getBorrowedBooksByUser: builder.query({
-      query: (userId) => `/borrowed-books/${userId}`,
+      query: (userId) => `/analytics/borrowed-books/${userId}`,
     }),
     getReturnedBooksByUser: builder.query({
-      query: (userId) => `/returned-books/${userId}`,
+      query: (userId) => `/analytics/returned-books/${userId}`,
     }),
     getOverdueBooksByUser: builder.query({
-      query: (userId) => `/overdue-books/${userId}`,
+      query: (userId) => `/analytics/overdue-books/${userId}`,
+
     }),
   }),
 });
