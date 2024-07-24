@@ -36,7 +36,15 @@ const ShelfDetails = () => {
         <div className="employee-list">
           {ShelvesData &&
             ShelvesData.map((shelf, index) => (
-              <LibCard key={index} shelf_id={shelf.id} isbn={shelf.code} author={shelf.location} title={null} Role="shelf" />
+              <LibCard
+                key={index}
+                shelf_id={shelf.id}
+                isbn={shelf.code}
+                title={shelf.location}
+                author={shelf.books.length}
+                status={null}
+                Role="shelf"
+              />
             ))}
         </div>
       </div>

@@ -2,12 +2,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useNavigate, useParams } from 'react-router';
-import EmployeeForm from '../components/createEmployee/employeeForm';
-import fields from '../utils/FormFields';
+import EmployeeForm from '../../components/createEmployee/employeeForm';
+import fields from '../../utils/FormFields';
 import { useEffect, useState } from 'react';
-import { useGetEmployeeDetailsQuery, useUpdateEmployeeMutation, useUpdateEmployeeRelationMutation } from '../api/employee/api.employee';
-import { convertToData, convertToPayload } from '../utils/ConvertData';
-import { notifyError, notifySuccess } from '../utils/Toast';
+import { useGetEmployeeDetailsQuery, useUpdateEmployeeMutation, useUpdateEmployeeRelationMutation } from '../../api/employee/api.employee';
+import { convertToData, convertToPayload } from '../../utils/ConvertData';
+import { notifyError, notifySuccess } from '../../utils/Toast';
 
 const EditEmployee = () => {
   let { id } = useParams();

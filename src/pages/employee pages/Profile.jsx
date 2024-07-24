@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
-import { useGetUserDetailsQuery, useUpdatePasswordMutation } from '../api/employee/api.employee';
+import { useGetUserDetailsQuery, useUpdatePasswordMutation } from '../../api/employee/api.employee';
 import { Link } from 'react-router-dom';
-import pencilIcon from '../assets/icons/pencil-circle.svg';
-import DetailsCard from '../components/detailsEmployee/DetailsCard';
-import PasswordChange from '../components/profile/ChangePassword';
-import { notifyError, notifySuccess, notifyWarn } from '../utils/Toast';
+import pencilIcon from '../../assets/icons/pencil-circle.svg';
+import DetailsCard from '../../components/detailsEmployee/DetailsCard';
+import PasswordChange from '../../components/profile/ChangePassword';
+import { notifyError, notifySuccess, notifyWarn } from '../../utils/Toast';
 
 const Profile = () => {
   const { data: userDetails, isSuccess } = useGetUserDetailsQuery();

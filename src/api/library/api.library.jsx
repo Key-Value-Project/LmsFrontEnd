@@ -30,6 +30,10 @@ const libraryApi = libraryApiWithTags.injectEndpoints({
       query: () => ({ url: `/shelf`, method: 'GET' }),
       providesTags: ['Library'],
     }),
+    getAllShelfBooks: builder.query({
+      query: (id) => ({ url: `/shelf/${id}`, method: 'GET' }),
+      providesTags: ['Library'],
+    }),
     createBookDetails: builder.mutation({
       query: (body) => ({ url: '/book-details/create', method: 'POST', body }),
     }),
@@ -69,6 +73,7 @@ export const {
   useCreateShelfMutation,
   useEditShelfMutation,
   useDeleteShelfMutation,
+  useGetAllShelfBooksQuery,
   useSetSubscribeMutation,
   useCheckSubscriptionQuery,
 } = libraryApi;

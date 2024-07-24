@@ -152,8 +152,8 @@ const LibSearch = () => {
         {showModal && <ShowModal type={'borrow'} onclose={toggalModal} handleClick={handleClick} />}
 
         <div className="book-list">
-          <LibHead heads={['ISBN', 'Title', 'Author', 'Availability', 'Rating']} />
-          <div className="employee-list">{books && books.map((book, index) => <LibCard key={index} {...book} page="libS" />)}</div>
+          <LibHead heads={['ISBN', 'Title', 'Author', 'Availability']} />
+          <div className="employee-list">{books && books.map((book, index) => <LibCard key={index} {...book} page="libS" Role="book" />)}</div>
         </div>
       </div>
     </>

@@ -1,14 +1,14 @@
 /* eslint-disable react/prop-types */
-import ListCard from '../components/employeeList/listCard.jsx';
-import ListCardHead from '../components/employeeList/listHeader.jsx';
-import '../assets/styles/employeeList/emplist.styles.scss';
-import FilterBar from '../components/employeeList/filterBar.jsx';
+import ListCard from '../../components/employeeList/listCard.jsx';
+import ListCardHead from '../../components/employeeList/listHeader.jsx';
+import '../../assets/styles/employeeList/emplist.styles.scss';
+import FilterBar from '../../components/employeeList/filterBar.jsx';
 import { useState, useEffect } from 'react';
-import plusIcon from '../assets/icons/plus-circle.svg';
+import plusIcon from '../../assets/icons/plus-circle.svg';
 import { Link } from 'react-router-dom';
-import { useGetEmployeeListQuery } from '../api/employee/api.employee.jsx';
+import { useGetEmployeeListQuery } from '../../api/employee/api.employee.jsx';
 import { useSelector } from 'react-redux';
-import getRole from '../utils/TokenDecode.jsx';
+import getRole from '../../utils/TokenDecode.jsx';
 const EmployeeList = () => {
   // Using selectors to get the employees list and filter from the state
   const { data = [], isSuccess } = useGetEmployeeListQuery();

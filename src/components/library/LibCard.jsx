@@ -37,7 +37,10 @@ const LibCard = (details) => {
   };
 
   const avail = details.status === null ? null : <Availability status={details.status} />;
-  const linkValue = details.status === null && details.Role !== 'shelf' ? null : `details/${details.isbn}`;
+  let linkValue = details.status === null ? null : `details/${details.isbn}`;
+  linkValue = details.Role === 'shelf' ? `details/${details.shelf_id}` : null;
+  linkValue = details.Role === 'book' ? `details/${details.isbn}` : null;
+  // const linkValue = details.status === null && details.Role !== 'shelf' ? null : `details/${details.isbn}`;
   const columns = [
     { label: 'ID', value: details.isbn },
     { label: 'Title', value: details.title },
@@ -89,6 +92,15 @@ const LibCard = (details) => {
             <></>
           )}
 
+          {getRole() === 'ADMIN' && details.Role === 'borrow' ? (
+            <div className="item Action">
+              <img src={del} alt="delete button" onClick={handleDeleteClick} />
+            </div>
+          ) : (
+            <></>
+          )}
+
+          {/* {details.page === 'libS' ? (
           {details.page === 'libS' ? (
             <div className="item rating">
               {[...Array(rating)].map((_, i) => (
@@ -99,10 +111,19 @@ const LibCard = (details) => {
             </div>
           ) : (
             <></>
-          )}
+          )} */}
         </div>
       </Link>
-      <DeletePopUp open={deleteDialog} handleClose={handleClose} handleDelete={handleDelete} />
+      <DeletePopUp
+        open={deleteDialog}
+        handleClose={handleClose}
+        handleDelete={handleDelete}
+        msg={
+          details.Role === 'shelf'
+            ? 'This action will delete the shelf and is irreversible.'
+            : 'This action will delete the book from the corresponding shelf and is irreversible.'
+        }
+      />
     </>
   );
 };

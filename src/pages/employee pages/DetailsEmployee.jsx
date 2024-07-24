@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 import { useParams } from 'react-router';
-import '../assets/styles/detailsEmployee/detailEmp.scss';
+import '../../assets/styles/detailsEmployee/detailEmp.scss';
 import { Link } from 'react-router-dom';
-import pencilIcon from '../assets/icons/pencil-circle.svg';
-import DetailsCard from '../components/detailsEmployee/DetailsCard';
-import { useGetEmployeeDetailsQuery } from '../api/employee/api.employee';
+import pencilIcon from '../../assets/icons/pencil-circle.svg';
+import DetailsCard from '../../components/detailsEmployee/DetailsCard';
+import { useGetEmployeeDetailsQuery } from '../../api/employee/api.employee';
 import { useEffect } from 'react';
-import getRole from '../utils/TokenDecode';
+import getRole from '../../utils/TokenDecode';
 
 const DetailsEmployee = () => {
   const { id } = useParams();
