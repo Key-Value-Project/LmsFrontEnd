@@ -1,21 +1,34 @@
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 import EmployeeForm from '../components/createEmployee/employeeForm';
 import BookField from '../utils/BookField';
 import getRole from '../utils/TokenDecode';
 import { Link } from 'react-router-dom';
 import plusIcon from '../assets/icons/plus-circle.svg';
-
+import { notifyError } from '../utils/Toast';
 import { useCreateBookDetailsMutation, useCreateBookMutation, useGetAllShelvesQuery } from '../api/library/api.library';
 
 const CreateBook = () => {
   const { data } = useGetAllShelvesQuery();
   const [shelf, setShelf] = useState('');
   const [isbn, setIsbn] = useState('');
-  const [createBook] = useCreateBookMutation();
-
+  const [createBook, { isSuccess, isError, datas, error }] = useCreateBookMutation();
+  const navigate = useNavigate();
   let { id } = useParams();
   const [formState, setFormState] = useState({});
+
+  useEffect(() => {
+    if (isSuccess) {
+      notifySuccess('Book details added successfully');
+      navigate('/library');
+    }
+    if (isError && error.data && error.data.errors) {
+      error.data.errors.forEach((errorMessage) => {
+        notifyError(errorMessage);
+      });
+      navigate('/library/addbook');
+    }
+  }, [isSuccess, isError]);
 
   useEffect(() => {
     console.log(formState);
