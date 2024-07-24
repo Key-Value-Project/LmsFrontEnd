@@ -12,7 +12,8 @@ import { Link } from 'react-router-dom';
 import { useRef } from 'react';
 import { useDebounce } from 'use-debounce';
 import { useGetUserDetailsQuery } from '../api/employee/api.employee.jsx';
-import { useGetBookDetailsListQuery, useGetSearchByTitleMutation } from '../api/library/api.library.jsx';
+import { useGetBookDetailsListQuery, useGetSearchByTitleMutation, useBorrowBookMutation } from '../api/library/api.library.jsx';
+import { notifyError, notifySuccess } from '../utils/Toast';
 
 const LibSearch = () => {
   const [search, setSearch] = useState('');
@@ -27,7 +28,20 @@ const LibSearch = () => {
   const [getSearchByTitle] = useGetSearchByTitleMutation();
   const { data: userDetails } = useGetUserDetailsQuery();
   const { data: booksDetail, isSuccess } = useGetBookDetailsListQuery();
+  const [borrowBook] = useBorrowBookMutation();
 
+  const handleClick = async (isbn, shelf) => {
+    const borrowData = await borrowBook({ isbn: parseInt(isbn), shelf_id: shelf });
+    console.log(borrowData);
+    if (borrowData.error) {
+      let notification =
+        borrowData.error.data.message + (borrowData.error.data.errors.length > 0 ? ': ' + borrowData.error.data.errors.join(', ') : '');
+      notifyError(notification);
+    } else {
+      notifySuccess('Book borrowed successfully');
+      toggalModal();
+    }
+  };
   const toggalModal = () => {
     setShowModal(!showModal);
   };
@@ -124,7 +138,7 @@ const LibSearch = () => {
             Scan
           </button>
 
-          {showModal && <ShowModal onclose={toggalModal} />}
+          {showModal && <ShowModal type={'borrow'} onclose={toggalModal} handleClick={handleClick} />}
         </div>
       </div>
       <div className="book-list">

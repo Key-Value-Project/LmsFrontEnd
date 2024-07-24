@@ -13,6 +13,7 @@ const ShowModal = ({ type, onclose, isbn, handleClick }) => {
           </div>
           {type === 'returnisbn' && <Scan isbnv={isbn} handleClick={handleClick} />}
           {type === 'return' && <Scan handleClick={handleClick} />}
+          {type === 'borrow' && <Scan handleClick={handleClick} />}
         </div>
       </div>
     </>
