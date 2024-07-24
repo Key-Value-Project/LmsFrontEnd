@@ -10,6 +10,7 @@ import Insights from '../assets/icons/insights.svg';
 import { useNavigate, Link, Outlet } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
 
 const HomeLayout = () => {
   const location = useLocation(); // React Hook
@@ -25,7 +26,23 @@ const HomeLayout = () => {
     if (!session_token) {
       navigate('/');
     }
-  }, []);
+    try {
+      if (session_token.split('.').length !== 3) {
+        throw new Error('Invalid token format');
+      }
+      const decodedToken = jwtDecode(session_token);
+      const currentTime = Date.now() / 1000;
+
+      if (decodedToken.exp < currentTime) {
+        localStorage.removeItem('token');
+        navigate('/');
+      }
+    } catch (error) {
+      console.error('Invalid token:', error);
+      localStorage.removeItem('token');
+      navigate('/');
+    }
+  }, [navigate]);
 
   return (
     <>
