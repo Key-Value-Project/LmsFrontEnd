@@ -12,6 +12,7 @@ import { Availability } from './Availability';
 import { useBorrowBookMutation, useCheckSubscriptionQuery, useSetSubscribeMutation } from '../../api/library/api.library';
 import { useEffect } from 'react';
 import ReviewsPanel from './ReviewsPanel';
+import { useGetReviewsByBookIdQuery } from '../../api/library/api.reviews';
 
 const BookDetailsCard = ({ emp = {} }) => {
   const navigate = useNavigate();
@@ -21,6 +22,17 @@ const BookDetailsCard = ({ emp = {} }) => {
   const [borrowBook, { data, error, isLoading, isError, isSuccess }] = useBorrowBookMutation();
   const [setSubscribe] = useSetSubscribeMutation();
   const { data: checkSubscription, isSuccess: isSub } = useCheckSubscriptionQuery({ isbn: emp.isbn });
+
+  const { data: reviews, isSuccess: reviewIsSuccess, isError: reviewIsError } = useGetReviewsByBookIdQuery(emp.isbn);
+
+  useEffect(() => {
+    if (reviewIsError) {
+      notifyError('Error in fetching reviews');
+    }
+    if (reviewIsSuccess) {
+      console.log(reviews);
+    }
+  }, [isError, isSuccess, reviews]);
 
   useEffect(() => {
     console.log('check', checkSubscription);
@@ -73,12 +85,12 @@ const BookDetailsCard = ({ emp = {} }) => {
           <div className="book__title">{emp.title}</div>
           <div className="book__author">By {emp.author}</div>
 
-          <div className="ratings">
-            <img src={starIcon} alt="star" />
+          <div className="ratings" style={{ display: 'Flex', gap: '10px' }}>
+            {reviewIsSuccess && [...Array(Math.floor(reviews.averageRatingOutOf5))].map((_, i) => <img key={i} src={starIcon} alt="star" />)}
           </div>
           <a href="#rev" className="rev">
             <div className="ratings">
-              <img src={ReviewComm} /> <label>14 Reviews</label>
+              {reviewIsSuccess && <label style={{ fontStyle: 'italic' }}>{reviews.averageRatingOutOf5.toFixed(1)} Ratings</label>}
             </div>
           </a>
           {/* checking availability of books and notifying */}
@@ -132,8 +144,7 @@ const BookDetailsCard = ({ emp = {} }) => {
           </div>
         </div>
       )}
-
-      < ReviewsPanel />
+      {reviewIsSuccess && <ReviewsPanel reviews={reviews.reviews} />}
       <br></br>
 
       <SubscribePopUp open={subDialog} handleClose={handleClose} handleDelete={handleSub} />
