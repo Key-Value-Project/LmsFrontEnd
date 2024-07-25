@@ -148,7 +148,7 @@ const Insights = () => {
                       </div>
                       <div className="report-row">
                         <span className="report-label">Return Date:</span>
-                        <span className="report-value">{item.return_date}</span>
+                        <span className="report-value">{formatDate(item.return_date)}</span>
                       </div>
                       <div className="report-row">
                         <span className="report-label">Book Title:</span>
@@ -171,21 +171,32 @@ const Insights = () => {
         <div>
           <h1>OverDue Report</h1>
         </div>
-
         <div className="card">
-          <div className="card-content card__wrap">
-            <ul className="borrow-history">
-              {ReturnReport.slice(0, 10).map((item) => (
-                <li key={item.id} className="borrow-history-item">
-                  <div className="borrowed-info">
-                    <span className="borrowed-date">{new Date(item.borrowed_at).toLocaleString()}</span>
-                    <span className="borrowed-book">{item.return_date}</span>
-                    <span className="borrowed-user">{item.book.bookDetail.title}</span>
-                    <span className="borrowed-user">{item.user.name}</span>
+          <div className="card-content">
+            <div className="report-list">
+              {OverdueReport.slice(0, 10).map((item) => (
+                <div key={item.id} className="report-item">
+                  <div className="report-details">
+                    <div className="report-row">
+                      <span className="report-label">Borrowed At:</span>
+                      <span className="report-value">{formatDate(item.borrowed_at)}</span>
+                    </div>
+                    <div className="report-row">
+                      <span className="report-label">Return Date:</span>
+                      <span className="report-value">{item.return_date}</span>
+                    </div>
+                    <div className="report-row">
+                      <span className="report-label">Book Title:</span>
+                      <span className="report-value">{item.book.bookDetail.title}</span>
+                    </div>
+                    <div className="report-row">
+                      <span className="report-label">User Name:</span>
+                      <span className="report-value">{item.user.name}</span>
+                    </div>
                   </div>
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </div>

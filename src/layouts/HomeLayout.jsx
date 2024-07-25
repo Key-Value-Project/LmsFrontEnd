@@ -20,8 +20,8 @@ const HomeLayout = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const notifications = useSelector((state) => state.notification);
-  const { data: AvailableBookNotifications, isSuccess } = useGetAvailableBookNotificationsQuery(undefined, { pollingInterval: 5000 });
-  const { data: AvailableBookReturnNotifications } = useGetAvailableBookReturnNotificationsQuery(undefined, { pollingInterval: 2000 });
+  const { data: AvailableBookNotifications, isSuccess } = useGetAvailableBookNotificationsQuery(undefined, { pollingInterval: 10000 });
+  const { data: AvailableBookReturnNotifications } = useGetAvailableBookReturnNotificationsQuery(undefined, { pollingInterval: 9000 });
 
   useEffect(() => {
     if (AvailableBookNotifications && AvailableBookNotifications.message) {
