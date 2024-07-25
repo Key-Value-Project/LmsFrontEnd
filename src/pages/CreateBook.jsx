@@ -8,6 +8,7 @@ import plusIcon from '../assets/icons/plus-circle.svg';
 import { notifyError } from '../utils/Toast';
 import { useCreateBookDetailsMutation, useCreateBookMutation, useGetAllShelvesQuery } from '../api/library/api.library';
 import { notifySuccess } from '../utils/Toast';
+import FileUpload from '../components/fileUPload';
 
 const CreateBook = () => {
   const { data } = useGetAllShelvesQuery();
@@ -63,7 +64,7 @@ const CreateBook = () => {
         </div>
 
         <div className="component-create-employee">
-          <button className="btn">Upload Excel</button>
+          <FileUpload />
           <div className="excel"></div>
           <hr></hr>
           <div className="excel"></div>

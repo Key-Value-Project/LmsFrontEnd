@@ -122,7 +122,7 @@ const BookDetailsCard = ({ emp = {} }) => {
                       author={null}
                       status={null}
                       title={shelf.location}
-                      Role={'borrow'}
+                      Role="borrow"
                       data={emp}
                       readnow={borrowBook}
                     />

@@ -22,12 +22,13 @@ const BookDetails = [
   },
   {
     type: 'text',
-    id: 'author',
-    name: 'author',
-    required: 'Author',
-    text: 'Author',
-    Component: TextField,
+    id: 'description',
+    name: 'description',
+    required: 'Description',
+    text: 'Description',
+    Component: TextArea,
   },
+
   {
     id: 'genre',
     name: 'genre',
@@ -63,11 +64,11 @@ const BookDetails = [
 
   {
     type: 'text',
-    id: 'description',
-    name: 'description',
-    required: 'Description',
-    text: 'Description',
-    Component: TextArea,
+    id: 'author',
+    name: 'author',
+    required: 'Author',
+    text: 'Author',
+    Component: TextField,
   },
 ];
 

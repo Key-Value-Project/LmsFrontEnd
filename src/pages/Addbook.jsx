@@ -58,10 +58,8 @@ const AddBook = () => {
         </div>
 
         <div className="component-create-employee">
-          <button className="btn">Upload Excel</button>
-          <FileUpload />
           <div className="excel"></div>
-          <hr></hr>
+
           <div className="excel"></div>
           <EmployeeForm
             unique_id={'BOOK ID'}

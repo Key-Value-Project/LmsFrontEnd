@@ -6,7 +6,7 @@ const TextArea = ({ type, id, name, required, text, handleInputChange, value }) 
   return (
     <div className="form-items">
       <label htmlFor="name">{text}</label>
-      <textarea type={type} id={id} name={name} value={value} required placeholder={required} onChange={onChange} rows="4" cols="50" />
+      <textarea type={type} id={id} name={name} value={value} required placeholder={required} onChange={onChange} rows="3" cols="50" />
     </div>
   );
 };

@@ -122,14 +122,14 @@ const Insights = () => {
 
         <div className="card">
           <div className="card-content card__wrap">
-            <ul className="borrow-history">
+            <ul className="">
               {ReturnReport.slice(0, 10).map((item) => (
-                <li key={item.id} className="borrow-history-item">
-                  <div className="borrowed-info">
-                    <span className="borrowed-date">{new Date(item.borrowed_at).toLocaleString()}</span>
-                    <span className="borrowed-book">{item.return_date}</span>
-                    <span className="borrowed-user">{item.book.bookDetail.title}</span>
-                    <span className="borrowed-user">{item.user.name}</span>
+                <li key={item.id} className="">
+                  <div className="">
+                    <span className="">{new Date(item.borrowed_at).toLocaleString()}</span>
+                    <span className="">{item.return_date}</span>
+                    <span className="">{item.book.bookDetail.title}</span>
+                    <span className="">{item.user.name}</span>
                   </div>
                 </li>
               ))}
