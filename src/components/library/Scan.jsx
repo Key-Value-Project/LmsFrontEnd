@@ -2,16 +2,36 @@ import { useEffect, useState } from 'react';
 import { useBorrowBookMutation, useGetAllShelvesQuery } from '../../api/library/api.library';
 import scan from '../../assets/icons/scan.svg';
 import { notifyError } from '../../utils/Toast';
+import { useNavigate } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeScannerIsbn } from '../../store/ScannerReducer';
 
-const Scan = ({ isbnv, handleClick = () => {} }) => {
+const Scan = ({ handleClick = () => {} }) => {
   const { data } = useGetAllShelvesQuery();
   const [isbn, setIsbn] = useState('');
   const [shelf, setShelf] = useState('');
+  const [qrOn, setStateqrOn] = useState(false);
+  const [isbnv, setIsbnv] = useState('');
+  const navigate = useNavigate();
+
+  const scannerIsbn = useSelector((state) => state.scanner);
+  console.log('scannerIsbn', scannerIsbn);
+  useEffect(() => {
+    if (scannerIsbn) {
+      console.log('scanner isbn in scan', scannerIsbn);
+      setIsbnv(parseInt(scannerIsbn));
+    }
+  }, [scannerIsbn]);
+
+  const onClick = () => {
+    setStateqrOn(true);
+    navigate('/library/barcode');
+  };
 
   return (
     <div className="scan__form">
       <div className="icon">
-        <img src={scan} />
+        <img src={scan} onClick={onClick} />
       </div>
       <div className="scan__input">
         {isbnv ? (
@@ -34,7 +54,11 @@ const Scan = ({ isbnv, handleClick = () => {} }) => {
           className="btn "
           onClick={(e) => {
             e.preventDefault();
-            handleClick(isbn, shelf);
+            if (isbnv) {
+              handleClick(isbnv, shelf);
+            } else {
+              handleClick(isbn, shelf);
+            }
           }}
         >
           Submit

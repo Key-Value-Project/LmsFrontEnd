@@ -14,14 +14,21 @@ import { useRef } from 'react';
 import { useDebounce } from 'use-debounce';
 import { useGetBookDetailsListQuery, useGetSearchByTitleMutation, useBorrowBookMutation } from '../api/library/api.library.jsx';
 import { notifyError, notifySuccess } from '../utils/Toast';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeScannerIsbn } from '../store/ScannerReducer.js';
 
 const LibSearch = () => {
+  const dispatch = useDispatch();
   const [search, setSearch] = useState('');
   const [books, setBooks] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [down, setDown] = useState(false);
-
+  const scannerIsbn = useSelector((state) => state.scanner);
+  useEffect(() => {
+    if (scannerIsbn) {
+      setShowModal(true);
+    }
+  }, [scannerIsbn]);
   const notifications = useSelector((state) => state.notification);
   console.log(notifications);
 
@@ -34,6 +41,7 @@ const LibSearch = () => {
   const [borrowBook] = useBorrowBookMutation();
 
   const handleClick = async (isbn, shelf) => {
+    console.log('handleclick', isbn, shelf);
     const borrowData = await borrowBook({ isbn: parseInt(isbn), shelf_id: shelf });
     console.log(borrowData);
     if (borrowData.error) {
@@ -44,9 +52,11 @@ const LibSearch = () => {
       notifySuccess('Book borrowed successfully');
       toggalModal();
     }
+    dispatch(removeScannerIsbn());
   };
   const toggalModal = (e) => {
     e.preventDefault();
+    dispatch(removeScannerIsbn());
     setShowModal(!showModal);
   };
 
@@ -93,7 +103,7 @@ const LibSearch = () => {
                 </div>
               </button>
             </form>
-            <div className="scan">{showModal && <ShowModal onclose={toggalModal} />}</div>
+            {/* <div className="scan">{showModal && <ShowModal onclose={toggalModal} />}</div> */}
           </div>
           <div className="header__lib">
             {/* add books for ADMIN*/}

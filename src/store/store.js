@@ -5,11 +5,13 @@ import apiWithTag from '../services/employee.api';
 import filterSlice from './filterSlice.js';
 import libraryApiWithTags, { libraryBaseApi } from '../services/library.api';
 import notificationReducer from './notificationReducer';
+import ScannerReducer from './ScannerReducer.js';
 
 // import { employeeApi } from "../services/employee.api";
 
 const store = configureStore({
   reducer: {
+    scanner: ScannerReducer,
     notification: notificationReducer,
     // employees: employeeReducer,
     [apiWithTag.reducerPath]: apiWithTag.reducer,
