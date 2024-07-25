@@ -1,12 +1,30 @@
 import '../../assets/styles/Library/library.style.scss';
 import { useState } from 'react';
+import { useCreateReviewMutation } from '../../api/library/api.reviews';
+import { notifyError } from '../../utils/Toast';
 
 const ShowModalReview = ({ onclose, isbn }) => {
   const [review, setReview] = useState('');
   const [rating, setRating] = useState(0);
+  console.log(isbn);
+  const [createReviewApi] = useCreateReviewMutation();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const reviewData = {
+      comment: review,
+      rating: parseInt(rating),
+      isbn: parseInt(isbn),
+    };
+    const CreateReviewResponse = await createReviewApi(reviewData);
+    if (CreateReviewResponse.error) {
+      const notification =
+        CreateReviewResponse.error.data.message +
+        (CreateReviewResponse.error.data.errors.length > 0 ? ': ' + CreateReviewResponse.error.data.errors.join(', ') : '');
+      notifyError(notification);
+    } else if (CreateReviewResponse.data) {
+      onclose();
+    }
   };
 
   return (
@@ -14,7 +32,13 @@ const ShowModalReview = ({ onclose, isbn }) => {
       <div className="modal">
         <div className="modal-content">
           <div className="modal-header">
-            <span className="close" onClick={onclose}>
+            <span
+              className="close"
+              onClick={(e) => {
+                e.preventDefault();
+                onclose();
+              }}
+            >
               x
             </span>
           </div>
@@ -22,8 +46,8 @@ const ShowModalReview = ({ onclose, isbn }) => {
             <h2 className="rating">Rate and review</h2>
             <form onSubmit={handleSubmit}>
               <div className="rate">
-                <label htmlFor="rating">Rating (1-5):</label>
-                <input type="number" id="rating" name="rating" min="1" max="5" value={rating} onChange={(e) => setRating(e.target.value)} />
+                <label htmlFor="rating">Rating (1-10):</label>
+                <input type="number" id="rating" name="rating" min="1" max="10" value={rating} onChange={(e) => setRating(e.target.value)} />
               </div>
 
               <div className="review">
