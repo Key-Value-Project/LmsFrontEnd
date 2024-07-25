@@ -41,6 +41,12 @@ const Profile = () => {
       <div className="top-header-employee-details">
         <h1>Profile</h1>
         <div className="top-header-components">
+          <Link to={`/employee/report/${userDetails?.id}`} style={{ textDecoration: 'none', color: 'black' }}>
+            <div className="edit-button-emp">
+              <img src={pencilIcon} alt="edit button" />
+              <span>Report</span>
+            </div>
+          </Link>
           <Link to={`/employee/edit/${userDetails?.id}`} style={{ textDecoration: 'none', color: 'black' }}>
             <div className="edit-button-emp">
               <img src={pencilIcon} alt="edit button" />

@@ -82,14 +82,14 @@
   display: flex;
   flex-direction: row;
   background-color: #d1eaf5;
-  padding: 15px 20px;
+  padding: 7px 12px;
   border-radius: 30px;
   border: none;
   cursor: pointer;
   align-items: center;
   img {
     position: absolute;
-    width: 50px;
+    width: 42px;
     left: -10px;
     background-color: #ffffff;
     border-radius: 50px;
@@ -186,7 +186,7 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: fit-content;
+  height: 80px;
   margin-bottom: 20px;
   min-height: 50px;
   border-radius: 8px;

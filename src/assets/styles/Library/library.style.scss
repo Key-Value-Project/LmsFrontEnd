@@ -1,9 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
+.main__head {
+  position: fixed;
+
+  top: 100px;
+  left: 10;
+  width: 78%;
+  background-color: transparent;
+  z-index: 1000;
+}
+
 .lib__container {
   height: 65px;
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 
   img {
     width: 125%;
@@ -20,6 +31,7 @@
   }
 
   form {
+    height: 50px;
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -32,7 +44,7 @@
       width: 600px;
       border: 1px solid transparent;
       background-color: transparent;
-      font-size: 20px;
+      font-size: 15px;
       margin-left: 20px;
     }
 
@@ -57,13 +69,12 @@ textarea {
 
   .main__head {
     display: flex;
-    padding: 0px 20px 20px 0px;
-    margin-bottom: 50px;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
 
     .notify {
-      width: 50px;
+      width: 30px;
     }
   }
 }
@@ -103,7 +114,7 @@ textarea {
   }
 }
 .book-list {
-  margin-top: 70px;
+  margin-top: 120px;
   display: block;
 }
 
@@ -115,6 +126,7 @@ textarea {
 
 .headi {
   font-weight: 600;
+  font-size: 17px;
 }
 
 .scan__form {
@@ -673,8 +685,12 @@ span {
 .card__wrap {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
+  flex-direction: column;
+  flex: 1;
 }
+
 .card-content {
   height: 460px;
 
@@ -745,4 +761,32 @@ span {
     justify-self: center;
     background-color: #c5e7eb;
   }
+}
+
+.borrow-history {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.borrow-history-item {
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.borrow-history-item:last-child {
+  border-bottom: none;
+}
+
+.borrowed-info {
+  display: flex;
+  padding-left: 20px;
+}
+
+.borrowed-info span {
+  margin-right: 20px;
+}
+
+.borrowed-info span:last-child {
+  margin-right: 0;
 }

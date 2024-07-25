@@ -43,7 +43,7 @@ const ShelfDetails = () => {
                 title={shelf.location}
                 author={shelf.books.length}
                 status={null}
-                Role="shelf"
+                page="shelf"
               />
             ))}
         </div>

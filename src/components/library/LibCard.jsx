@@ -35,11 +35,11 @@ const LibCard = (details) => {
   const handleClose = () => {
     setDeleteDialog(false);
   };
-
   const avail = details.status === null ? null : <Availability status={details.status} />;
-  let linkValue = details.status === null ? null : `details/${details.isbn}`;
-  linkValue = details.Role === 'shelf' ? `details/${details.shelf_id}` : null;
-  linkValue = details.Role === 'book' ? `details/${details.isbn}` : null;
+
+  var linkValue = details.page === 'book' ? `details/${details.isbn}` : details.page === 'shelf' ? `details/${details.shelf_id}` : null;
+
+  console.log(linkValue, details.isbn, details.shelf_id, details.Role, details.page);
   // const linkValue = details.status === null && details.Role !== 'shelf' ? null : `details/${details.isbn}`;
   const columns = [
     { label: 'ID', value: details.isbn },
