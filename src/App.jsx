@@ -23,6 +23,7 @@ import EditShelf from './pages/EditShelf.jsx';
 import EmployeeList from './pages/employee pages/EmployeeList.jsx';
 import ShelfBook from './pages/library Pages/ShelfBooks.jsx';
 import Reports from './pages/employee pages/Reports.jsx';
+import { BarcodeScanner } from './components/library/Barcode.jsx';
 
 const App = () => {
   const router = createBrowserRouter([
@@ -59,6 +60,7 @@ const App = () => {
         { path: 'scan', element: <Scan /> },
         { path: 'insights', element: <Insights /> },
         { path: 'shelf/edit/:id/:code/:location', element: <EditShelf /> },
+        { path: 'barcode', element: <BarcodeScanner /> },
       ],
     },
   ]);
