@@ -68,7 +68,7 @@ const Reports = () => {
                     <div className="report-details">
                       <div className="report-row">
                         <span className="report-label">Borrowed At:</span>
-                        <span className="report-value">{new Date(item.borrowed_at).toLocaleString()}</span>
+                        <span className="report-value">{formatDate(item.borrowed_at)}</span>
                       </div>
                       <div className="report-row">
                         <span className="report-label">ISBN:</span>
@@ -80,7 +80,7 @@ const Reports = () => {
                       </div>
                       <div className="report-row">
                         <span className="report-label">Expected Return Date:</span>
-                        <span className="report-value">{new Date(item.user.expected_return_date).toLocaleString()}</span>
+                        <span className="report-value">{formatDate(item.expected_return_date).toLocaleString()}</span>
                       </div>
                     </div>
                   </div>
@@ -115,7 +115,7 @@ const Reports = () => {
                       </div>
                       <div className="report-row">
                         <span className="report-label">Expected Return Date:</span>
-                        <span className="report-value">{new Date(item.user.expected_return_date).toLocaleString()}</span>
+                        <span className="report-value">{formatDate(item.expected_return_date).toLocaleString()}</span>
                       </div>
                     </div>
                   </div>
