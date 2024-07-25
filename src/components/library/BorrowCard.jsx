@@ -5,16 +5,19 @@ import { useState } from 'react';
 import ShowModal from './ShowModal';
 import { useReturnBookMutation } from '../../api/library/api.library';
 import { notifyError, notifySuccess } from '../../utils/Toast';
+import { useDispatch } from 'react-redux';
+import { removeScannerIsbn } from '../../store/ScannerReducer';
 
 const BorrowCard = (emp) => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [showReview, setShowReview] = useState(false);
   const [returnBook] = useReturnBookMutation();
-
+  const dispatch = useDispatch();
   const toggalModal = (e) => {
     e.preventDefault();
     setShowModal(!showModal);
+    dispatch(removeScannerIsbn());
   };
 
   const toggalModalReview = () => {
@@ -26,6 +29,7 @@ const BorrowCard = (emp) => {
 
   const handleBorrow = async (temp, shelf_id) => {
     console.log(temp, shelf_id);
+    dispatch(removeScannerIsbn());
     try {
       console.log(emp.book.bookDetail.isbn);
       const ReturnResponse = await returnBook({ isbn: parseInt(emp.book.bookDetail.isbn), shelf_id });
@@ -33,16 +37,18 @@ const BorrowCard = (emp) => {
       if (ReturnResponse.error) {
         console.log(ReturnResponse.error);
         let notification = ReturnResponse.error.data.message;
-        //temp notification
         notifyError(notification);
       } else if (ReturnResponse.data) {
-        notifySuccess('Book returned successfully');
+        notifySuccess('Book returned successfully idk');
+        navigate('/library');
         resetContent();
       }
     } catch (error) {
       console.error(error);
       notifyError('Failed to return book');
     }
+    setShowModal(!showModal);
+    dispatch(removeScannerIsbn());
   };
   return (
     <>

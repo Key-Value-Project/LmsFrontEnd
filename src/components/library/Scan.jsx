@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeScannerIsbn } from '../../store/ScannerReducer';
 
-const Scan = ({ handleClick = () => {} }) => {
+const Scan = ({ handleClick = () => {}, type = '' }) => {
   const { data } = useGetAllShelvesQuery();
   const [isbn, setIsbn] = useState('');
   const [shelf, setShelf] = useState('');
@@ -25,7 +25,11 @@ const Scan = ({ handleClick = () => {} }) => {
 
   const onClick = () => {
     setStateqrOn(true);
-    navigate('/library/barcode');
+    if (type === 'return') {
+      navigate('/library/barcode/return');
+    } else {
+      navigate('/library/barcode/borrow');
+    }
   };
 
   return (
