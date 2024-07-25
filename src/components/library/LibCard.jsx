@@ -6,11 +6,12 @@ import starIcon from '../../assets/icons/starIcon.svg';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Availability } from './Availability.jsx';
-import { useDeleteShelfMutation } from '../../api/library/api.library.jsx';
+import { useDeleteShelfMutation, useSetUnsubscribeMutation } from '../../api/library/api.library.jsx';
 import { notifyError, notifySuccess } from '../../utils/Toast.js';
 
 const LibCard = (details) => {
   const [deleteDialog, setDeleteDialog] = useState(false);
+  const [unsubscribe] = useSetUnsubscribeMutation();
   const rating = 3; // dummy rating value
 
   const [deleteshelf] = useDeleteShelfMutation();
@@ -31,6 +32,10 @@ const LibCard = (details) => {
 
     setDeleteDialog(false);
   };
+
+  const handleUnsub = async (isbn) => {
+    const unsubresponse = await unsubscribe({ isbn: parseInt(isbn), });
+  }
 
   const handleClose = () => {
     setDeleteDialog(false);
@@ -71,6 +76,7 @@ const LibCard = (details) => {
                     isbn: parseInt(details.data.isbn),
                     shelf_id: details.shelf_id,
                   });
+                  handleUnsub(details.data.isbn)
                 }}
               >
                 Checkout
