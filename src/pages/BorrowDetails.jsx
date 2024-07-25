@@ -56,7 +56,13 @@ const BorrowDetails = () => {
 
         <div className="book-list">
           <BorrowCardHead />
-          <div className="employee-list">{borrowedData && borrowedData.map((book, index) => <BorrowCard key={index} {...book} />)}</div>
+          <div className="employee-list">
+            {borrowedData &&
+              borrowedData
+                .slice() // Create a shallow copy of the array to avoid mutating the original array
+                .sort((a, b) => (a.return_date === null ? -1 : 1)) // Sort the array
+                .map((book, index) => <BorrowCard key={index} {...book} />)}
+          </div>
         </div>
       </div>
     </>

@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useZxing } from 'react-zxing';
 import { addScannerIsbn } from '../../store/ScannerReducer';
-import { useNavigate } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 
 export const BarcodeScanner = () => {
+  const { type } = useParams();
+  console.log(type);
   const [result, setResult] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -14,7 +16,11 @@ export const BarcodeScanner = () => {
       setResult(result.getText());
       dispatch(addScannerIsbn(result.getText()));
       console.log(result);
-      navigate('/library');
+      if (type === 'borrow') {
+        navigate('/library/');
+      } else {
+        navigate('/library/borrow');
+      }
     },
   });
 

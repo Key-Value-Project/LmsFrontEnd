@@ -60,7 +60,7 @@ const App = () => {
         { path: 'scan', element: <Scan /> },
         { path: 'insights', element: <Insights /> },
         { path: 'shelf/edit/:id/:code/:location', element: <EditShelf /> },
-        { path: 'barcode', element: <BarcodeScanner /> },
+        { path: 'barcode/:type', element: <BarcodeScanner /> },
       ],
     },
   ]);

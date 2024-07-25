@@ -24,11 +24,7 @@ const LibSearch = () => {
   const [showModal, setShowModal] = useState(false);
   const [down, setDown] = useState(false);
   const scannerIsbn = useSelector((state) => state.scanner);
-  useEffect(() => {
-    if (scannerIsbn) {
-      setShowModal(true);
-    }
-  }, [scannerIsbn]);
+
   const notifications = useSelector((state) => state.notification);
   console.log(notifications);
 
