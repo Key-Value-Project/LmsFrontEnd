@@ -22,7 +22,7 @@ const Reports = () => {
       <div className="containers">
         <div className="each__card">
           <div>
-            <h1>Most Borrowed Books Report</h1>
+            <h1>Borrowed Books Report</h1>
           </div>
 
           <div className="card">
@@ -45,7 +45,7 @@ const Reports = () => {
                       </div>
                       <div className="report-row">
                         <span className="report-label">Expected Return Date:</span>
-                        <span className="report-value">{formatDate(item.expected_return_date)}</span>
+                        <span className="report-value mg">{formatDate(item.expected_return_date)}</span>
                       </div>
                     </div>
                   </div>
@@ -80,7 +80,7 @@ const Reports = () => {
                       </div>
                       <div className="report-row">
                         <span className="report-label">Expected Return Date:</span>
-                        <span className="report-value">{formatDate(item.return_date)}</span>
+                        <span className="report-value mg">{formatDate(item.return_date)}</span>
                       </div>
                     </div>
                   </div>
@@ -111,11 +111,11 @@ const Reports = () => {
                       </div>
                       <div className="report-row">
                         <span className="report-label">Book Title:</span>
-                        <span className="report-value">{item.book.bookDetail.title}</span>
+                        <span className="report-value ">{item.book.bookDetail.title}</span>
                       </div>
                       <div className="report-row">
                         <span className="report-label">Expected Return Date:</span>
-                        <span className="report-value">{formatDate(item.expected_return_date)}</span>
+                        <span className="report-value mg">{formatDate(item.expected_return_date)}</span>
                       </div>
                     </div>
                   </div>

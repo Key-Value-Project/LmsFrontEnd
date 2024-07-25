@@ -14,7 +14,7 @@ import { useEffect } from 'react';
 import ReviewsPanel from './ReviewsPanel';
 import { useGetReviewsByBookIdQuery } from '../../api/library/api.reviews';
 import UnSubscribePopUp from '../../utils/UnsubscribePopup';
-
+import heartIcon from '../../assets/icons/heart.svg';
 const BookDetailsCard = ({ emp = {} }) => {
   const navigate = useNavigate();
   const [bookImage, setBookImage] = useState('');
@@ -102,7 +102,7 @@ const BookDetailsCard = ({ emp = {} }) => {
           <div className="book__author">By {emp.author}</div>
 
           <div className="ratings" style={{ display: 'Flex', gap: '10px' }}>
-            {reviewIsSuccess && [...Array(Math.floor(reviews.averageRatingOutOf5))].map((_, i) => <img key={i} src={starIcon} alt="star" />)}
+            {reviewIsSuccess && [...Array(Math.floor(reviews.averageRatingOutOf5))].map((_, i) => <img key={i} src={heartIcon} alt="star" />)}
           </div>
           <a href="#rev" className="rev">
             <div className="ratings">
@@ -118,7 +118,9 @@ const BookDetailsCard = ({ emp = {} }) => {
               <> </>
             ) : isSub && checkSubscription === 'subscribed' ? (
               <div className="book__notify">
-                <button onClick={handleUnsubClick}>Unsubscribe</button>
+                <button onClick={handleUnsubClick} className="subscribe">
+                  Unsubscribe
+                </button>
               </div>
             ) : (
               <div className="book__notify">
@@ -139,7 +141,7 @@ const BookDetailsCard = ({ emp = {} }) => {
       {/* showing available shelves */}
       {emp.status == 'Available' && (
         <div className="book-list lib-shelf">
-          <LibHead heads={['Shelf Code', 'Shelf Location', '', '']} Role="det" />
+          <LibHead heads={['Shelf Code', 'Shelf Location', '']} Role="det" />
           <div className="employee-list">
             {console.log('shelves', shelves.length)}
             {shelves &&
