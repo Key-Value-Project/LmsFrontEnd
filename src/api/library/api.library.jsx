@@ -65,6 +65,9 @@ const libraryApi = libraryApiWithTags.injectEndpoints({
     setSubscribe: builder.mutation({
       query: (body) => ({ url: `/notify`, method: 'PUT', body }),
     }),
+    setUnsubscribe: builder.mutation({
+      query: (body) => ({ url: `/notify/`, method: 'DELETE', body }),
+    }),
     checkSubscription: builder.query({
       query: (body) => ({ url: `/notify/issubscribed`, method: 'POST', body }),
     }),
@@ -93,6 +96,7 @@ export const {
   useDeleteShelfMutation,
   useGetAllShelfBooksQuery,
   useSetSubscribeMutation,
+  useSetUnsubscribeMutation,
   useCheckSubscriptionQuery,
   useGetAvailableBookNotificationsQuery,
   useGetAvailableBookReturnNotificationsQuery,

@@ -37,12 +37,12 @@ const BorrowCard = (emp) => {
         //temp notification
         notifyError(notification);
       } else if (ReturnResponse.data) {
-        notifySuccess('Book borrowed successfully');
+        notifySuccess('Book returned successfully');
         resetContent();
       }
     } catch (error) {
       console.error(error);
-      notifyError('Failed to borrow book');
+      notifyError('Failed to return book');
     }
   };
   return (
