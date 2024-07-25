@@ -41,7 +41,7 @@ const BorrowDetails = () => {
 
   return (
     <>
-      <div className="Dashboard">
+      <div className="Dashboard book-overview">
         <div className="top-header-employee-details">
           <h1>Borrowed Books</h1>
           <div className="top-header-components">

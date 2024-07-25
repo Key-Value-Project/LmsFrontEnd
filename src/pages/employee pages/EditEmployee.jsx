@@ -50,6 +50,7 @@ const EditEmployee = () => {
     if (updateSuccess || updateSuccessRelation) {
       if (updateSuccess && updateSuccessRelation) {
         notifySuccess('Employee and relation updated successfully');
+        navigate('/employee');
       } else if (updateSuccess) {
         notifySuccess('Employee updated successfully');
       } else if (updateSuccessRelation) {

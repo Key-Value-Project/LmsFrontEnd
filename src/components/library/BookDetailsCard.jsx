@@ -26,15 +26,6 @@ const BookDetailsCard = ({ emp = {} }) => {
   const { data: reviews, isSuccess: reviewIsSuccess, isError: reviewIsError } = useGetReviewsByBookIdQuery(emp.isbn);
 
   useEffect(() => {
-    if (reviewIsError) {
-      notifyError('Error in fetching reviews');
-    }
-    if (reviewIsSuccess) {
-      console.log(reviews);
-    }
-  }, [isError, isSuccess, reviews]);
-
-  useEffect(() => {
     console.log('check', checkSubscription);
     console.log(isSub);
   }, [isSub]);
