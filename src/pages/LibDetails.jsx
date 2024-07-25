@@ -32,21 +32,9 @@ const LibDetails = () => {
   };
 
   return (
-    <div className="Dashboard">
+    <div className="Dashboard book-overview">
       <div className="top-header-employee-details">
         <h1>Book Overview</h1>
-        <div className="top-header-components">
-          <Link to={`/library/edit/${isbn}`} style={{ textDecoration: 'none', color: 'black' }}>
-            {Role === 'ADMIN' ? (
-              <div className="edit-button-emp">
-                <img src={pencilIcon} alt="edit button" />
-                <span>Edit</span>
-              </div>
-            ) : (
-              <></>
-            )}
-          </Link>
-        </div>
       </div>
       {Bookdetails && <BookDetailsCard emp={Bookdetails[0]} Role={Role} />}
     </div>
