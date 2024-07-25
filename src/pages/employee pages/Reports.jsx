@@ -6,7 +6,7 @@ const Reports = () => {
   const { data: BorrowedBooksUser, isLoading: isBorrowedBooksLoading } = useGetBorrowedBooksByUserQuery(id);
   const { data: ReturnedBooksUser, isLoading: isReturnedBooksLoading } = useGetReturnedBooksByUserQuery(id);
   const { data: OverdueBooksUser, isLoading: isOverdueBooksLoading } = useGetOverdueBooksByUserQuery(id);
-  console.log(OverdueBooksUser);
+  console.log(ReturnedBooksUser);
 
   if (isBorrowedBooksLoading || isReturnedBooksLoading || isOverdueBooksLoading) {
     return <div>Loading...</div>;
@@ -80,7 +80,7 @@ const Reports = () => {
                       </div>
                       <div className="report-row">
                         <span className="report-label">Expected Return Date:</span>
-                        <span className="report-value">{formatDate(item.expected_return_date).toLocaleString()}</span>
+                        <span className="report-value">{formatDate(item.return_date)}</span>
                       </div>
                     </div>
                   </div>
@@ -103,7 +103,7 @@ const Reports = () => {
                     <div className="report-details">
                       <div className="report-row">
                         <span className="report-label">Borrowed At:</span>
-                        <span className="report-value">{new Date(item.borrowed_at).toLocaleString()}</span>
+                        <span className="report-value">{formatDate(item.borrowed_at)}</span>
                       </div>
                       <div className="report-row">
                         <span className="report-label">ISBN:</span>
@@ -115,7 +115,7 @@ const Reports = () => {
                       </div>
                       <div className="report-row">
                         <span className="report-label">Expected Return Date:</span>
-                        <span className="report-value">{formatDate(item.expected_return_date).toLocaleString()}</span>
+                        <span className="report-value">{formatDate(item.expected_return_date)}</span>
                       </div>
                     </div>
                   </div>

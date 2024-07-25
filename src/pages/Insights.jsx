@@ -183,7 +183,7 @@ const Insights = () => {
                     </div>
                     <div className="report-row">
                       <span className="report-label">Return Date:</span>
-                      <span className="report-value">{item.return_date}</span>
+                      <span className="report-value">{formatDate(item.return_date)}</span>
                     </div>
                     <div className="report-row">
                       <span className="report-label">Book Title:</span>
