@@ -32,7 +32,7 @@ const LibDetails = () => {
   };
 
   return (
-    <div className="Dashboard">
+    <div className="Dashboard book-overview">
       <div className="top-header-employee-details">
         <h1>Book Overview</h1>
       </div>

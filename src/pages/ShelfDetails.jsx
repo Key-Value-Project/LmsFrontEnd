@@ -44,6 +44,7 @@ const ShelfDetails = () => {
                 author={shelf.books.length}
                 status={null}
                 page="shelf"
+                Role="shelf"
               />
             ))}
         </div>
