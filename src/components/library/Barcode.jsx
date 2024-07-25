@@ -17,9 +17,9 @@ export const BarcodeScanner = () => {
       dispatch(addScannerIsbn(result.getText()));
       console.log(result);
       if (type === 'borrow') {
-        navigate('/library/');
+        navigate('/library/scan');
       } else {
-        navigate('/library/borrow');
+        navigate('/library/returnscan');
       }
     },
   });
