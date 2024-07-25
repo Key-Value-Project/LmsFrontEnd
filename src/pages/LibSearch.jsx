@@ -12,8 +12,6 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useRef } from 'react';
 import { useDebounce } from 'use-debounce';
-
-import { useGetUserDetailsQuery } from '../api/employee/api.employee.jsx';
 import { useGetBookDetailsListQuery, useGetSearchByTitleMutation, useBorrowBookMutation } from '../api/library/api.library.jsx';
 import { notifyError, notifySuccess } from '../utils/Toast';
 import { useSelector } from 'react-redux';
@@ -143,7 +141,7 @@ const LibSearch = () => {
 
         <div className="book-list">
           <LibHead heads={['ISBN', 'Title', 'Author', 'Availability']} />
-          <div className="employee-list">{books && books.map((book, index) => <LibCard key={index} {...book} page="libS" Role="book" />)}</div>
+          <div className="employee-list">{books && books.map((book, index) => <LibCard key={index} {...book} page="book" />)}</div>
         </div>
       </div>
     </>

@@ -12,12 +12,12 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 
 const Insights = () => {
-  const { data: MostBorrowedBooks } = useGetMostBorrowedBooksQuery();
-  const { data: PopularGenres } = useGetPopularGenresQuery();
-  const { data: BorrowingReport } = useGetBorrowingReportQuery();
-  const { data: UserActivity } = useGetUserActivityQuery();
-  const { data: ReturnReport } = useGetReturnReportQuery();
-  const { data: OverdueReport } = useGetOverdueBooksReportQuery();
+  const { data: MostBorrowedBooks, isLoading: isMostBorrowedBooksLoading } = useGetMostBorrowedBooksQuery();
+  const { data: PopularGenres, isLoading: isPopularGenresLoading } = useGetPopularGenresQuery();
+  const { data: BorrowingReport, isLoading: isBorrowingReportLoading } = useGetBorrowingReportQuery();
+  const { data: UserActivity, isLoading: isUserActivityLoading } = useGetUserActivityQuery();
+  const { data: ReturnReport, isLoading: isReturnReportLoading } = useGetReturnReportQuery();
+  const { data: OverdueReport, isLoading: isOverdueReportLoading } = useGetOverdueBooksReportQuery();
   console.log(OverdueReport);
 
   const [top5Users, setTop5Users] = useState([
@@ -36,7 +36,15 @@ const Insights = () => {
       setTop5Users(sortedUsers);
     }
   }, [UserActivity]);
-  if (!MostBorrowedBooks || !PopularGenres || !UserActivity) {
+
+  if (
+    isBorrowingReportLoading ||
+    isMostBorrowedBooksLoading ||
+    isOverdueReportLoading ||
+    isPopularGenresLoading ||
+    isReturnReportLoading ||
+    isUserActivityLoading
+  ) {
     return <div>Loading...</div>;
   }
 

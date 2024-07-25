@@ -4,12 +4,14 @@ import EmployeeForm from '../components/createEmployee/employeeForm';
 import BookDetails from '../utils/BookDetails';
 import { useCreateBookDetailsMutation } from '../api/library/api.library';
 import { notifyError } from '../utils/Toast';
+import { notifySuccess } from '../utils/Toast';
+import { useNavigate } from 'react-router';
 
 const AddBook = () => {
   let { id } = useParams();
   const [formState, setFormState] = useState({});
   const [creatBookDetails, { isSuccess, isError, data, error }] = useCreateBookDetailsMutation();
-
+  const navigate = useNavigate();
   const handleInputChange = (name, value) => {
     if (name === 'isbn') {
       value = parseInt(value);

@@ -22,6 +22,7 @@ import { ToastContainer } from 'react-toastify';
 import EditShelf from './pages/EditShelf.jsx';
 import EmployeeList from './pages/employee pages/EmployeeList.jsx';
 import ShelfBook from './pages/library Pages/ShelfBooks.jsx';
+import Reports from './pages/employee pages/Reports.jsx';
 
 const App = () => {
   const router = createBrowserRouter([
@@ -39,6 +40,7 @@ const App = () => {
         { path: 'edit/:id', element: <EditEmployee /> },
         { path: 'details/:id', element: <DetailsEmployee /> },
         { path: 'profile', element: <Profile /> },
+        {path:'report/:id',element:<Reports />}
       ],
     },
     {
