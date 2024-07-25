@@ -40,7 +40,7 @@ const App = () => {
         { path: 'edit/:id', element: <EditEmployee /> },
         { path: 'details/:id', element: <DetailsEmployee /> },
         { path: 'profile', element: <Profile /> },
-        {path:'report/:id',element:<Reports />}
+        { path: 'report/:id', element: <Reports /> },
       ],
     },
     {
