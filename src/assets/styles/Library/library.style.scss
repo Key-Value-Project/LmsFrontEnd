@@ -10,6 +10,9 @@
   z-index: 1000;
 }
 
+.mg {
+  margin-left: 20px;
+}
 .book-overview {
   scrollbar-width: none;
   overflow-y: auto;
@@ -247,9 +250,19 @@ hr {
     background-image: radial-gradient(100% 100% at 100% 0, #ffaaaa 0, #ff7777 100%);
     color: white;
     font-size: 15px;
-    border-radius: 20px;
+    border-radius: 10px;
     cursor: pointer;
   }
+}
+
+.subscribe {
+  padding: 5px 15px;
+  border: 1px solid transparent;
+  background-image: radial-gradient(100% 100% at 100% 0, #ffaaaa 0, #ff7777 100%);
+  color: white;
+  font-size: 15px;
+  border-radius: 15px;
+  cursor: pointer;
 }
 
 .button-class {

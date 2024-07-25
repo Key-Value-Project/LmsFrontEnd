@@ -92,6 +92,8 @@ const LibCard = (details) => {
             <></>
           )}
 
+          {getRole() !== 'ADMIN' && details.Role === 'shelf' ? <div className="item Action"></div> : <></>}
+
           {/* {details.page === 'libS' ? (
           {details.page === 'libS' ? (
             <div className="item rating">

@@ -125,6 +125,7 @@ const LibSearch = () => {
             {/* Notification setting up */}
             <div className="notify-bar">
               <img src={notify} className="notify" onClick={toggleNotifi} />
+              {notifications && notifications.length > 0 ? <span className="notify-count">{notifications.length}</span> : null}
               <div
                 className="notify-body scrollable"
                 ref={boxRef}
