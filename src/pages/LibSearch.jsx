@@ -23,7 +23,6 @@ const LibSearch = () => {
   const [books, setBooks] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [down, setDown] = useState(false);
-  const scannerIsbn = useSelector((state) => state.scanner);
 
   const notifications = useSelector((state) => state.notification);
   console.log(notifications);

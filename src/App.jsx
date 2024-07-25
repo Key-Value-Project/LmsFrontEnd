@@ -24,7 +24,8 @@ import EmployeeList from './pages/employee pages/EmployeeList.jsx';
 import ShelfBook from './pages/library Pages/ShelfBooks.jsx';
 import Reports from './pages/employee pages/Reports.jsx';
 import { BarcodeScanner } from './components/library/Barcode.jsx';
-
+import NewScan from './components/library/newScan.jsx';
+import ReturnScan from './components/library/ReturnScan.jsx';
 const App = () => {
   const router = createBrowserRouter([
     {
@@ -57,7 +58,8 @@ const App = () => {
         { path: 'shelf', element: <ShelfDetails /> },
         { path: 'shelf/details/:id', element: <ShelfBook /> },
         { path: 'createshelf', element: <CreateShelf /> },
-        { path: 'scan', element: <Scan /> },
+        { path: 'scan', element: <NewScan /> },
+        { path: 'returnscan', element: <ReturnScan /> },
         { path: 'insights', element: <Insights /> },
         { path: 'shelf/edit/:id/:code/:location', element: <EditShelf /> },
         { path: 'barcode/:type', element: <BarcodeScanner /> },
