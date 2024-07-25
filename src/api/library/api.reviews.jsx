@@ -24,9 +24,4 @@ const analyticsApi = libraryApiWithTags.injectEndpoints({
   }),
 });
 
-export const {
-    useGetAllReviewsQuery,
-    useGetReviewsByUserIdQuery,
-    useGetReviewsByBookIdQuery,
-    useCreateReviewMutation,
-} = analyticsApi;
+export const { useGetAllReviewsQuery, useGetReviewsByUserIdQuery, useGetReviewsByBookIdQuery, useCreateReviewMutation } = analyticsApi;
