@@ -1,7 +1,7 @@
 import '../../assets/styles/Library/library.style.scss';
 import { useState } from 'react';
 import { useCreateReviewMutation } from '../../api/library/api.reviews';
-import { notifyError } from '../../utils/Toast';
+import { notifyError, notifySuccess } from '../../utils/Toast';
 
 const ShowModalReview = ({ onclose, isbn }) => {
   const [review, setReview] = useState('');
@@ -23,6 +23,7 @@ const ShowModalReview = ({ onclose, isbn }) => {
         (CreateReviewResponse.error.data.errors.length > 0 ? ': ' + CreateReviewResponse.error.data.errors.join(', ') : '');
       notifyError(notification);
     } else if (CreateReviewResponse.data) {
+      notifySuccess('successfully created review');
       onclose();
     }
   };

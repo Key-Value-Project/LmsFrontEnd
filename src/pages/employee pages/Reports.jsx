@@ -11,6 +11,10 @@ const Reports = () => {
   if (isBorrowedBooksLoading || isReturnedBooksLoading || isOverdueBooksLoading) {
     return <div>Loading...</div>;
   }
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+    return new Date(dateString).toLocaleDateString('en-US', options);
+  };
 
   return (
     <>
@@ -22,19 +26,31 @@ const Reports = () => {
           </div>
 
           <div className="card">
-            <div className="card-content card__wrap">
-              <ul className="borrow-history">
+            <div className="card-content">
+              <div className="report-list">
                 {BorrowedBooksUser.slice(0, 10).map((item) => (
-                  <li key={item.id} className="borrow-history-item">
-                    <div className="borrowed-info">
-                      <span className="borrowed-date">{new Date(item.borrowed_at).toLocaleString()}</span>
-                      <span className="borrowed-book">{item.book.bookDetail.isbn}</span>
-                      <span className="borrowed-user">{item.book.bookDetail.title}</span>
-                      <span className="borrowed-user">{item.user.expected_return_date}</span>
+                  <div key={item.id} className="report-item">
+                    <div className="report-details">
+                      <div className="report-row">
+                        <span className="report-label">Borrowed At:</span>
+                        <span className="report-value">{formatDate(item.borrowed_at)}</span>
+                      </div>
+                      <div className="report-row">
+                        <span className="report-label">ISBN:</span>
+                        <span className="report-value">{item.book.bookDetail.isbn}</span>
+                      </div>
+                      <div className="report-row">
+                        <span className="report-label">Book Title:</span>
+                        <span className="report-value">{item.book.bookDetail.title}</span>
+                      </div>
+                      <div className="report-row">
+                        <span className="report-label">Expected Return Date:</span>
+                        <span className="report-value">{formatDate(item.expected_return_date)}</span>
+                      </div>
                     </div>
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -45,19 +61,31 @@ const Reports = () => {
           </div>
 
           <div className="card">
-            <div className="card-content card__wrap">
-              <ul className="borrow-history">
+            <div className="card-content">
+              <div className="report-list">
                 {ReturnedBooksUser.slice(0, 10).map((item) => (
-                  <li key={item.id} className="borrow-history-item">
-                    <div className="borrowed-info">
-                      <span className="borrowed-date">{new Date(item.borrowed_at).toLocaleString()}</span>
-                      <span className="borrowed-book">{item.book.bookDetail.isbn}</span>
-                      <span className="borrowed-user">{item.book.bookDetail.title}</span>
-                      <span className="borrowed-user">{item.user.expected_return_date}</span>
+                  <div key={item.id} className="report-item">
+                    <div className="report-details">
+                      <div className="report-row">
+                        <span className="report-label">Borrowed At:</span>
+                        <span className="report-value">{new Date(item.borrowed_at).toLocaleString()}</span>
+                      </div>
+                      <div className="report-row">
+                        <span className="report-label">ISBN:</span>
+                        <span className="report-value">{item.book.bookDetail.isbn}</span>
+                      </div>
+                      <div className="report-row">
+                        <span className="report-label">Book Title:</span>
+                        <span className="report-value">{item.book.bookDetail.title}</span>
+                      </div>
+                      <div className="report-row">
+                        <span className="report-label">Expected Return Date:</span>
+                        <span className="report-value">{new Date(item.user.expected_return_date).toLocaleString()}</span>
+                      </div>
                     </div>
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -68,19 +96,31 @@ const Reports = () => {
           </div>
 
           <div className="card">
-            <div className="card-content card__wrap">
-              <ul className="borrow-history">
+            <div className="card-content">
+              <div className="report-list">
                 {OverdueBooksUser.slice(0, 10).map((item) => (
-                  <li key={item.id} className="borrow-history-item">
-                    <div className="borrowed-info">
-                      <span className="borrowed-date">{new Date(item.borrowed_at).toLocaleString()}</span>
-                      <span className="borrowed-book">{item.book.bookDetail.isbn}</span>
-                      <span className="borrowed-user">{item.book.bookDetail.title}</span>
-                      <span className="borrowed-user">{item.user.expected_return_date}</span>
+                  <div key={item.id} className="report-item">
+                    <div className="report-details">
+                      <div className="report-row">
+                        <span className="report-label">Borrowed At:</span>
+                        <span className="report-value">{new Date(item.borrowed_at).toLocaleString()}</span>
+                      </div>
+                      <div className="report-row">
+                        <span className="report-label">ISBN:</span>
+                        <span className="report-value">{item.book.bookDetail.isbn}</span>
+                      </div>
+                      <div className="report-row">
+                        <span className="report-label">Book Title:</span>
+                        <span className="report-value">{item.book.bookDetail.title}</span>
+                      </div>
+                      <div className="report-row">
+                        <span className="report-label">Expected Return Date:</span>
+                        <span className="report-value">{new Date(item.user.expected_return_date).toLocaleString()}</span>
+                      </div>
                     </div>
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           </div>
         </div>
