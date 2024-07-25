@@ -17,8 +17,7 @@ const BorrowCard = (emp) => {
     setShowModal(!showModal);
   };
 
-  const toggalModalReview = (e) => {
-    e.preventDefault();
+  const toggalModalReview = () => {
     setShowReview(!showReview);
   };
   const resetContent = () => {
@@ -65,7 +64,13 @@ const BorrowCard = (emp) => {
             )}
           </div>
           <div className="item">
-            <button className="btn" onClick={toggalModalReview}>
+            <button
+              className="btn"
+              onClick={(e) => {
+                e.preventDefault();
+                toggalModalReview();
+              }}
+            >
               FeedBack
             </button>
           </div>
