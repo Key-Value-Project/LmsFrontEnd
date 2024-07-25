@@ -9,18 +9,21 @@ import { useNavigate } from 'react-router-dom';
 import LibCard from './LibCard';
 import React, { useState } from 'react';
 import { Availability } from './Availability';
-import { useBorrowBookMutation, useCheckSubscriptionQuery, useSetSubscribeMutation } from '../../api/library/api.library';
+import { useBorrowBookMutation, useCheckSubscriptionQuery, useSetSubscribeMutation, useSetUnsubscribeMutation } from '../../api/library/api.library';
 import { useEffect } from 'react';
 import ReviewsPanel from './ReviewsPanel';
 import { useGetReviewsByBookIdQuery } from '../../api/library/api.reviews';
+import UnSubscribePopUp from '../../utils/UnsubscribePopup';
 
 const BookDetailsCard = ({ emp = {} }) => {
   const navigate = useNavigate();
   const [bookImage, setBookImage] = useState('');
   let shelves = [];
   const [subDialog, setSubDialog] = useState(false);
+  const [unsubDialog, setUnsubDialog] = useState(false);
   const [borrowBook, { data, error, isLoading, isError, isSuccess }] = useBorrowBookMutation();
   const [setSubscribe] = useSetSubscribeMutation();
+  const [setUnsubscribe] = useSetUnsubscribeMutation();
   const { data: checkSubscription, isSuccess: isSub } = useCheckSubscriptionQuery({ isbn: emp.isbn });
 
   const { data: reviews, isSuccess: reviewIsSuccess, isError: reviewIsError } = useGetReviewsByBookIdQuery(emp.isbn);
@@ -36,11 +39,18 @@ const BookDetailsCard = ({ emp = {} }) => {
     setSubDialog(true);
   };
 
+  const handleUnsubClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setUnsubDialog(true);
+  };
+
   const handleSub = async (notify) => {
     const response = await setSubscribe({
       isbn: emp.isbn,
       sent_request: notify,
     });
+    setSubDialog(false);
     if (response.error) {
       notifyError('Error in subscribing');
     } else {
@@ -48,8 +58,23 @@ const BookDetailsCard = ({ emp = {} }) => {
     }
   };
 
+  const handleUnsub = async (notify) => {
+    const response = await setUnsubscribe({
+      isbn: emp.isbn,
+    });
+    setUnsubDialog(false);
+    if (response.error) {
+      notifyError('Error unsubscribing');
+    } else {
+      notifySuccess('Unsubscribed successfully');
+    }
+  };
+
   const handleClose = () => {
     setSubDialog(false);
+  };
+  const unsubHandleClose = () => {
+    setUnsubDialog(false);
   };
 
   useEffect(() => {
@@ -92,7 +117,9 @@ const BookDetailsCard = ({ emp = {} }) => {
             {emp.status === 'Available' ? (
               <> </>
             ) : isSub && checkSubscription === 'subscribed' ? (
-              <p>Subscribed</p>
+              <div className="book__notify">
+                <button onClick={handleUnsubClick}>Unsubscribe</button>
+              </div>
             ) : (
               <div className="book__notify">
                 <img src={notify} alt="notify" onClick={handleSubClick} />
@@ -139,6 +166,7 @@ const BookDetailsCard = ({ emp = {} }) => {
       <br></br>
 
       <SubscribePopUp open={subDialog} handleClose={handleClose} handleDelete={handleSub} />
+      <UnSubscribePopUp open={unsubDialog} handleClose={unsubHandleClose} handleDelete={handleUnsub} />
     </>
   );
 };
