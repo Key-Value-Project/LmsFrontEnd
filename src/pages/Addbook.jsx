@@ -6,6 +6,7 @@ import { useCreateBookDetailsMutation } from '../api/library/api.library';
 import { notifyError } from '../utils/Toast';
 import { notifySuccess } from '../utils/Toast';
 import { useNavigate } from 'react-router';
+import FileUpload from '../components/fileUPload';
 
 const AddBook = () => {
   let { id } = useParams();
@@ -58,6 +59,7 @@ const AddBook = () => {
 
         <div className="component-create-employee">
           <button className="btn">Upload Excel</button>
+          <FileUpload />
           <div className="excel"></div>
           <hr></hr>
           <div className="excel"></div>
