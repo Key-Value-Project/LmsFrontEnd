@@ -15,6 +15,6 @@ export const libraryBaseApi = createApi({
   endpoints: () => ({}),
 });
 const libraryApiWithTags = libraryBaseApi.enhanceEndpoints({
-  addTagTypes: ['Library'],
+  addTagTypes: ['Library', 'Notification'],
 });
 export default libraryApiWithTags;

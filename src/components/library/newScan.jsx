@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useBorrowBookMutation, useGetAllShelvesQuery } from '../../api/library/api.library';
 import scan from '../../assets/icons/scan.svg';
-import { notifyError } from '../../utils/Toast';
+import { notifyError, notifySuccess } from '../../utils/Toast';
 import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeScannerIsbn } from '../../store/ScannerReducer';
@@ -17,12 +17,13 @@ const NewScan = ({ handleClick = () => {}, type = '' }) => {
   handleClick = async () => {
     console.log('handleclick', isbnv, shelf);
     const borrowData = await borrowBook({ isbn: parseInt(isbnv), shelf_id: shelf });
-    console.log(borrowData);
+    console.log('borrowdata', borrowData);
     if (borrowData.error) {
       let notification =
         borrowData.error.data.message + (borrowData.error.data.errors.length > 0 ? ': ' + borrowData.error.data.errors.join(', ') : '');
       notifyError(notification);
-    } else {
+    }
+    if (borrowData.data) {
       notifySuccess('Book borrowed successfully');
       navigate('/library');
     }

@@ -60,7 +60,7 @@ const BorrowCard = (emp) => {
 
           <div className="item">{format(new Date(emp.expected_return_date), 'dd-MM-yyyy')}</div>
 
-          <div className="item" style={{textAlign:"center"}}>
+          <div className="item" style={{ textAlign: 'center' }}>
             {emp.return_date != null ? (
               <p>Returned</p>
             ) : (

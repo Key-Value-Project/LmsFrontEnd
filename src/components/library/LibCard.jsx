@@ -34,8 +34,8 @@ const LibCard = (details) => {
   };
 
   const handleUnsub = async (isbn) => {
-    const unsubresponse = await unsubscribe({ isbn: parseInt(isbn), });
-  }
+    const unsubresponse = await unsubscribe({ isbn: parseInt(isbn) });
+  };
 
   const handleClose = () => {
     setDeleteDialog(false);
@@ -76,7 +76,7 @@ const LibCard = (details) => {
                     isbn: parseInt(details.data.isbn),
                     shelf_id: details.shelf_id,
                   });
-                  handleUnsub(details.data.isbn)
+                  handleUnsub(details.data.isbn);
                 }}
               >
                 Checkout

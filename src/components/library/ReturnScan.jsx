@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useBorrowBookMutation, useGetAllShelvesQuery, useReturnBookMutation } from '../../api/library/api.library';
 import scan from '../../assets/icons/scan.svg';
-import { notifyError } from '../../utils/Toast';
+import { notifyError, notifySuccess } from '../../utils/Toast';
 import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeScannerIsbn } from '../../store/ScannerReducer';

@@ -49,6 +49,7 @@ const libraryApi = libraryApiWithTags.injectEndpoints({
           body: bodyFormData,
         };
       },
+      invalidatesTags: ['Library'],
     }),
 
     createShelf: builder.mutation({
@@ -57,6 +58,7 @@ const libraryApi = libraryApiWithTags.injectEndpoints({
     }),
     editShelf: builder.mutation({
       query: ({ id, formState }) => ({ url: `/shelf/update/${id}`, method: 'PUT', body: formState }),
+      invalidatesTags: ['Library'],
     }),
     deleteShelf: builder.mutation({
       query: (id) => ({ url: `/shelf/delete/${id}`, method: 'DELETE' }),
@@ -64,12 +66,15 @@ const libraryApi = libraryApiWithTags.injectEndpoints({
     }),
     setSubscribe: builder.mutation({
       query: (body) => ({ url: `/notify`, method: 'PUT', body }),
+      invalidatesTags: ['Notification'],
     }),
     setUnsubscribe: builder.mutation({
       query: (body) => ({ url: `/notify/`, method: 'DELETE', body }),
+      invalidatesTags: ['Notification'],
     }),
     checkSubscription: builder.query({
       query: (body) => ({ url: `/notify/issubscribed`, method: 'POST', body }),
+      providesTags: ['Notification'],
     }),
     getAvailableBookNotifications: builder.query({
       query: () => ({ url: `/notify/`, method: 'GET' }),
